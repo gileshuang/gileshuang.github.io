@@ -18,6 +18,9 @@
       <guid>http://alienhjy.github.io/markdown-test/</guid>
       <description>
 
+&lt;p&gt;本文的 Markdown 源码可到&lt;a href=&#34;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/markdown-test.md&#34;&gt;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/markdown-test.md&lt;/a&gt;查看。&lt;br /&gt;
+不过我知道写得很渣，轻喷。。。&lt;/p&gt;
+
 &lt;h2 id=&#34;这是二级标题:86ac849859807c9737e753d784ef51b4&#34;&gt;这是二级标题&lt;/h2&gt;
 
 &lt;h4 id=&#34;这是四级标题:86ac849859807c9737e753d784ef51b4&#34;&gt;这是四级标题&lt;/h4&gt;
