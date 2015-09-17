@@ -46,7 +46,7 @@
 
 &lt;p&gt;下面是代码段&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
 echo &amp;quot;hello markdown&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
