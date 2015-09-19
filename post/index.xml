@@ -21,6 +21,10 @@
 &lt;p&gt;本文的 Markdown 源码可到&lt;a href=&#34;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&#34;&gt;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&lt;/a&gt;查看。&lt;br /&gt;
 不过我知道写得很渣，轻喷。。。&lt;/p&gt;
 
+&lt;p&gt;独立的行中有三个以上的星号，下面应当有一条分割线&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;h2 id=&#34;这是二级标题:86ac849859807c9737e753d784ef51b4&#34;&gt;这是二级标题&lt;/h2&gt;
 
 &lt;h4 id=&#34;这是四级标题:86ac849859807c9737e753d784ef51b4&#34;&gt;这是四级标题&lt;/h4&gt;
@@ -28,20 +32,30 @@
 &lt;blockquote&gt;
 &lt;p&gt;这是一个引用,
 然而这里并没有换行。。。&lt;br /&gt;
-上一句行尾有两个空格，瞧，这里换行了吧～&lt;br /&gt;
-我擦，这货的 markdown 居然不支持引用嵌套。。。&lt;br /&gt;
-不晓得是主题的锅还是 hugo 的锅。&lt;/p&gt;
+上一句行尾有两个空格，瞧，这里换行了吧～&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;引用支持嵌套。然而嵌套的引用应该跟上一级的引用在不同的块，&lt;br /&gt;
+即，嵌套的引用跟其它级别之间应当用空行分隔开。。。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;/blockquote&gt;
 
 &lt;ul&gt;
 &lt;li&gt;无序列表可以用星号&lt;/li&gt;
-&lt;li&gt;也可以用加号&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这是第二个列表项&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;也可以用加号&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;然而列表并不起作用&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;也可以用减号&lt;/p&gt;&lt;/li&gt;
 
+&lt;li&gt;&lt;p&gt;然而三种无序列表都没有作用。。。&lt;/p&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;数字加英文句号是有序列表&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;然而有序列表貌似也没什么卵用&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;然而有序列表貌似没什么卵用&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;下面是代码段&lt;/p&gt;
@@ -50,12 +64,19 @@
 echo &amp;quot;hello markdown&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;行首有四个空格或者tab，也应当是一个代码段。这种方式的代码段前后应当有空行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+echo &amp;quot;hello world&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;由于本主题的高亮实在有问题，我从 purehugo 主题取了一个 syntax-highlighter.css 样式表过来，才勉强给代码段周围加上框框，但依旧没有解决语法高亮的问题。。。包括各种列表样式不准确等等，总之问题多多。。。&lt;/p&gt;
 
 &lt;p&gt;单星号 = &lt;em&gt;斜体&lt;/em&gt;&lt;br /&gt;
 单下划线 = &lt;em&gt;斜体&lt;/em&gt;&lt;br /&gt;
 双星号 = &lt;strong&gt;加粗&lt;/strong&gt;&lt;br /&gt;
-双下划线 = &lt;strong&gt;加粗&lt;/strong&gt;&lt;/p&gt;
+双下划线 = &lt;strong&gt;加粗&lt;/strong&gt;&lt;br /&gt;
+&lt;b&gt;加粗就是不生效。。。看我来一段HTML格式的加粗&lt;/b&gt;&lt;/p&gt;
 
 &lt;p&gt;这是InLine风格的&lt;a href=&#34;https://github.com/&#34; title=&#34;这是可选标题&#34;&gt;链接&lt;/a&gt;&lt;br /&gt;
 这是Reference风格的&lt;a href=&#34;https://github.com/&#34; title=&#34;这是可选标题&#34;&gt;链接&lt;/a&gt;。&lt;/p&gt;

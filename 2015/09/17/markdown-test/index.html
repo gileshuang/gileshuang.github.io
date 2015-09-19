@@ -76,6 +76,10 @@
 <p>本文的 Markdown 源码可到<a href="https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md">https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md</a>查看。<br />
 不过我知道写得很渣，轻喷。。。</p>
 
+<p>独立的行中有三个以上的星号，下面应当有一条分割线</p>
+
+<hr />
+
 <h2 id="这是二级标题:86ac849859807c9737e753d784ef51b4">这是二级标题</h2>
 
 <h4 id="这是四级标题:86ac849859807c9737e753d784ef51b4">这是四级标题</h4>
@@ -83,20 +87,30 @@
 <blockquote>
 <p>这是一个引用,
 然而这里并没有换行。。。<br />
-上一句行尾有两个空格，瞧，这里换行了吧～<br />
-我擦，这货的 markdown 居然不支持引用嵌套。。。<br />
-不晓得是主题的锅还是 hugo 的锅。</p>
+上一句行尾有两个空格，瞧，这里换行了吧～</p>
+
+<blockquote>
+<p>引用支持嵌套。然而嵌套的引用应该跟上一级的引用在不同的块，<br />
+即，嵌套的引用跟其它级别之间应当用空行分隔开。。。</p>
+</blockquote>
 </blockquote>
 
 <ul>
 <li>无序列表可以用星号</li>
-<li>也可以用加号</li>
+
+<li><p>这是第二个列表项</p></li>
+
+<li><p>也可以用加号</p></li>
+
+<li><p>然而列表并不起作用</p></li>
 
 <li><p>也可以用减号</p></li>
 
+<li><p>然而三种无序列表都没有作用。。。</p></li>
+
 <li><p>数字加英文句号是有序列表</p></li>
 
-<li><p>然而有序列表貌似也没什么卵用</p></li>
+<li><p>然而有序列表貌似没什么卵用</p></li>
 </ul>
 
 <p>下面是代码段</p>
@@ -105,12 +119,19 @@
 echo &quot;hello markdown&quot;
 </code></pre>
 
+<p>行首有四个空格或者tab，也应当是一个代码段。这种方式的代码段前后应当有空行</p>
+
+<pre><code>#!/bin/bash
+echo &quot;hello world&quot;
+</code></pre>
+
 <p>由于本主题的高亮实在有问题，我从 purehugo 主题取了一个 syntax-highlighter.css 样式表过来，才勉强给代码段周围加上框框，但依旧没有解决语法高亮的问题。。。包括各种列表样式不准确等等，总之问题多多。。。</p>
 
 <p>单星号 = <em>斜体</em><br />
 单下划线 = <em>斜体</em><br />
 双星号 = <strong>加粗</strong><br />
-双下划线 = <strong>加粗</strong></p>
+双下划线 = <strong>加粗</strong><br />
+<b>加粗就是不生效。。。看我来一段HTML格式的加粗</b></p>
 
 <p>这是InLine风格的<a href="https://github.com/" title="这是可选标题">链接</a><br />
 这是Reference风格的<a href="https://github.com/" title="这是可选标题">链接</a>。</p>
@@ -155,6 +176,26 @@ echo &quot;hello markdown&quot;
               
             
           </p>
+          
+          
+            
+	<div class="ds-thread" data-thread-key="<%= post.layout %>-<%= post.slug %>" data-title="<%= post.title %>" data-url="<%= page.permalink %>"></div>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"alienhjy"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+
           
         </div>
       </div>
