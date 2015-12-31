@@ -431,10 +431,8 @@ echo &amp;quot;hello world&amp;quot;
 &lt;p&gt;这是InLine风格的&lt;a href=&#34;https://github.com/&#34; title=&#34;这是可选标题&#34;&gt;链接&lt;/a&gt;&lt;br /&gt;
 这是Reference风格的&lt;a href=&#34;https://github.com/&#34; title=&#34;这是可选标题&#34;&gt;链接&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;这是InLine风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;
-&lt;br /&gt;
-这是Reference风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;这是InLine风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;br /&gt;
+这是Reference风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这是HTML风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=“可选标题” width=200 /&gt;&lt;/p&gt;
 
