@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>Debian 创始人 Ian Murdock 先生去世，享年 42 岁！</title>
+  <title>golang发送http请求</title>
   <link href="http://alienhjy.github.io//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="http://alienhjy.github.io//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/docco.min.css">
@@ -63,62 +63,89 @@
     <div class="row">
       <div class="col s12">
         <div class="card-panel">
-          <h4>Debian 创始人 Ian Murdock 先生去世，享年 42 岁！</h4>
+          <h4>golang发送http请求</h4>
           <p>
           
             
-              <a href="http://alienhjy.github.io//categories/%E6%96%B0%E9%97%BB/">新闻</a>
+              <a href="http://alienhjy.github.io//categories/%E7%A0%81%E5%86%9C%E5%90%91/">码农向</a>
             
           
           </p>
-          <p><p>Docker 公司<a href="http://blog.docker.com/2015/12/ian-murdock/">宣布</a>，著名的 Debian 创始人 Ian Murdock 已经去世，享年 42 岁。</p>
+          <p>
 
-<p><img src="/images/debian-founder-and-docker-employee-ian-murdock-has-died-at-42.jpg" alt="ian-murdock" title="Ian Murdock" /></p>
+<p>本篇记录一下golang中发送一个http请求的基本方法。<br />
+在本例中，我将尝试向某个URL发送GET请求，并获取其返回的body。</p>
 
-<p>他同时也是 Docker 公司员工、之前还担任过 Linux 基金会的 CTO、 Sun 微系统的印第安纳项目的首席架构师和 SalesForce 员工。
-这件事情为他的家人、Debian 社区、Docker 社区以及开源世界带来了巨大悲痛。</p>
-
-<p>在公布该消息的<a href="http://blog.docker.com/2015/12/ian-murdock/">文章</a>中，并没有说明他的死因。Docker 公司拒绝对此评论。旧金山警局也没有及时提供导致  Ian Murdock  死亡的原因。</p>
-
-<p>当地时间本周一，他的 Twitter 账户贴了一些推文（<a href="https://img.sauf.ca/pictures/2015-12-29/c12fc3b2278596da4a26edd4a41f3373.pdf">PDF 归档</a>），
-表明其与警察发生了一些冲突，夜间的一则<a href="http://webcache.googleusercontent.com/search?q=cache:umvcoAjl8SIJ:https://twitter.com/imurdock/status/681598929205526528+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us">推文</a>则
-说<a href="https://linux.cn/article-6818-1.html">他要自杀</a>。有人猜测其 Twitter 账户被入侵，
-之后，该 <a href="https://twitter.com/imurdock">Twitter 账户</a>被删除了。</p>
-
-<p>周一晚上， Ian Murdock  去世，目前还不得而知具体事件经过。</p>
-
-<p>“Ian 率先建立了真正的开源项目和开源社区，拥抱开放设计和开放贡献；事实上开源运动的指导性文件 Open Source Definition（开放源码定义）的形成最初就是来自 Debian 的立场声明”，Docker 的 CEO，Ben Golub 在博文中写到，“这是一份来自 Ian 为开源所贡献的公约，而当前 Debian 社区已经有超过 1000 人参与到其开发之中。”</p>
-
-<p>Murdock 于 1993年8月<a href="ianmurdock.com/post/how-i-came-to-find-linux/">创建了 Debian</a>，他即是“Debian”这个名字中的“ian”。
-在<a href="http://ianmurdock.com/">他的个人博客</a>中，他谈到了该项目的成果，“任何人都可以贡献到它所集成的软件库之中，Debian 可以说是行业内的第一个应用商店（虽然原始）”。</p>
-
-<p>在过去几年，Docker 成为了<a href="http://venturebeat.com/2015/04/14/docker-raises-95m-led-by-insight-venture-partners/">最流行的 Linux 容器</a>，这与他加入这个初创公司密不可分，
-而且他在 Linux 世界里受到广泛赞誉。在周一的 Twitter 上，很多 Debian 用户对他表示了同情和支持。
-Debian 社区也发布了<a href="https://bits.debian.org/2015/12/mourning-ian-murdock.html">悼念文章</a>。</p>
-
-<p>Debian 及广大的 Linux 社区的人们，可以发送你的哀悼信到 <a href="mailto:in-memoriam-ian@debian.org">in-memoriam-ian@debian.org</a>。</p>
-
-<p>参考来源：<a href="http://venturebeat.com/2015/12/30/debian-founder-and-docker-employee-ian-murdock-has-died-at-42/">venturebeat</a>
- 、<a href="https://bits.debian.org/2015/12/mourning-ian-murdock.html">debian</a>
- 、<a href="blog.docker.com/2015/12/ian-murdock/">docker</a></p>
+<h5 id="b-开门见山的示例代码-b:be6ede8ae513576857fb7784c6c32495"><b>开门见山的示例代码</b></h5>
 
 <hr />
 
-<p>本文转载自：<a href="https://linux.cn/article-6828-1.html">https://linux.cn/article-6828-1.html</a></p>
+<pre><code class="language-go">import (
+	&quot;os&quot;
+	&quot;fmt&quot;
+	&quot;net/http&quot;
+	&quot;io/ioutil&quot;
+)
+
+func GetHttpBody(str_api string) ([]byte) {
+	const (
+		Http_username = &quot;apiuser&quot;
+		Http_passwd = &quot;apipasswd&quot;
+	)
+
+	client := &amp;http.Client{}
+	req, err_req := http.NewRequest(&quot;GET&quot;, str_api, nil)
+	if err_req != nil {
+		fmt.Println(&quot;Can't add http request.&quot;, err_req)
+		os.Exit(1)
+	}
+	req.Header.Add(&quot;Accept&quot;, &quot;application/json&quot;)
+	req.SetBasicAuth(Http_username, Http_passwd)
+
+	resp, err_resp := client.Do(req)
+	if err_req != nil {
+		fmt.Println(&quot;Can't get http response.&quot;, err_resp)
+		os.Exit(1)
+	}
+	resp_body, _ := ioutil.ReadAll(resp.Body)
+	defer resp.Body.Close()
+	return resp_body
+}
+</code></pre>
+
+<h5 id="b-为了防止自己不懂-尝试解释一下-b:be6ede8ae513576857fb7784c6c32495"><b>为了防止自己不懂，尝试解释一下</b></h5>
+
+<hr />
+
+<p><em>该实例是将go作为http客户端来用，而不是作为server。</em></p>
+
+<pre><code class="language-go">client := &amp;http.Client{}
+</code></pre>
+
+<p>首先需要创建一个http client。其实我也不知道为什么是这么创建的。创建http客户端的时候，
+还可以控制它的重定向策略等等行为以及其它客户端设置。由于我自己对http协议基本不怎么了解，
+所以就不去深究它还能加哪些控制方法了。<br />
+接着便是新建一个<code>http.Request</code>。其中<code>http.Request.Header.Add</code>给这个请求添加一条
+http头。<code>http.Request.SetBasicAuth</code>方法用来做基于http协议的、明文密码的基本身份认证。
+<code>http.Request</code>的第一个参数为http请求的方法，第二个参数为请求的URL，如果是<code>POST</code>等
+方法，则可以在第三个参数加上要POST的内容。第三个参数的类型为<code>io.Reader</code>。
+<code>client.DO</code>将上面创建好的请求发送出去，并返回一个<code>http.Response</code>，于是我们就可以通过
+<code>http.Response.Body</code>获取到服务器返回的http body。<br />
+<code>http.Response.Body</code>作为一个<code>io.Reader</code>，记得在读取完成后<code>Close</code>掉。</p>
+
+<p>皆大欢喜皆大欢喜。。。</p>
 </p>
-          <p>31 Dec 2015
+          <p>12 Jan 2016
             
               
-                <a href="http://alienhjy.github.io//tags/ian-murdock/">#Ian Murdock</a>
-              
-                <a href="http://alienhjy.github.io//tags/developer/">#developer</a>
+                <a href="http://alienhjy.github.io//tags/golang/">#golang</a>
               
             
           </p>
           
           
             
-            <div class="ds-thread" data-thread-key="/2015/12/31/debian-founder-and-docker-employee-ian-murdock-has-died-at-42/" data-title="Debian 创始人 Ian Murdock 先生去世，享年 42 岁！" data-url="http://alienhjy.github.io/2015/12/31/debian-founder-and-docker-employee-ian-murdock-has-died-at-42/"></div>
+            <div class="ds-thread" data-thread-key="/2016/01/12/golang-http-request/" data-title="golang发送http请求" data-url="http://alienhjy.github.io/2016/01/12/golang-http-request/"></div>
             
             
             <script type="text/javascript">
@@ -141,13 +168,13 @@ Debian 社区也发布了<a href="https://bits.debian.org/2015/12/mourning-ian-m
     <div class="row">
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="http://alienhjy.github.io/2016/01/12/golang-http-request/"><i class="mdi-navigation-arrow-back"></i></a>
+        <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-back"></i></a>
       
       </div>
       <div class="col s6 m10 center">&nbsp</div>
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="http://alienhjy.github.io/2015/11/06/prepare-for-install-docker-in-rhel_6.2/"><i class="mdi-navigation-arrow-forward"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" href="http://alienhjy.github.io/2015/12/31/debian-founder-and-docker-employee-ian-murdock-has-died-at-42/"><i class="mdi-navigation-arrow-forward"></i></a>
       
       </div>
     </div>
