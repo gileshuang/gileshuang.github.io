@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://alienhjy.github.io/</loc>
-    <lastmod>2016-01-12T18:05:00+08:00</lastmod>
+    <lastmod>2016-01-20T17:05:29+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://alienhjy.github.io/2016/01/20/linux-101-get-the-most-out-of-systemd/</loc>
+    <lastmod>2016-01-20T17:05:29+08:00</lastmod>
   </url>
   
   <url>

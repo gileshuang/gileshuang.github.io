@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on 黄家垚的主页</title>
-    <link>http://alienhjy.github.io/tags/linux/</link>
-    <description>Recent content in Linux on 黄家垚的主页</description>
+    <title>运维向 on 黄家垚的主页</title>
+    <link>http://alienhjy.github.io/categories/%E8%BF%90%E7%BB%B4%E5%90%91/</link>
+    <description>Recent content in 运维向 on 黄家垚的主页</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2015 Copyleft Text</copyright>
     <lastBuildDate>Wed, 20 Jan 2016 17:05:29 +0800</lastBuildDate>
-    <atom:link href="http://alienhjy.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://alienhjy.github.io/categories/%E8%BF%90%E7%BB%B4%E5%90%91/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[转载]最简明扼要的 Systemd 教程，只需十分钟</title>
@@ -318,61 +318,6 @@ DEITY 是指广义上的“神”，$前缀表示这是一个变量），为 7 �
 &lt;a href=&#34;https://linux.cn/article-6888-1.html&#34;&gt;Linux中国&lt;/a&gt;荣誉推出&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;转载者再注：linuxcn的译文原文有非常漂亮的格式，建议阅读linuxcn的译文原文。&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>在RHEL6.2上安装docker的准备工作</title>
-      <link>http://alienhjy.github.io/2015/11/06/prepare-for-install-docker-in-rhel_6.2/</link>
-      <pubDate>Fri, 06 Nov 2015 19:01:12 +0800</pubDate>
-      
-      <guid>http://alienhjy.github.io/2015/11/06/prepare-for-install-docker-in-rhel_6.2/</guid>
-      <description>
-
-&lt;p&gt;最近在尝试 docker，据说很高端大气上档次，于是就在空闲的时候开始鼓捣整。&lt;br /&gt;
-壮哉我大 Arch，内核版本都已经是 4.x 了（截至写本文），完全满足 docker 对内核版本的要求
-（推荐 3.16，最低 3.10，据说红帽的 2.6.32-358 以上由于被打了补丁，也能支持 docker）。&lt;/p&gt;
-
-&lt;p&gt;然而事情总不会一帆风顺，比如某些线上环境，可能还在用很古老的发行版。&lt;br /&gt;
-现在，我就很奇葩地想要在 RHEL 6.2 上安装 docker。然而 RHEL 6.2 默认使用的内核是
-2.6.32-220，并不满足 docker 的要求，于是就需要稍微升级一下内核。
-俗话说，步子跨得大了，容易扯到蛋。所以我们选择版本号变化不那么大的 RHEL 6.6 版本自带
-的 2.6.32-504 内核。&lt;/p&gt;
-
-&lt;h4 id=&#34;更新内核版本:d0909214c8761f138484f62f1377d270&#34;&gt;更新内核版本&lt;/h4&gt;
-
-&lt;p&gt;首先系统的更新内核版本：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;rpm -ivh --force http://yum.pplive.com/rhel_6.6_repo/Packages/kernel-2.6.32-504.el6.x86_64.rpm \
-	http://yum.pplive.com/rhel_6.6_repo/Packages/kernel-firmware-2.6.32-504.el6.noarch.rpm \
-	http://yum.pplive.com/rhel_6.6_repo/Packages/bfa-firmware-3.2.23.0-2.el6.noarch.rpm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;对于部分设备，可能会出现依赖不满足。比如我遇到&lt;code&gt;bfa-firmware&lt;/code&gt;包的依赖出现问题，这时，卸载掉旧版本的，
-再尝试安装内核，即可解决。可以这样卸载（我不说你也懂）：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;yum remove bfa-firmware
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;更新device-mapper包:d0909214c8761f138484f62f1377d270&#34;&gt;更新device-mapper包&lt;/h4&gt;
-
-&lt;p&gt;更新内核后，如果你直接安装运行 docker，会发现启动不了 docker 的服务。不管你有没有这个问题，
-反正我是遇到了。这时检查是哪个组件不符合要求，比如我的环境下，是 device-mapper 包版本太低，
-更新一下即可：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;rpm -ivh --force http://yum.pplive.com/rhel_6.6_repo/Packages/device-mapper-libs-1.02.90-2.el6.x86_64.rpm \
-	http://yum.pplive.com/rhel_6.6_repo/Packages/device-mapper-1.02.90-2.el6.x86_64.rpm \
-	http://yum.pplive.com/rhel_6.6_repo/Packages/util-linux-ng-2.17.2-12.18.el6.x86_64.rpm \
-	http://yum.pplive.com/rhel_6.6_repo/Packages/libblkid-2.17.2-12.18.el6.x86_64.rpm \
-	http://yum.pplive.com/rhel_6.6_repo/Packages/libuuid-2.17.2-12.18.el6.x86_64.rpm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;安装docker:d0909214c8761f138484f62f1377d270&#34;&gt;安装docker&lt;/h4&gt;
-
-&lt;p&gt;话说，标题我不是说了吗，这是准备工作。。。&lt;br /&gt;
-接下来，就可以像 RHEL/CentOS 6.5 以上的系统一样，添加&lt;code&gt;epel&lt;/code&gt;源，然后直接安装&lt;code&gt;docker-io&lt;/code&gt;包了。&lt;br /&gt;
-神马？怎么添加&lt;code&gt;epel&lt;/code&gt;？怎么安装&lt;code&gt;docker-io&lt;/code&gt;？bing/Google 一下一大堆，这都不会的话还是先回去
-补基础吧，别急着用 docker 了。。。&lt;/p&gt;
 </description>
     </item>
     
