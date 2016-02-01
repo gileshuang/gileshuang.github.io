@@ -7,8 +7,115 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2015 Copyleft Text</copyright>
-    <lastBuildDate>Wed, 20 Jan 2016 17:05:29 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Feb 2016 15:01:13 +0800</lastBuildDate>
     <atom:link href="http://alienhjy.github.io/categories/%E8%BF%90%E7%BB%B4%E5%90%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>[转载]awk &amp; sed ，一个老派系统管理员的基本素养</title>
+      <link>http://alienhjy.github.io/2016/02/01/remember-sed-awk-linux-admins-should/</link>
+      <pubDate>Mon, 01 Feb 2016 15:01:13 +0800</pubDate>
+      
+      <guid>http://alienhjy.github.io/2016/02/01/remember-sed-awk-linux-admins-should/</guid>
+      <description>&lt;p&gt;&lt;font color=red&gt;我们不要让下一代 Linux 和 Unix 的管理员忘记初始化脚本和基本工具的好处&lt;/font&gt;&lt;/p&gt;
+
+&lt;div align=&#34;center&#34;&gt;
+&lt;img src=&#34;http://alienhjy.github.io/images/remember-sed-awk-linux-admins-should/01.jpg&#34;/&gt;&lt;/br&gt;
+图片来源: Shutterstock
+&lt;/div&gt;
+
+&lt;p&gt;我曾经有一次在 Reddit 看到一个帖子，
+“&lt;a href=&#34;https://www.reddit.com/r/linuxadmin/comments/3lwyko/how_do_i_remove_every_occurence_of_duplicate_line/&#34;&gt;请问如何操作文本文件&lt;/a&gt;”。
+这是一个很简单的需求，就像我们常用 Unix 的人每天遇到的一样。他的问题是，
+如何删除文件中的重复行，只保留不重复的。 这听起来似乎很简单，但是当文件足够大时，就会有些复杂。&lt;/p&gt;
+
+&lt;p&gt;这个问题有很多种不同的答案。你可以使用几乎任何一种语言来写这样的一个脚本，
+只是时间的投入和代码的复杂性不同罢了。根据你的个人水平，它大概会花费20-60分钟。
+但是如果你使用了 Perl、Python、Ruby 中的一种，你可能很快实现它。&lt;/p&gt;
+
+&lt;p&gt;或者你可以使用下面的一个方法，让你无比暖心的: 只用 awk。&lt;/p&gt;
+
+&lt;p&gt;这个答案是迄今为止最简明、最简单的解决问题的方法。它只要一行！&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;awk &#39;!seen[$0]++&#39; &amp;lt;filename&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;让我们来看看发生了什么：&lt;/p&gt;
+
+&lt;p&gt;在这个命令中，其实隐藏了很多代码。awk 是一种文本处理语言，并且它内部有很多预设。
+首先，你看到的实际上是一个 for 循环的结果。awk 假定你想通过循环处理输入文件的每一行，
+所以你不需要明确的去指定它。awk 还假定了你需要打印输出处理后的数据，所以你也不需要去指定它。
+最后，awk 假定循环在最后一句指令执行完结束，这一块也不再需要你去指定它。&lt;/p&gt;
+
+&lt;p&gt;这个例子中的字符串 seen 是一个关联数组的名字。$0 是一个变量，表示整个当前行。所以，
+这个命令翻译成人类语言就是“对这个文件的每一行进行检查，如果你之前没有见过它，就打印出来。
+”如果该关联数组的键名还不存在就添加到数组，并增加其取值，这样 awk 下次遇到同样的行时就会不匹配
+（条件判断为“假”），从而不打印出来。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;据微博上 &lt;a href=&#34;http://weibo.com/3246109510&#34;&gt;@ZorroLang&lt;/a&gt; 的补充：少提了一个重点，
+要不然只会 C 语言的人很难理解为什么 seen[$0]++ 一行代码就行了，
+这里隐含了 awk 对于其数组变量的处理方式。awk 的数组是关联数组，且不需要声明，
+而是引用即创建，注意是创建，后面都不会消失的。也就是你像 str[any] 这样随便写一个数组变量，
+这个数组元素就此就创建了，且初始化为0或空。&lt;/p&gt;
+
+&lt;p&gt;谢谢 &lt;a href=&#34;http://weibo.com/3246109510&#34;&gt;@ZorroLang&lt;/a&gt; ~&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;一些人认为这样是优雅的，另外的人认为这可能会造成混淆。任何在日常工作上使用 awk
+的都是第一类人。awk 就是设计用来做这个的。在 awk 中，你可以写多行代码。
+你甚至可以&lt;a href=&#34;http://intro-to-awk.blogspot.com/2008/08/awk-more-complex-examples.html&#34;&gt;用 awk 写一些让人不安的复杂功能&lt;/a&gt;。
+但终究来说，awk 还是一个进行文本处理的程序，一般是通过管道。
+去掉（没必要的）循环定义是很常见的快捷用法，不过如果你乐意，你也可以用下面的代码做同样的事情：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;awk &#39;{ if (!seen[$0]) print $0; seen[$0]++ }&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这会产生相同的结果。&lt;/p&gt;
+
+&lt;p&gt;awk 是完成这项工作的完美工具。不过，我相信很多管理员&amp;ndash;特别是新管理员会转而使用
+&lt;a href=&#34;http://www.infoworld.com/article/2613338/linux/linux-how-to-script-a-bash-crash-course.html&#34;&gt;Bash&lt;/a&gt;
+或 Python 来完成这一任务，因为对 awk 的知识和对它的能力的了解看起来随着时间而慢慢被人淡忘。
+我认为这是标志着一个问题，由于对之前的解决方案缺乏了解，那些已经解决了几十年的问题又突然出现了。&lt;/p&gt;
+
+&lt;p&gt;shell、grep、sed 和 awk 是 Unix 的基础。如果你不能非常轻松的使用它们，你将会被自己束缚住，
+因为它们构成了通过命令行和脚本与 Unix 系统交互的基础。
+学习这些工具如何工作最好的方法之一就是观察真实的例子和实验，
+你可以在各种 Unix 衍生系统的初始化系统中找到很多，但在 Linux 发行版中它们已经被
+&lt;a href=&#34;http://www.infoworld.com/article/2608798/data-center/systemd--harbinger-of-the-linux-apocalypse.html&#34;&gt;systemd&lt;/a&gt; 取代了。&lt;/p&gt;
+
+&lt;p&gt;数以百万计的 Unix 管理员了解 Shell 脚本和 Unix 工具如何读、写、修改和用在初始化脚本上。
+不同系统的初始化脚本有很大不同，甚至是不同的 Linux 发行版也不同。但是它们都源自 sh，
+而且它们都用像 sed、awk 还有 grep 这样的核心的命令行工具。&lt;/p&gt;
+
+&lt;p&gt;我每天都会听到很多人抱怨初始化脚本太“古老”而且很“难”。但是实际上，
+初始化脚本和 Unix 管理员每天使用的工具一样，还提供了一个非常好的方式来更加熟悉和习惯这些工具。
+说初始化脚本难于阅读和难于使用实际上是承认你缺乏对 Unix 基础工具的熟悉。&lt;/p&gt;
+
+&lt;p&gt;说起在 Reddit 上看到的内容，我也碰到过这个问题，来自一个新入行的 Linux 系统管理员,
+“&lt;a href=&#34;https://www.reddit.com/r/linuxadmin/comments/3ltq2y/when_i_start_learning_about_linux_administration/&#34;&gt;问他是否应该还要去学老式的初始化系统 sysvinit&lt;/a&gt;”。
+这个帖子的大多数的答案都是正面的——是的，应该学习 sysvinit 和 systemd 两个。
+一位评论者甚至指出，初始化脚本是学习 Bash 的好方法。而另一个消息是，
+Fortune 50 强的公司还没有计划迁移到以 systemd 为基础的发行版上。&lt;/p&gt;
+
+&lt;p&gt;但是，这提醒了我这确实是一个问题。如果我们继续沿着消除脚本和脱离操作系统核心组件的方式发展下去，
+由于疏于接触，我们将会不经意间使新管理员难于学习基本的 Unix 工具。&lt;/p&gt;
+
+&lt;p&gt;我不知道为什么有些人想在一层又一层的抽象化来掩盖 Unix 内部，
+但是这样发展下去可能会让新一代的系统管理员们变成只会按下按钮的工人。我觉得这不是一件好事情。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;原文地址：&lt;a href=&#34;http://www.infoworld.com/article/2985804/linux/remember-sed-awk-linux-admins-should.html&#34;&gt;http://www.infoworld.com/article/2985804/linux/remember-sed-awk-linux-admins-should.html&lt;/a&gt;&lt;br /&gt;
+译文原文地址：&lt;a href=&#34;https://linux.cn/article-6881-1.html&#34;&gt;https://linux.cn/article-6881-1.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;作者：&lt;a href=&#34;http://www.infoworld.com/author/Paul-Venezia/&#34;&gt;Paul Venezia&lt;/a&gt;
+译者：&lt;a href=&#34;https://github.com/Bestony&#34;&gt;Bestony&lt;/a&gt;
+校对：&lt;a href=&#34;https://github.com/wxy&#34;&gt;wxy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;本文由 &lt;a href=&#34;https://github.com/LCTT/TranslateProject&#34;&gt;LCTT&lt;/a&gt; 原创编译，
+&lt;a href=&#34;https://linux.cn/article-6881-1.html&#34;&gt;Linux中国&lt;/a&gt; 荣誉推出&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>[转载]最简明扼要的 Systemd 教程，只需十分钟</title>
