@@ -12,10 +12,10 @@
     
     <item>
       <title>在RHEL6.2上安装docker的准备工作</title>
-      <link>http://alienhjy.github.io/2015/11/06/prepare-for-install-docker-in-rhel_6.2/</link>
+      <link>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</link>
       <pubDate>Fri, 06 Nov 2015 19:01:12 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/11/06/prepare-for-install-docker-in-rhel_6.2/</guid>
+      <guid>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</guid>
       <description>
 
 &lt;p&gt;最近在尝试 docker，据说很高端大气上档次，于是就在空闲的时候开始鼓捣整。&lt;br /&gt;
@@ -28,7 +28,7 @@
 俗话说，步子跨得大了，容易扯到蛋。所以我们选择版本号变化不那么大的 RHEL 6.6 版本自带
 的 2.6.32-504 内核。&lt;/p&gt;
 
-&lt;h4 id=&#34;更新内核版本:d0909214c8761f138484f62f1377d270&#34;&gt;更新内核版本&lt;/h4&gt;
+&lt;h4 id=&#34;更新内核版本:09a2ede7ed47bf2cfa6c86dd8e573b45&#34;&gt;更新内核版本&lt;/h4&gt;
 
 &lt;p&gt;首先系统的更新内核版本：&lt;/p&gt;
 
@@ -43,7 +43,7 @@
 &lt;pre&gt;&lt;code&gt;yum remove bfa-firmware
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;更新device-mapper包:d0909214c8761f138484f62f1377d270&#34;&gt;更新device-mapper包&lt;/h4&gt;
+&lt;h4 id=&#34;更新device-mapper包:09a2ede7ed47bf2cfa6c86dd8e573b45&#34;&gt;更新device-mapper包&lt;/h4&gt;
 
 &lt;p&gt;更新内核后，如果你直接安装运行 docker，会发现启动不了 docker 的服务。不管你有没有这个问题，
 反正我是遇到了。这时检查是哪个组件不符合要求，比如我的环境下，是 device-mapper 包版本太低，
@@ -56,7 +56,7 @@
 	http://yum.pplive.com/rhel_6.6_repo/Packages/libuuid-2.17.2-12.18.el6.x86_64.rpm
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;安装docker:d0909214c8761f138484f62f1377d270&#34;&gt;安装docker&lt;/h4&gt;
+&lt;h4 id=&#34;安装docker:09a2ede7ed47bf2cfa6c86dd8e573b45&#34;&gt;安装docker&lt;/h4&gt;
 
 &lt;p&gt;话说，标题我不是说了吗，这是准备工作。。。&lt;br /&gt;
 接下来，就可以像 RHEL/CentOS 6.5 以上的系统一样，添加&lt;code&gt;epel&lt;/code&gt;源，然后直接安装&lt;code&gt;docker-io&lt;/code&gt;包了。&lt;br /&gt;

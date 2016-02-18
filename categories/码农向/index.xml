@@ -7,21 +7,258 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2015 Copyleft Text</copyright>
-    <lastBuildDate>Tue, 12 Jan 2016 18:05:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Feb 2016 15:10:37 +0800</lastBuildDate>
     <atom:link href="http://alienhjy.github.io/categories/%E7%A0%81%E5%86%9C%E5%90%91/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[转载]filling a slice using command line flags in go</title>
+      <link>http://alienhjy.github.io/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</link>
+      <pubDate>Thu, 18 Feb 2016 15:10:37 +0800</pubDate>
+      
+      <guid>http://alienhjy.github.io/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</guid>
+      <description>&lt;p&gt;I wanted to be able to specify a particular command-line flag more than once
+in a Go program. I was about to throw my hands up in despair because I didn’t
+think that the Go flag package could process multiple instances of a
+command-line flag. I was wrong.&lt;/p&gt;
+
+&lt;p&gt;While I was tempted to write my own command-line options parser,
+I chose to find the idiomatic way to approach the problem.
+If I have learned nothing else from my GoMentors,
+I have learned to try to follow the idioms and to try not to reinvent the wheel.&lt;/p&gt;
+
+&lt;p&gt;I found an example by visiting &lt;a href=&#34;http://golang.org/pkg/flag/&#34;&gt;http://golang.org/pkg/flag/&lt;/a&gt; .
+I had to search for the string “FlagSet” in my browser.
+Immediately under the paragraph where the word “FlagSet” first appears,
+is a clickable item labeled “Example”.
+Click the example item and take a look at the code.&lt;/p&gt;
+
+&lt;p&gt;I copied the code and toyed with it until I thought I understood it.
+Then, I tried to simplify it and rewrite it.
+My example program will simply accept one or more command-line flags
+with the label -i.  Each argument to -i should be an integer.
+I want to be able to specify -i multiple times on the command-line.
+The program should populate a slice of integers while adhering
+to the above command-line syntax.&lt;/p&gt;
+
+&lt;p&gt;Here’s my code … flagstuff.go :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// Copyright 2013 - by Jim Lawless
+// License: MIT / X11
+// See: http://www.mailsend-online.com/license2013.php
+//
+// Bear with me ... I&#39;m a Go noob.
+ 
+package main
+ 
+import (
+    &amp;quot;flag&amp;quot;
+    &amp;quot;fmt&amp;quot;
+    &amp;quot;strconv&amp;quot;
+)
+ 
+// Define a type named &amp;quot;intslice&amp;quot; as a slice of ints
+type intslice []int
+ 
+// Now, for our new type, implement the two methods of
+// the flag.Value interface...
+// The first method is String() string
+func (i *intslice) String() string {
+    return fmt.Sprintf(&amp;quot;%d&amp;quot;, *i)
+}
+ 
+// The second method is Set(value string) error
+func (i *intslice) Set(value string) error {
+    fmt.Printf(&amp;quot;%s\n&amp;quot;, value)
+    tmp, err := strconv.Atoi(value)
+    if err != nil {
+        *i = append(*i, -1)
+    } else {
+        *i = append(*i, tmp)
+    }
+    return nil
+}
+ 
+var myints intslice
+ 
+func main() {
+    flag.Var(&amp;amp;myints, &amp;quot;i&amp;quot;, &amp;quot;List of integers&amp;quot;)
+    flag.Parse()
+    if flag.NFlag() == 0 {
+        flag.PrintDefaults()
+    } else {
+        fmt.Println(&amp;quot;Here are the values in &#39;myints&#39;&amp;quot;)
+        for i := 0; i &amp;lt; len(myints); i++ {
+            fmt.Printf(&amp;quot;%d\n&amp;quot;, myints[i])
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let’s dissect the code one section at a time … not necessarily in the order
+presented in the source code above.&lt;/p&gt;
+
+&lt;p&gt;First, I define a type called intslice that refers to a slice of ints:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type intslice []int
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Later, I define a variable named myints of type intslice.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;var myints intslice
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Later in the code, I’m going to be calling flag.Var() passing in &amp;amp;myints as
+the first argument.  The type of the first value to flag.Var() must conform
+to the flag.Value interface which is defined as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Value interface {
+    String() string
+    Set(string) error
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I must now define a String() method and a Set() method for my intslice type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (i *intslice) String() string {
+    return fmt.Sprintf(&amp;quot;%d&amp;quot;, *i)
+}
+ 
+func (i *intslice) Set(value string) error {
+    fmt.Printf(&amp;quot;%s\n&amp;quot;, value)
+    tmp, err := strconv.Atoi(value)
+    if err != nil {
+        *i = append(*i, -1)
+    } else {
+        *i = append(*i, tmp)
+    }
+    return nil
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above methods will be called by the parsing engine in the flag package
+when I invoke flag.Parse(). In the String() method, I need to return
+a string-representation of the argument. In the Set() method,
+I then need to append the string value to the specified intslice variable
+by first converting value to an int variable named tmp. If an error occurs
+during conversion, I append an int value of -1 to the intslice variable.&lt;/p&gt;
+
+&lt;p&gt;The main body looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func main() {
+    flag.Var(&amp;amp;myints, &amp;quot;i&amp;quot;, &amp;quot;List of integers&amp;quot;)
+    flag.Parse()
+    if flag.NFlag() == 0 {
+        flag.PrintDefaults()
+    } else {
+        fmt.Println(&amp;quot;Here are the values in &#39;myints&#39;&amp;quot;)
+        for i := 0; i &amp;lt; len(myints); i++ {
+            fmt.Printf(&amp;quot;%d\n&amp;quot;, myints[i])
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here are a few sample command-line invocations and the output that they produce
+( I’ve added a blank line between each command and the counterpart
+response lines for clarity):&lt;/p&gt;
+
+&lt;p&gt;No parameters. I’ve added a check to make sure that more than
+zero flags are specified.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flagstuff
+ 
+  -i=[]: List of integers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let’s specify an invalid flag (-x):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flagstuff -x
+ 
+flag provided but not defined: -x
+Usage of flagstuff:
+  -i=[]: List of integers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let’s specify -i without an argument:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flagstuff -i
+ 
+Usage of flagstuff:
+  -i=[]: List of integers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let’s specify a single -i parameter with an integer value:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flagstuff -i 5
+ 
+5
+Here are the values in &#39;myints&#39;
+5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At each invocation of the intslice.Set() method, I display the string that
+has been passed in so that I could observe the mechanics of the parsing process.
+In each example that provide arguments for -i, we’ll first see those values,
+then we’ll see what the slice contains via the for loop that occurs just
+a little later in the code.&lt;/p&gt;
+
+&lt;p&gt;Let’s specify a string instead of an int as an argument:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flagstuff -i twelve
+ 
+twelve
+Here are the values in &#39;myints&#39;
+-1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that this causes the error condition in the call to strconv.Atoi().
+I have chosen to add the value -1 to the slice when the argument
+doesn’t cleanly parse as an integer.
+You may choose to handle the error differently.&lt;/p&gt;
+
+&lt;p&gt;Here is an example with three valid integers:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flagstuff -i 5 -i 6 -i 7
+ 
+5
+6
+7
+Here are the values in &#39;myints&#39;
+5
+6
+7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that the example at golang.org contains a section that splits
+the string value passed to Set() based on the presence of the comma character.
+This allows that code to also accept multiple arguments to a single
+command-line flag. I have chosen to avoid doing that to simplify my example.&lt;/p&gt;
+
+&lt;p&gt;Knowing how to handle multiple occurrences of a given flag without customizing
+the command-line parser is going to be very helpful for a couple of programs
+that I plan to write. I’m glad that I spent the time going over
+the example golang.org code. I hope to tinker with more exotic command-line
+processing features of the flag package in the near future.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;原文地址：&lt;a href=&#34;https://lawlessguy.wordpress.com/2013/07/23/filling-a-slice-using-command-line-flags-in-go-golang/&#34;&gt;https://lawlessguy.wordpress.com/2013/07/23/filling-a-slice-using-command-line-flags-in-go-golang/&lt;/a&gt;
+太长了懒得翻译了，又不是不能看。。。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>golang发送http请求</title>
-      <link>http://alienhjy.github.io/2016/01/12/golang-http-request/</link>
+      <link>http://alienhjy.github.io/2016/2016-01-12_golang-http-request/</link>
       <pubDate>Tue, 12 Jan 2016 18:05:00 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2016/01/12/golang-http-request/</guid>
+      <guid>http://alienhjy.github.io/2016/2016-01-12_golang-http-request/</guid>
       <description>
 
 &lt;p&gt;本篇记录一下golang中发送一个http请求的基本方法。&lt;br /&gt;
 在本例中，我将尝试向某个URL发送GET请求，并获取其返回的body。&lt;/p&gt;
 
-&lt;h5 id=&#34;b-开门见山的示例代码-b:be6ede8ae513576857fb7784c6c32495&#34;&gt;&lt;b&gt;开门见山的示例代码&lt;/b&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;b-开门见山的示例代码-b:0b167b783dc027812b7e1e0a9c6b55e6&#34;&gt;&lt;b&gt;开门见山的示例代码&lt;/b&gt;&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -58,7 +295,7 @@ func GetHttpBody(str_api string) ([]byte) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h5 id=&#34;b-为了防止自己不懂-尝试解释一下-b:be6ede8ae513576857fb7784c6c32495&#34;&gt;&lt;b&gt;为了防止自己不懂，尝试解释一下&lt;/b&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;b-为了防止自己不懂-尝试解释一下-b:0b167b783dc027812b7e1e0a9c6b55e6&#34;&gt;&lt;b&gt;为了防止自己不懂，尝试解释一下&lt;/b&gt;&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -84,10 +321,10 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
     
     <item>
       <title>在RHEL6.2上安装docker的准备工作</title>
-      <link>http://alienhjy.github.io/2015/11/06/prepare-for-install-docker-in-rhel_6.2/</link>
+      <link>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</link>
       <pubDate>Fri, 06 Nov 2015 19:01:12 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/11/06/prepare-for-install-docker-in-rhel_6.2/</guid>
+      <guid>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</guid>
       <description>
 
 &lt;p&gt;最近在尝试 docker，据说很高端大气上档次，于是就在空闲的时候开始鼓捣整。&lt;br /&gt;
@@ -100,7 +337,7 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
 俗话说，步子跨得大了，容易扯到蛋。所以我们选择版本号变化不那么大的 RHEL 6.6 版本自带
 的 2.6.32-504 内核。&lt;/p&gt;
 
-&lt;h4 id=&#34;更新内核版本:d0909214c8761f138484f62f1377d270&#34;&gt;更新内核版本&lt;/h4&gt;
+&lt;h4 id=&#34;更新内核版本:09a2ede7ed47bf2cfa6c86dd8e573b45&#34;&gt;更新内核版本&lt;/h4&gt;
 
 &lt;p&gt;首先系统的更新内核版本：&lt;/p&gt;
 
@@ -115,7 +352,7 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
 &lt;pre&gt;&lt;code&gt;yum remove bfa-firmware
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;更新device-mapper包:d0909214c8761f138484f62f1377d270&#34;&gt;更新device-mapper包&lt;/h4&gt;
+&lt;h4 id=&#34;更新device-mapper包:09a2ede7ed47bf2cfa6c86dd8e573b45&#34;&gt;更新device-mapper包&lt;/h4&gt;
 
 &lt;p&gt;更新内核后，如果你直接安装运行 docker，会发现启动不了 docker 的服务。不管你有没有这个问题，
 反正我是遇到了。这时检查是哪个组件不符合要求，比如我的环境下，是 device-mapper 包版本太低，
@@ -128,7 +365,7 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
 	http://yum.pplive.com/rhel_6.6_repo/Packages/libuuid-2.17.2-12.18.el6.x86_64.rpm
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;安装docker:d0909214c8761f138484f62f1377d270&#34;&gt;安装docker&lt;/h4&gt;
+&lt;h4 id=&#34;安装docker:09a2ede7ed47bf2cfa6c86dd8e573b45&#34;&gt;安装docker&lt;/h4&gt;
 
 &lt;p&gt;话说，标题我不是说了吗，这是准备工作。。。&lt;br /&gt;
 接下来，就可以像 RHEL/CentOS 6.5 以上的系统一样，添加&lt;code&gt;epel&lt;/code&gt;源，然后直接安装&lt;code&gt;docker-io&lt;/code&gt;包了。&lt;br /&gt;
@@ -139,10 +376,10 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
     
     <item>
       <title>golang中对slice切片进行append时的内存拷贝</title>
-      <link>http://alienhjy.github.io/2015/09/25/copy-action-while-append-to-slice-in-golang/</link>
+      <link>http://alienhjy.github.io/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</link>
       <pubDate>Fri, 25 Sep 2015 11:13:06 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/09/25/copy-action-while-append-to-slice-in-golang/</guid>
+      <guid>http://alienhjy.github.io/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</guid>
       <description>
 
 &lt;p&gt;Golang中有一个神奇的类型：slice。&lt;br /&gt;
@@ -150,7 +387,7 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
 很难在C语言中找到一个跟slice对应的数据结构。&lt;br /&gt;
 本文不对slice的众多特性进行说明，只谈论跟其append操作相关的内容。&lt;/p&gt;
 
-&lt;h5 id=&#34;b-slice的长度与容量-b:1d490ef179d76726761649f9a462d49d&#34;&gt;&lt;b&gt;Slice的长度与容量&lt;/b&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;b-slice的长度与容量-b:777257618f2ade0d10f5e17a35432657&#34;&gt;&lt;b&gt;Slice的长度与容量&lt;/b&gt;&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -174,7 +411,7 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;var sliceB []int = make([]int, 8)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h5 id=&#34;b-使用-append-方法添加元素-b:1d490ef179d76726761649f9a462d49d&#34;&gt;&lt;b&gt;使用 append() 方法添加元素&lt;/b&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;b-使用-append-方法添加元素-b:777257618f2ade0d10f5e17a35432657&#34;&gt;&lt;b&gt;使用 append() 方法添加元素&lt;/b&gt;&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -262,7 +499,7 @@ func main() {
 的 goroutine 还傻傻地去原来的地方读取 id 值（注意，此处读取 id 用的是指向结构体的指针，
 该指针还是指向原来的数据）。&lt;/p&gt;
 
-&lt;h5 id=&#34;b-代码修正-b:1d490ef179d76726761649f9a462d49d&#34;&gt;&lt;b&gt;代码修正&lt;/b&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;b-代码修正-b:777257618f2ade0d10f5e17a35432657&#34;&gt;&lt;b&gt;代码修正&lt;/b&gt;&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -297,30 +534,30 @@ func main() {
 若 slice 存放的是指针，那在 append() 进行拷贝操作的时候，只是将指针的指向的地址拷贝过去，
 &lt;code&gt;pool[0].SetID(2)&lt;/code&gt;语句修改的 id 和&lt;code&gt;pool[0].PrintID()&lt;/code&gt;取的 id 引用的地址始终是不变的。&lt;/p&gt;
 
-&lt;h4 id=&#34;所以说-谁说带垃圾回收的语言不用考虑指针t-t:1d490ef179d76726761649f9a462d49d&#34;&gt;所以说，谁说带垃圾回收的语言不用考虑指针T_T&lt;/h4&gt;
+&lt;h4 id=&#34;所以说-谁说带垃圾回收的语言不用考虑指针t-t:777257618f2ade0d10f5e17a35432657&#34;&gt;所以说，谁说带垃圾回收的语言不用考虑指针T_T&lt;/h4&gt;
 </description>
     </item>
     
     <item>
       <title>在golang中使用C&#43;&#43;风格的类</title>
-      <link>http://alienhjy.github.io/2015/09/20/using-class-like-cpp-in-golang/</link>
+      <link>http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/</link>
       <pubDate>Sun, 20 Sep 2015 21:05:59 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/09/20/using-class-like-cpp-in-golang/</guid>
+      <guid>http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/</guid>
       <description>
 
 &lt;p&gt;对于接触过C++且刚入门golang的用户而言，有一点可能会让他们抓狂，
 就是golang这货居然只有结构体（struct），没有类（class）！！！&lt;br /&gt;
 其实不用担心，我们大可以用struct实现类似于class的功能。。。&lt;/p&gt;
 
-&lt;h5 id=&#34;b-目的-b:403e7f83b95b7e782b794eb436e4a3ae&#34;&gt;&lt;b&gt;目的：&lt;/b&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;b-目的-b:5b88b4afc8a2f6c27657f65b3600d208&#34;&gt;&lt;b&gt;目的：&lt;/b&gt;&lt;/h5&gt;
 
 &lt;hr /&gt;
 
 &lt;p&gt;使struct不仅仅能存储成员变量，还能拥有其成员函数。并且控制外部函数对私有成员变量的访问。
 当然本文仅仅是为了实现上述目的而已，并不关心什么多态、继承等等一大堆乱七八糟的特性（好吧，其实是本渣并不懂那些高级特性）。&lt;/p&gt;
 
-&lt;h5 id=&#34;b-c-中类的使用-b:403e7f83b95b7e782b794eb436e4a3ae&#34;&gt;&lt;b&gt;C++中类的使用：&lt;/b&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;b-c-中类的使用-b:5b88b4afc8a2f6c27657f65b3600d208&#34;&gt;&lt;b&gt;C++中类的使用：&lt;/b&gt;&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -368,7 +605,7 @@ int main(int argc, char* argv[]) {
 &lt;p&gt;使用&lt;code&gt;g++ -o main main.cpp classa.cpp&lt;/code&gt;编译上述文件，并运行&lt;code&gt;./main&lt;/code&gt;，
 如果输出了一个数字4，那这个classa类就应当是以正确的姿势被调用了。&lt;/p&gt;
 
-&lt;h5 id=&#34;b-golang中为struct添加成员函数-b:403e7f83b95b7e782b794eb436e4a3ae&#34;&gt;&lt;b&gt;golang中为struct添加成员函数&lt;/b&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;b-golang中为struct添加成员函数-b:5b88b4afc8a2f6c27657f65b3600d208&#34;&gt;&lt;b&gt;golang中为struct添加成员函数&lt;/b&gt;&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -417,7 +654,7 @@ func main() {
 &lt;code&gt;sc packagea.StructClass = packagea.StructClass{}&lt;/code&gt;替换为
 &lt;code&gt;sc *packagea.StructClass = &amp;amp;packagea.StructClass{}&lt;/code&gt;即可。&lt;/p&gt;
 
-&lt;h5 id=&#34;b-总结-b:403e7f83b95b7e782b794eb436e4a3ae&#34;&gt;&lt;b&gt;总结&lt;/b&gt;&lt;/h5&gt;
+&lt;h5 id=&#34;b-总结-b:5b88b4afc8a2f6c27657f65b3600d208&#34;&gt;&lt;b&gt;总结&lt;/b&gt;&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -434,10 +671,10 @@ func main() {
     
     <item>
       <title>苦逼地不会Markdown</title>
-      <link>http://alienhjy.github.io/2015/09/17/markdown-test/</link>
+      <link>http://alienhjy.github.io/2015/2015-09-17_markdown-test/</link>
       <pubDate>Thu, 17 Sep 2015 09:19:33 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/09/17/markdown-test/</guid>
+      <guid>http://alienhjy.github.io/2015/2015-09-17_markdown-test/</guid>
       <description>
 
 &lt;p&gt;本文的 Markdown 源码可到&lt;a href=&#34;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&#34;&gt;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&lt;/a&gt;查看。&lt;br /&gt;
@@ -447,9 +684,9 @@ func main() {
 
 &lt;hr /&gt;
 
-&lt;h2 id=&#34;这是二级标题:86ac849859807c9737e753d784ef51b4&#34;&gt;这是二级标题&lt;/h2&gt;
+&lt;h2 id=&#34;这是二级标题:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;这是二级标题&lt;/h2&gt;
 
-&lt;h4 id=&#34;这是四级标题:86ac849859807c9737e753d784ef51b4&#34;&gt;这是四级标题&lt;/h4&gt;
+&lt;h4 id=&#34;这是四级标题:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;这是四级标题&lt;/h4&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;这是一个引用,
@@ -508,17 +745,17 @@ echo &amp;quot;hello world&amp;quot;
 
 &lt;p&gt;这是HTML风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=“可选标题” width=200 /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;其它:86ac849859807c9737e753d784ef51b4&#34;&gt;其它&lt;/h4&gt;
+&lt;h4 id=&#34;其它:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;其它&lt;/h4&gt;
 
-&lt;h5 id=&#34;自动链接:86ac849859807c9737e753d784ef51b4&#34;&gt;自动链接：&lt;/h5&gt;
+&lt;h5 id=&#34;自动链接:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;自动链接：&lt;/h5&gt;
 
 &lt;p&gt;使用尖括号，可以为邮箱地址或者链接创建自动链接，比如这个：&lt;a href=&#34;https://github.com/&#34;&gt;https://github.com/&lt;/a&gt;&lt;/p&gt;
 
-&lt;h5 id=&#34;分隔线:86ac849859807c9737e753d784ef51b4&#34;&gt;分隔线&lt;/h5&gt;
+&lt;h5 id=&#34;分隔线:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;分隔线&lt;/h5&gt;
 
 &lt;p&gt;在一行中使用三个或三个以上的*、-或_可以添加分隔线，其中可以有空白，但是不能有其他字符。&lt;/p&gt;
 
-&lt;h5 id=&#34;转义字符:86ac849859807c9737e753d784ef51b4&#34;&gt;转义字符&lt;/h5&gt;
+&lt;h5 id=&#34;转义字符:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;转义字符&lt;/h5&gt;
 
 &lt;p&gt;Markdown中的转义字符为\，可以转义的有：&lt;br /&gt;
     \\ 反斜杠&lt;br /&gt;

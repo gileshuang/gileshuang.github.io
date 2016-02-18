@@ -6,9 +6,7 @@
   <title>golang中对slice切片进行append时的内存拷贝</title>
   <link href="http://alienhjy.github.io//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="http://alienhjy.github.io//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/docco.min.css">
   <link href="http://alienhjy.github.io//css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="http://alienhjy.github.io//css/all.mini.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <style type="text/css">
   
     footer.page-footer{background-image: url(http://alienhjy.github.io//images/default.png);}
@@ -78,7 +76,7 @@
 很难在C语言中找到一个跟slice对应的数据结构。<br />
 本文不对slice的众多特性进行说明，只谈论跟其append操作相关的内容。</p>
 
-<h5 id="b-slice的长度与容量-b:1d490ef179d76726761649f9a462d49d"><b>Slice的长度与容量</b></h5>
+<h5 id="b-slice的长度与容量-b:777257618f2ade0d10f5e17a35432657"><b>Slice的长度与容量</b></h5>
 
 <hr />
 
@@ -102,7 +100,7 @@
 <pre><code class="language-go">var sliceB []int = make([]int, 8)
 </code></pre>
 
-<h5 id="b-使用-append-方法添加元素-b:1d490ef179d76726761649f9a462d49d"><b>使用 append() 方法添加元素</b></h5>
+<h5 id="b-使用-append-方法添加元素-b:777257618f2ade0d10f5e17a35432657"><b>使用 append() 方法添加元素</b></h5>
 
 <hr />
 
@@ -190,7 +188,7 @@ func main() {
 的 goroutine 还傻傻地去原来的地方读取 id 值（注意，此处读取 id 用的是指向结构体的指针，
 该指针还是指向原来的数据）。</p>
 
-<h5 id="b-代码修正-b:1d490ef179d76726761649f9a462d49d"><b>代码修正</b></h5>
+<h5 id="b-代码修正-b:777257618f2ade0d10f5e17a35432657"><b>代码修正</b></h5>
 
 <hr />
 
@@ -225,7 +223,7 @@ func main() {
 若 slice 存放的是指针，那在 append() 进行拷贝操作的时候，只是将指针的指向的地址拷贝过去，
 <code>pool[0].SetID(2)</code>语句修改的 id 和<code>pool[0].PrintID()</code>取的 id 引用的地址始终是不变的。</p>
 
-<h4 id="所以说-谁说带垃圾回收的语言不用考虑指针t-t:1d490ef179d76726761649f9a462d49d">所以说，谁说带垃圾回收的语言不用考虑指针T_T</h4>
+<h4 id="所以说-谁说带垃圾回收的语言不用考虑指针t-t:777257618f2ade0d10f5e17a35432657">所以说，谁说带垃圾回收的语言不用考虑指针T_T</h4>
 </p>
           <p>25 Sep 2015
             
@@ -237,7 +235,7 @@ func main() {
           
           
             
-            <div class="ds-thread" data-thread-key="/2015/09/25/copy-action-while-append-to-slice-in-golang/" data-title="golang中对slice切片进行append时的内存拷贝" data-url="http://alienhjy.github.io/2015/09/25/copy-action-while-append-to-slice-in-golang/"></div>
+            <div class="ds-thread" data-thread-key="/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/" data-title="golang中对slice切片进行append时的内存拷贝" data-url="http://alienhjy.github.io/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/"></div>
             
             
             <script type="text/javascript">
@@ -260,13 +258,13 @@ func main() {
     <div class="row">
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="http://alienhjy.github.io/2015/10/09/the-kernel-developer-sarah-sharp-quit/"><i class="mdi-navigation-arrow-back"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" href="http://alienhjy.github.io/2015/2015-10-09_the-kernel-developer-sarah-sharp-quit/"><i class="mdi-navigation-arrow-back"></i></a>
       
       </div>
       <div class="col s6 m10 center">&nbsp</div>
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="http://alienhjy.github.io/2015/09/20/using-class-like-cpp-in-golang/"><i class="mdi-navigation-arrow-forward"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" href="http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/"><i class="mdi-navigation-arrow-forward"></i></a>
       
       </div>
     </div>
@@ -285,7 +283,7 @@ func main() {
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="http://alienhjy.github.io//js/materialize.min.js"></script>
   <script src="http://alienhjy.github.io//js/init.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+  <script src="http://alienhjy.github.io//js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   
 

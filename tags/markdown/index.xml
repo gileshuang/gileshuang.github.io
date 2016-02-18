@@ -12,10 +12,10 @@
     
     <item>
       <title>苦逼地不会Markdown</title>
-      <link>http://alienhjy.github.io/2015/09/17/markdown-test/</link>
+      <link>http://alienhjy.github.io/2015/2015-09-17_markdown-test/</link>
       <pubDate>Thu, 17 Sep 2015 09:19:33 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/09/17/markdown-test/</guid>
+      <guid>http://alienhjy.github.io/2015/2015-09-17_markdown-test/</guid>
       <description>
 
 &lt;p&gt;本文的 Markdown 源码可到&lt;a href=&#34;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&#34;&gt;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&lt;/a&gt;查看。&lt;br /&gt;
@@ -25,9 +25,9 @@
 
 &lt;hr /&gt;
 
-&lt;h2 id=&#34;这是二级标题:86ac849859807c9737e753d784ef51b4&#34;&gt;这是二级标题&lt;/h2&gt;
+&lt;h2 id=&#34;这是二级标题:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;这是二级标题&lt;/h2&gt;
 
-&lt;h4 id=&#34;这是四级标题:86ac849859807c9737e753d784ef51b4&#34;&gt;这是四级标题&lt;/h4&gt;
+&lt;h4 id=&#34;这是四级标题:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;这是四级标题&lt;/h4&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;这是一个引用,
@@ -86,17 +86,17 @@ echo &amp;quot;hello world&amp;quot;
 
 &lt;p&gt;这是HTML风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=“可选标题” width=200 /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;其它:86ac849859807c9737e753d784ef51b4&#34;&gt;其它&lt;/h4&gt;
+&lt;h4 id=&#34;其它:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;其它&lt;/h4&gt;
 
-&lt;h5 id=&#34;自动链接:86ac849859807c9737e753d784ef51b4&#34;&gt;自动链接：&lt;/h5&gt;
+&lt;h5 id=&#34;自动链接:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;自动链接：&lt;/h5&gt;
 
 &lt;p&gt;使用尖括号，可以为邮箱地址或者链接创建自动链接，比如这个：&lt;a href=&#34;https://github.com/&#34;&gt;https://github.com/&lt;/a&gt;&lt;/p&gt;
 
-&lt;h5 id=&#34;分隔线:86ac849859807c9737e753d784ef51b4&#34;&gt;分隔线&lt;/h5&gt;
+&lt;h5 id=&#34;分隔线:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;分隔线&lt;/h5&gt;
 
 &lt;p&gt;在一行中使用三个或三个以上的*、-或_可以添加分隔线，其中可以有空白，但是不能有其他字符。&lt;/p&gt;
 
-&lt;h5 id=&#34;转义字符:86ac849859807c9737e753d784ef51b4&#34;&gt;转义字符&lt;/h5&gt;
+&lt;h5 id=&#34;转义字符:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;转义字符&lt;/h5&gt;
 
 &lt;p&gt;Markdown中的转义字符为\，可以转义的有：&lt;br /&gt;
     \\ 反斜杠&lt;br /&gt;

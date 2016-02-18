@@ -12,10 +12,10 @@
     
     <item>
       <title>[转载]awk &amp; sed ，一个老派系统管理员的基本素养</title>
-      <link>http://alienhjy.github.io/2016/02/01/remember-sed-awk-linux-admins-should/</link>
+      <link>http://alienhjy.github.io/2016/2016-02-01_remember-sed-awk-linux-admins-should/</link>
       <pubDate>Mon, 01 Feb 2016 15:01:13 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2016/02/01/remember-sed-awk-linux-admins-should/</guid>
+      <guid>http://alienhjy.github.io/2016/2016-02-01_remember-sed-awk-linux-admins-should/</guid>
       <description>&lt;p&gt;&lt;font color=red&gt;我们不要让下一代 Linux 和 Unix 的管理员忘记初始化脚本和基本工具的好处&lt;/font&gt;&lt;/p&gt;
 
 &lt;div align=&#34;center&#34;&gt;
@@ -119,10 +119,10 @@ Fortune 50 强的公司还没有计划迁移到以 systemd 为基础的发行版
     
     <item>
       <title>[转载]最简明扼要的 Systemd 教程，只需十分钟</title>
-      <link>http://alienhjy.github.io/2016/01/20/linux-101-get-the-most-out-of-systemd/</link>
+      <link>http://alienhjy.github.io/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/</link>
       <pubDate>Wed, 20 Jan 2016 17:05:29 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2016/01/20/linux-101-get-the-most-out-of-systemd/</guid>
+      <guid>http://alienhjy.github.io/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/</guid>
       <description>
 
 &lt;p&gt;systemd 是 Linux 下的一款系统和服务管理器，兼容 SysV 和 LSB 的启动脚本。
@@ -130,7 +130,7 @@ systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 
 按需启动守护进程（daemon）；利用 Linux 的 cgroups 监视进程；支持快照和系统恢复；
 维护挂载点和自动挂载点；各服务间基于依赖关系进行精密控制。&lt;/p&gt;
 
-&lt;h5 id=&#34;前言:9596fd1adc5e20a64c65a7ee3d256f4f&#34;&gt;前言&lt;/h5&gt;
+&lt;h5 id=&#34;前言:0d6c59cee5b31ce37e9176fed3a35e29&#34;&gt;前言&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -166,7 +166,7 @@ systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 
 这部没正经的动画片来自http://tinyurl.com/m2e7mv8，它把 Systemd 塑造成一只狂暴的动物，吞噬它路过的一切。大多数批评者的言辞可不像这只公仔一样柔软。
 &lt;/div&gt;
 
-&lt;h5 id=&#34;启动及服务:9596fd1adc5e20a64c65a7ee3d256f4f&#34;&gt;启动及服务&lt;/h5&gt;
+&lt;h5 id=&#34;启动及服务:0d6c59cee5b31ce37e9176fed3a35e29&#34;&gt;启动及服务&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -233,7 +233,7 @@ Systemd 可以让这一切正常运作起来变得相当容易。（在没有 Sy
 使用 systemctl status 命令后面跟一个单元名，来查看对应的服务有什么情况。
 &lt;/div&gt;
 
-&lt;h5 id=&#34;目标-target-锁定:9596fd1adc5e20a64c65a7ee3d256f4f&#34;&gt;“目标”(target) 锁定&lt;/h5&gt;
+&lt;h5 id=&#34;目标-target-锁定:0d6c59cee5b31ce37e9176fed3a35e29&#34;&gt;“目标”(target) 锁定&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -269,7 +269,7 @@ Systemd 可以让这一切正常运作起来变得相当容易。（在没有 Sy
 与传统的脚本相比，单元配置文件也许看起来很陌生，但并不难以理解。
 &lt;/div&gt;
 
-&lt;h5 id=&#34;开启与停止:9596fd1adc5e20a64c65a7ee3d256f4f&#34;&gt;开启与停止&lt;/h5&gt;
+&lt;h5 id=&#34;开启与停止:0d6c59cee5b31ce37e9176fed3a35e29&#34;&gt;开启与停止&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -289,7 +289,7 @@ systemctl start cups.service
 后者用于让单元重新加载它的配置文件。Systemd 的绝大部分都有良好的文档，
 因此您可以查看手册 (&lt;code&gt;man systemctl&lt;/code&gt;) 了解每条命令的细节。&lt;/p&gt;
 
-&lt;h5 id=&#34;定时器单元-取代-cron:9596fd1adc5e20a64c65a7ee3d256f4f&#34;&gt;定时器单元：取代 Cron&lt;/h5&gt;
+&lt;h5 id=&#34;定时器单元-取代-cron:0d6c59cee5b31ce37e9176fed3a35e29&#34;&gt;定时器单元：取代 Cron&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -324,7 +324,7 @@ OnUnitActiveSec=1w
 有一个 Systemd 的图形界面程序，即便它已有多年未被积极维护。
 &lt;/div&gt;
 
-&lt;h5 id=&#34;日志文件-向-journald-问声好:9596fd1adc5e20a64c65a7ee3d256f4f&#34;&gt;日志文件：向 journald 问声好&lt;/h5&gt;
+&lt;h5 id=&#34;日志文件-向-journald-问声好:0d6c59cee5b31ce37e9176fed3a35e29&#34;&gt;日志文件：向 journald 问声好&lt;/h5&gt;
 
 &lt;hr /&gt;
 
@@ -392,7 +392,7 @@ DEITY 是指广义上的“神”，$前缀表示这是一个变量），为 7 �
 二进制日志并不流行，但 journal 的确有它的优点，如非常方便的信息查找及过滤。
 &lt;/div&gt;
 
-&lt;h5 id=&#34;没有-systemd-的生活:9596fd1adc5e20a64c65a7ee3d256f4f&#34;&gt;没有 Systemd 的生活？&lt;/h5&gt;
+&lt;h5 id=&#34;没有-systemd-的生活:0d6c59cee5b31ce37e9176fed3a35e29&#34;&gt;没有 Systemd 的生活？&lt;/h5&gt;
 
 &lt;hr /&gt;
 
