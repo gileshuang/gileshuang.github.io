@@ -2,58 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://alienhjy.github.io/</loc>
+    <loc>http://blog.systemctl.top/</loc>
     <lastmod>2016-02-18T15:10:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</loc>
+    <loc>http://blog.systemctl.top/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</loc>
     <lastmod>2016-02-18T15:10:37+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2016/2016-02-01_remember-sed-awk-linux-admins-should/</loc>
+    <loc>http://blog.systemctl.top/2016/2016-02-01_remember-sed-awk-linux-admins-should/</loc>
     <lastmod>2016-02-01T15:01:13+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/</loc>
+    <loc>http://blog.systemctl.top/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/</loc>
     <lastmod>2016-01-20T17:05:29+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2016/2016-01-12_golang-http-request/</loc>
+    <loc>http://blog.systemctl.top/2016/2016-01-12_golang-http-request/</loc>
     <lastmod>2016-01-12T18:05:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2015/2015-12-31_debian-founder-and-docker-employee-ian-murdock-has-died-at-42/</loc>
+    <loc>http://blog.systemctl.top/2015/2015-12-31_debian-founder-and-docker-employee-ian-murdock-has-died-at-42/</loc>
     <lastmod>2015-12-31T13:14:38+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</loc>
+    <loc>http://blog.systemctl.top/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</loc>
     <lastmod>2015-11-06T19:01:12+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2015/2015-10-09_the-kernel-developer-sarah-sharp-quit/</loc>
+    <loc>http://blog.systemctl.top/2015/2015-10-09_the-kernel-developer-sarah-sharp-quit/</loc>
     <lastmod>2015-10-09T20:54:37+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</loc>
+    <loc>http://blog.systemctl.top/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</loc>
     <lastmod>2015-09-25T11:13:06+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/</loc>
+    <loc>http://blog.systemctl.top/2015/2015-09-20_using-class-like-cpp-in-golang/</loc>
     <lastmod>2015-09-20T21:05:59+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://alienhjy.github.io/2015/2015-09-17_markdown-test/</loc>
+    <loc>http://blog.systemctl.top/2015/2015-09-17_markdown-test/</loc>
     <lastmod>2015-09-17T09:19:33+08:00</lastmod>
   </url>
   

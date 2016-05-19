@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>黄家垚的主页</title>
-    <link>http://alienhjy.github.io/</link>
+    <link>http://blog.systemctl.top/</link>
     <description>Recent content on 黄家垚的主页</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2015 Copyleft Text</copyright>
     <lastBuildDate>Thu, 18 Feb 2016 15:10:37 +0800</lastBuildDate>
-    <atom:link href="http://alienhjy.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.systemctl.top/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[转载]filling a slice using command line flags in go</title>
-      <link>http://alienhjy.github.io/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</link>
+      <link>http://blog.systemctl.top/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</link>
       <pubDate>Thu, 18 Feb 2016 15:10:37 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</guid>
+      <guid>http://blog.systemctl.top/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</guid>
       <description>&lt;p&gt;I wanted to be able to specify a particular command-line flag more than once
 in a Go program. I was about to throw my hands up in despair because I didn’t
 think that the Go flag package could process multiple instances of a
@@ -249,14 +249,14 @@ processing features of the flag package in the near future.&lt;/p&gt;
     
     <item>
       <title>[转载]awk &amp; sed ，一个老派系统管理员的基本素养</title>
-      <link>http://alienhjy.github.io/2016/2016-02-01_remember-sed-awk-linux-admins-should/</link>
+      <link>http://blog.systemctl.top/2016/2016-02-01_remember-sed-awk-linux-admins-should/</link>
       <pubDate>Mon, 01 Feb 2016 15:01:13 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2016/2016-02-01_remember-sed-awk-linux-admins-should/</guid>
+      <guid>http://blog.systemctl.top/2016/2016-02-01_remember-sed-awk-linux-admins-should/</guid>
       <description>&lt;p&gt;&lt;font color=red&gt;我们不要让下一代 Linux 和 Unix 的管理员忘记初始化脚本和基本工具的好处&lt;/font&gt;&lt;/p&gt;
 
 &lt;div align=&#34;center&#34;&gt;
-&lt;img src=&#34;http://alienhjy.github.io/images/remember-sed-awk-linux-admins-should/01.jpg&#34;/&gt;&lt;/br&gt;
+&lt;img src=&#34;http://blog.systemctl.top/images/remember-sed-awk-linux-admins-should/01.jpg&#34;/&gt;&lt;/br&gt;
 图片来源: Shutterstock
 &lt;/div&gt;
 
@@ -356,10 +356,10 @@ Fortune 50 强的公司还没有计划迁移到以 systemd 为基础的发行版
     
     <item>
       <title>[转载]最简明扼要的 Systemd 教程，只需十分钟</title>
-      <link>http://alienhjy.github.io/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/</link>
+      <link>http://blog.systemctl.top/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/</link>
       <pubDate>Wed, 20 Jan 2016 17:05:29 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/</guid>
+      <guid>http://blog.systemctl.top/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/</guid>
       <description>
 
 &lt;p&gt;systemd 是 Linux 下的一款系统和服务管理器，兼容 SysV 和 LSB 的启动脚本。
@@ -399,7 +399,7 @@ systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 
 即便您此刻并不是这款软件的粉丝，读完本文后您至少可以更加了解和适应它。&lt;/p&gt;
 
 &lt;div align=&#34;center&#34;&gt;
-&lt;img src=&#34;http://alienhjy.github.io/images/linux-101-get-the-most-out-of-systemd/01.gif&#34;&gt;&lt;/br&gt;
+&lt;img src=&#34;http://blog.systemctl.top/images/linux-101-get-the-most-out-of-systemd/01.gif&#34;&gt;&lt;/br&gt;
 这部没正经的动画片来自http://tinyurl.com/m2e7mv8，它把 Systemd 塑造成一只狂暴的动物，吞噬它路过的一切。大多数批评者的言辞可不像这只公仔一样柔软。
 &lt;/div&gt;
 
@@ -466,7 +466,7 @@ Systemd 可以让这一切正常运作起来变得相当容易。（在没有 Sy
 但您不关心那究竟是 GDM，KDM，XDM 还是什么别的显示管理程序时，这个选项会非常有用。&lt;/p&gt;
 
 &lt;div align=&#34;center&#34;&gt;
-&lt;img src=&#34;http://alienhjy.github.io/images/linux-101-get-the-most-out-of-systemd/02.jpg&#34; /&gt;&lt;br&gt;
+&lt;img src=&#34;http://blog.systemctl.top/images/linux-101-get-the-most-out-of-systemd/02.jpg&#34; /&gt;&lt;br&gt;
 使用 systemctl status 命令后面跟一个单元名，来查看对应的服务有什么情况。
 &lt;/div&gt;
 
@@ -502,7 +502,7 @@ Systemd 可以让这一切正常运作起来变得相当容易。（在没有 Sy
 &lt;strong&gt;reboot.target&lt;/strong&gt;类似于第6运行级，诸如此类。&lt;/p&gt;
 
 &lt;div align=&#34;center&#34;&gt;
-&lt;img src=&#34;http://alienhjy.github.io/images/linux-101-get-the-most-out-of-systemd/03.jpg&#34; /&gt;&lt;br/&gt;
+&lt;img src=&#34;http://blog.systemctl.top/images/linux-101-get-the-most-out-of-systemd/03.jpg&#34; /&gt;&lt;br/&gt;
 与传统的脚本相比，单元配置文件也许看起来很陌生，但并不难以理解。
 &lt;/div&gt;
 
@@ -557,7 +557,7 @@ OnUnitActiveSec=1w
 &lt;p&gt;另外，&lt;strong&gt;WakeSystem&lt;/strong&gt;选项（可以被设置为 true 或 false）决定了定时器是否可以唤醒处于休眠状态的机器。&lt;/p&gt;
 
 &lt;div align=&#34;center&#34;&gt;
-&lt;img src=&#34;http://alienhjy.github.io/images/linux-101-get-the-most-out-of-systemd/04.jpg&#34;/&gt;&lt;/br&gt;
+&lt;img src=&#34;http://blog.systemctl.top/images/linux-101-get-the-most-out-of-systemd/04.jpg&#34;/&gt;&lt;/br&gt;
 有一个 Systemd 的图形界面程序，即便它已有多年未被积极维护。
 &lt;/div&gt;
 
@@ -625,7 +625,7 @@ DEITY 是指广义上的“神”，$前缀表示这是一个变量），为 7 �
 就像在没有 Systemd 时使用&lt;code&gt;tail&lt;/code&gt;命令实现的那样，输入&lt;code&gt;journalctl -f&lt;/code&gt;就好了。&lt;/p&gt;
 
 &lt;div align=&#34;center&#34;&gt;
-&lt;img src=&#34;http://alienhjy.github.io/images/linux-101-get-the-most-out-of-systemd/05.jpg&#34;/&gt;&lt;/br&gt;
+&lt;img src=&#34;http://blog.systemctl.top/images/linux-101-get-the-most-out-of-systemd/05.jpg&#34;/&gt;&lt;/br&gt;
 二进制日志并不流行，但 journal 的确有它的优点，如非常方便的信息查找及过滤。
 &lt;/div&gt;
 
@@ -645,7 +645,7 @@ DEITY 是指广义上的“神”，$前缀表示这是一个变量），为 7 �
 纯粹专注于启动和监控进程，而不消耗整个基础系统。&lt;/p&gt;
 
 &lt;div align=&#34;center&#34;&gt;
-&lt;img src=&#34;http://alienhjy.github.io/images/linux-101-get-the-most-out-of-systemd/06.jpg&#34;/&gt;&lt;/br&gt;
+&lt;img src=&#34;http://blog.systemctl.top/images/linux-101-get-the-most-out-of-systemd/06.jpg&#34;/&gt;&lt;/br&gt;
 若您不喜欢 Systemd，可以尝试一下 Gentoo 发行版，它将 Systemd 作为初始化工具的一种选择，但并不强制用户使用 Systemd。
 &lt;/div&gt;
 
@@ -667,10 +667,10 @@ DEITY 是指广义上的“神”，$前缀表示这是一个变量），为 7 �
     
     <item>
       <title>golang发送http请求</title>
-      <link>http://alienhjy.github.io/2016/2016-01-12_golang-http-request/</link>
+      <link>http://blog.systemctl.top/2016/2016-01-12_golang-http-request/</link>
       <pubDate>Tue, 12 Jan 2016 18:05:00 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2016/2016-01-12_golang-http-request/</guid>
+      <guid>http://blog.systemctl.top/2016/2016-01-12_golang-http-request/</guid>
       <description>
 
 &lt;p&gt;本篇记录一下golang中发送一个http请求的基本方法。&lt;br /&gt;
@@ -739,13 +739,13 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
     
     <item>
       <title>Debian 创始人 Ian Murdock 先生去世，享年 42 岁！</title>
-      <link>http://alienhjy.github.io/2015/2015-12-31_debian-founder-and-docker-employee-ian-murdock-has-died-at-42/</link>
+      <link>http://blog.systemctl.top/2015/2015-12-31_debian-founder-and-docker-employee-ian-murdock-has-died-at-42/</link>
       <pubDate>Thu, 31 Dec 2015 13:14:38 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-12-31_debian-founder-and-docker-employee-ian-murdock-has-died-at-42/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-12-31_debian-founder-and-docker-employee-ian-murdock-has-died-at-42/</guid>
       <description>&lt;p&gt;Docker 公司&lt;a href=&#34;http://blog.docker.com/2015/12/ian-murdock/&#34;&gt;宣布&lt;/a&gt;，著名的 Debian 创始人 Ian Murdock 已经去世，享年 42 岁。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://alienhjy.github.io/images/debian-founder-and-docker-employee-ian-murdock-has-died-at-42.jpg&#34; alt=&#34;ian-murdock&#34; title=&#34;Ian Murdock&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.systemctl.top/images/debian-founder-and-docker-employee-ian-murdock-has-died-at-42.jpg&#34; alt=&#34;ian-murdock&#34; title=&#34;Ian Murdock&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;他同时也是 Docker 公司员工、之前还担任过 Linux 基金会的 CTO、 Sun 微系统的印第安纳项目的首席架构师和 SalesForce 员工。
 这件事情为他的家人、Debian 社区、Docker 社区以及开源世界带来了巨大悲痛。&lt;/p&gt;
@@ -782,10 +782,10 @@ Debian 社区也发布了&lt;a href=&#34;https://bits.debian.org/2015/12/mournin
     
     <item>
       <title>在RHEL6.2上安装docker的准备工作</title>
-      <link>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</link>
+      <link>http://blog.systemctl.top/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</link>
       <pubDate>Fri, 06 Nov 2015 19:01:12 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</guid>
       <description>
 
 &lt;p&gt;最近在尝试 docker，据说很高端大气上档次，于是就在空闲的时候开始鼓捣整。&lt;br /&gt;
@@ -837,10 +837,10 @@ Debian 社区也发布了&lt;a href=&#34;https://bits.debian.org/2015/12/mournin
     
     <item>
       <title>内核开发者Sarah Sharp宣布退出</title>
-      <link>http://alienhjy.github.io/2015/2015-10-09_the-kernel-developer-sarah-sharp-quit/</link>
+      <link>http://blog.systemctl.top/2015/2015-10-09_the-kernel-developer-sarah-sharp-quit/</link>
       <pubDate>Fri, 09 Oct 2015 20:54:37 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-10-09_the-kernel-developer-sarah-sharp-quit/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-10-09_the-kernel-developer-sarah-sharp-quit/</guid>
       <description>&lt;p&gt;曾经&lt;a href=&#34;http://www.solidot.org/story?sid=35607&#34;&gt;公开呼吁&lt;/a&gt;Linus Torvalds文明用语的内核开发者
 Sarah Sharp&lt;a href=&#34;http://sarah.thesharps.us/2015/10/05/closing-a-door/&#34;&gt;宣布退出（Closing a door）&lt;/a&gt;。&lt;/p&gt;
 
@@ -862,10 +862,10 @@ Sarah Sharp认为，没有列出应避免的具体行为的冲突准则是没有
     
     <item>
       <title>golang中对slice切片进行append时的内存拷贝</title>
-      <link>http://alienhjy.github.io/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</link>
+      <link>http://blog.systemctl.top/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</link>
       <pubDate>Fri, 25 Sep 2015 11:13:06 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</guid>
       <description>
 
 &lt;p&gt;Golang中有一个神奇的类型：slice。&lt;br /&gt;
@@ -969,7 +969,7 @@ func main() {
 &lt;p&gt;我们先来分析一下程序应该怎么运行。&lt;br /&gt;
 首先创建了一个容量为 4，长度为 0 的 slice，该 slice 的每个元素都是一个封装了
 一个 goroutine 的结构体。至于怎么制造这么一个结构体，
-请参考&lt;a href=&#34;http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/&#34;&gt;《在golang中使用C++风格的类》&lt;/a&gt;一文。
+请参考&lt;a href=&#34;http://blog.systemctl.top/2015/2015-09-20_using-class-like-cpp-in-golang/&#34;&gt;《在golang中使用C++风格的类》&lt;/a&gt;一文。
 这时，我们为 pool 添加了一个元素，并为这个元素的成员&lt;code&gt;id&lt;/code&gt;赋予初值，然后让它下属
 的 PrintID 方法每隔一秒打印一次它的&lt;code&gt;id&lt;/code&gt;值。&lt;br /&gt;
 紧接着，我们为 pool 添加了六个元素，不过暂时不对它们进行操作。添加这六个元素的目的仅仅
@@ -1026,10 +1026,10 @@ func main() {
     
     <item>
       <title>在golang中使用C&#43;&#43;风格的类</title>
-      <link>http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/</link>
+      <link>http://blog.systemctl.top/2015/2015-09-20_using-class-like-cpp-in-golang/</link>
       <pubDate>Sun, 20 Sep 2015 21:05:59 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-09-20_using-class-like-cpp-in-golang/</guid>
       <description>
 
 &lt;p&gt;对于接触过C++且刚入门golang的用户而言，有一点可能会让他们抓狂，
@@ -1157,10 +1157,10 @@ func main() {
     
     <item>
       <title>苦逼地不会Markdown</title>
-      <link>http://alienhjy.github.io/2015/2015-09-17_markdown-test/</link>
+      <link>http://blog.systemctl.top/2015/2015-09-17_markdown-test/</link>
       <pubDate>Thu, 17 Sep 2015 09:19:33 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-09-17_markdown-test/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-09-17_markdown-test/</guid>
       <description>
 
 &lt;p&gt;本文的 Markdown 源码可到&lt;a href=&#34;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&#34;&gt;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&lt;/a&gt;查看。&lt;br /&gt;
@@ -1226,10 +1226,10 @@ echo &amp;quot;hello world&amp;quot;
 &lt;p&gt;这是InLine风格的&lt;a href=&#34;https://github.com/&#34; title=&#34;这是可选标题&#34;&gt;链接&lt;/a&gt;&lt;br /&gt;
 这是Reference风格的&lt;a href=&#34;https://github.com/&#34; title=&#34;这是可选标题&#34;&gt;链接&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;这是InLine风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;br /&gt;
-这是Reference风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这是InLine风格的图片示例：&lt;img src=&#34;http://blog.systemctl.top/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;br /&gt;
+这是Reference风格的图片示例：&lt;img src=&#34;http://blog.systemctl.top/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;这是HTML风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=“可选标题” width=200 /&gt;&lt;/p&gt;
+&lt;p&gt;这是HTML风格的图片示例：&lt;img src=&#34;http://blog.systemctl.top/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=“可选标题” width=200 /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;其它:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;其它&lt;/h4&gt;
 

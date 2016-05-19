@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on 黄家垚的主页</title>
-    <link>http://alienhjy.github.io/tags/docker/</link>
+    <link>http://blog.systemctl.top/tags/docker/</link>
     <description>Recent content in Docker on 黄家垚的主页</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2015 Copyleft Text</copyright>
     <lastBuildDate>Fri, 06 Nov 2015 19:01:12 +0800</lastBuildDate>
-    <atom:link href="http://alienhjy.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.systemctl.top/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>在RHEL6.2上安装docker的准备工作</title>
-      <link>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</link>
+      <link>http://blog.systemctl.top/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</link>
       <pubDate>Fri, 06 Nov 2015 19:01:12 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</guid>
       <description>
 
 &lt;p&gt;最近在尝试 docker，据说很高端大气上档次，于是就在空闲的时候开始鼓捣整。&lt;br /&gt;

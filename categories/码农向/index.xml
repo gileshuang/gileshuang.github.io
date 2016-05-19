@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>码农向 on 黄家垚的主页</title>
-    <link>http://alienhjy.github.io/categories/%E7%A0%81%E5%86%9C%E5%90%91/</link>
+    <link>http://blog.systemctl.top/categories/%E7%A0%81%E5%86%9C%E5%90%91/</link>
     <description>Recent content in 码农向 on 黄家垚的主页</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2015 Copyleft Text</copyright>
     <lastBuildDate>Thu, 18 Feb 2016 15:10:37 +0800</lastBuildDate>
-    <atom:link href="http://alienhjy.github.io/categories/%E7%A0%81%E5%86%9C%E5%90%91/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.systemctl.top/categories/%E7%A0%81%E5%86%9C%E5%90%91/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[转载]filling a slice using command line flags in go</title>
-      <link>http://alienhjy.github.io/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</link>
+      <link>http://blog.systemctl.top/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</link>
       <pubDate>Thu, 18 Feb 2016 15:10:37 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</guid>
+      <guid>http://blog.systemctl.top/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/</guid>
       <description>&lt;p&gt;I wanted to be able to specify a particular command-line flag more than once
 in a Go program. I was about to throw my hands up in despair because I didn’t
 think that the Go flag package could process multiple instances of a
@@ -249,10 +249,10 @@ processing features of the flag package in the near future.&lt;/p&gt;
     
     <item>
       <title>golang发送http请求</title>
-      <link>http://alienhjy.github.io/2016/2016-01-12_golang-http-request/</link>
+      <link>http://blog.systemctl.top/2016/2016-01-12_golang-http-request/</link>
       <pubDate>Tue, 12 Jan 2016 18:05:00 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2016/2016-01-12_golang-http-request/</guid>
+      <guid>http://blog.systemctl.top/2016/2016-01-12_golang-http-request/</guid>
       <description>
 
 &lt;p&gt;本篇记录一下golang中发送一个http请求的基本方法。&lt;br /&gt;
@@ -321,10 +321,10 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
     
     <item>
       <title>在RHEL6.2上安装docker的准备工作</title>
-      <link>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</link>
+      <link>http://blog.systemctl.top/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</link>
       <pubDate>Fri, 06 Nov 2015 19:01:12 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</guid>
       <description>
 
 &lt;p&gt;最近在尝试 docker，据说很高端大气上档次，于是就在空闲的时候开始鼓捣整。&lt;br /&gt;
@@ -376,10 +376,10 @@ http头。&lt;code&gt;http.Request.SetBasicAuth&lt;/code&gt;方法用来做基�
     
     <item>
       <title>golang中对slice切片进行append时的内存拷贝</title>
-      <link>http://alienhjy.github.io/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</link>
+      <link>http://blog.systemctl.top/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</link>
       <pubDate>Fri, 25 Sep 2015 11:13:06 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-09-25_copy-action-while-append-to-slice-in-golang/</guid>
       <description>
 
 &lt;p&gt;Golang中有一个神奇的类型：slice。&lt;br /&gt;
@@ -483,7 +483,7 @@ func main() {
 &lt;p&gt;我们先来分析一下程序应该怎么运行。&lt;br /&gt;
 首先创建了一个容量为 4，长度为 0 的 slice，该 slice 的每个元素都是一个封装了
 一个 goroutine 的结构体。至于怎么制造这么一个结构体，
-请参考&lt;a href=&#34;http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/&#34;&gt;《在golang中使用C++风格的类》&lt;/a&gt;一文。
+请参考&lt;a href=&#34;http://blog.systemctl.top/2015/2015-09-20_using-class-like-cpp-in-golang/&#34;&gt;《在golang中使用C++风格的类》&lt;/a&gt;一文。
 这时，我们为 pool 添加了一个元素，并为这个元素的成员&lt;code&gt;id&lt;/code&gt;赋予初值，然后让它下属
 的 PrintID 方法每隔一秒打印一次它的&lt;code&gt;id&lt;/code&gt;值。&lt;br /&gt;
 紧接着，我们为 pool 添加了六个元素，不过暂时不对它们进行操作。添加这六个元素的目的仅仅
@@ -540,10 +540,10 @@ func main() {
     
     <item>
       <title>在golang中使用C&#43;&#43;风格的类</title>
-      <link>http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/</link>
+      <link>http://blog.systemctl.top/2015/2015-09-20_using-class-like-cpp-in-golang/</link>
       <pubDate>Sun, 20 Sep 2015 21:05:59 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-09-20_using-class-like-cpp-in-golang/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-09-20_using-class-like-cpp-in-golang/</guid>
       <description>
 
 &lt;p&gt;对于接触过C++且刚入门golang的用户而言，有一点可能会让他们抓狂，
@@ -671,10 +671,10 @@ func main() {
     
     <item>
       <title>苦逼地不会Markdown</title>
-      <link>http://alienhjy.github.io/2015/2015-09-17_markdown-test/</link>
+      <link>http://blog.systemctl.top/2015/2015-09-17_markdown-test/</link>
       <pubDate>Thu, 17 Sep 2015 09:19:33 +0800</pubDate>
       
-      <guid>http://alienhjy.github.io/2015/2015-09-17_markdown-test/</guid>
+      <guid>http://blog.systemctl.top/2015/2015-09-17_markdown-test/</guid>
       <description>
 
 &lt;p&gt;本文的 Markdown 源码可到&lt;a href=&#34;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&#34;&gt;https://raw.githubusercontent.com/alienhjy/hugo-build-repo/master/content/post/markdown-test.md&lt;/a&gt;查看。&lt;br /&gt;
@@ -740,10 +740,10 @@ echo &amp;quot;hello world&amp;quot;
 &lt;p&gt;这是InLine风格的&lt;a href=&#34;https://github.com/&#34; title=&#34;这是可选标题&#34;&gt;链接&lt;/a&gt;&lt;br /&gt;
 这是Reference风格的&lt;a href=&#34;https://github.com/&#34; title=&#34;这是可选标题&#34;&gt;链接&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;这是InLine风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;br /&gt;
-这是Reference风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这是InLine风格的图片示例：&lt;img src=&#34;http://blog.systemctl.top/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;br /&gt;
+这是Reference风格的图片示例：&lt;img src=&#34;http://blog.systemctl.top/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=&#34;可选标题&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;这是HTML风格的图片示例：&lt;img src=&#34;http://alienhjy.github.io/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=“可选标题” width=200 /&gt;&lt;/p&gt;
+&lt;p&gt;这是HTML风格的图片示例：&lt;img src=&#34;http://blog.systemctl.top/images/logo.jpg&#34; alt=&#34;替代文本&#34; title=“可选标题” width=200 /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;其它:ce60f5aebf1bcee072dab7bdb88177a3&#34;&gt;其它&lt;/h4&gt;
 
