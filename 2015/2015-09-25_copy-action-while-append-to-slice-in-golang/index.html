@@ -76,7 +76,7 @@
 很难在C语言中找到一个跟slice对应的数据结构。<br />
 本文不对slice的众多特性进行说明，只谈论跟其append操作相关的内容。</p>
 
-<h5 id="b-slice的长度与容量-b:777257618f2ade0d10f5e17a35432657"><b>Slice的长度与容量</b></h5>
+<h5 id="b-slice的长度与容量-b"><b>Slice的长度与容量</b></h5>
 
 <hr />
 
@@ -100,7 +100,7 @@
 <pre><code class="language-go">var sliceB []int = make([]int, 8)
 </code></pre>
 
-<h5 id="b-使用-append-方法添加元素-b:777257618f2ade0d10f5e17a35432657"><b>使用 append() 方法添加元素</b></h5>
+<h5 id="b-使用-append-方法添加元素-b"><b>使用 append() 方法添加元素</b></h5>
 
 <hr />
 
@@ -188,7 +188,7 @@ func main() {
 的 goroutine 还傻傻地去原来的地方读取 id 值（注意，此处读取 id 用的是指向结构体的指针，
 该指针还是指向原来的数据）。</p>
 
-<h5 id="b-代码修正-b:777257618f2ade0d10f5e17a35432657"><b>代码修正</b></h5>
+<h5 id="b-代码修正-b"><b>代码修正</b></h5>
 
 <hr />
 
@@ -223,7 +223,7 @@ func main() {
 若 slice 存放的是指针，那在 append() 进行拷贝操作的时候，只是将指针的指向的地址拷贝过去，
 <code>pool[0].SetID(2)</code>语句修改的 id 和<code>pool[0].PrintID()</code>取的 id 引用的地址始终是不变的。</p>
 
-<h4 id="所以说-谁说带垃圾回收的语言不用考虑指针t-t:777257618f2ade0d10f5e17a35432657">所以说，谁说带垃圾回收的语言不用考虑指针T_T</h4>
+<h4 id="所以说-谁说带垃圾回收的语言不用考虑指针t-t">所以说，谁说带垃圾回收的语言不用考虑指针T_T</h4>
 </p>
           <p>25 Sep 2015
             

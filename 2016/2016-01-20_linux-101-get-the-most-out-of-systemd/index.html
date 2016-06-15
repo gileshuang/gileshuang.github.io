@@ -76,7 +76,7 @@ systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 
 按需启动守护进程（daemon）；利用 Linux 的 cgroups 监视进程；支持快照和系统恢复；
 维护挂载点和自动挂载点；各服务间基于依赖关系进行精密控制。</p>
 
-<h5 id="前言:0d6c59cee5b31ce37e9176fed3a35e29">前言</h5>
+<h5 id="前言">前言</h5>
 
 <hr />
 
@@ -112,7 +112,7 @@ systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 
 这部没正经的动画片来自http://tinyurl.com/m2e7mv8，它把 Systemd 塑造成一只狂暴的动物，吞噬它路过的一切。大多数批评者的言辞可不像这只公仔一样柔软。
 </div>
 
-<h5 id="启动及服务:0d6c59cee5b31ce37e9176fed3a35e29">启动及服务</h5>
+<h5 id="启动及服务">启动及服务</h5>
 
 <hr />
 
@@ -179,7 +179,7 @@ Systemd 可以让这一切正常运作起来变得相当容易。（在没有 Sy
 使用 systemctl status 命令后面跟一个单元名，来查看对应的服务有什么情况。
 </div>
 
-<h5 id="目标-target-锁定:0d6c59cee5b31ce37e9176fed3a35e29">“目标”(target) 锁定</h5>
+<h5 id="目标-target-锁定">“目标”(target) 锁定</h5>
 
 <hr />
 
@@ -215,7 +215,7 @@ Systemd 可以让这一切正常运作起来变得相当容易。（在没有 Sy
 与传统的脚本相比，单元配置文件也许看起来很陌生，但并不难以理解。
 </div>
 
-<h5 id="开启与停止:0d6c59cee5b31ce37e9176fed3a35e29">开启与停止</h5>
+<h5 id="开启与停止">开启与停止</h5>
 
 <hr />
 
@@ -235,7 +235,7 @@ systemctl start cups.service
 后者用于让单元重新加载它的配置文件。Systemd 的绝大部分都有良好的文档，
 因此您可以查看手册 (<code>man systemctl</code>) 了解每条命令的细节。</p>
 
-<h5 id="定时器单元-取代-cron:0d6c59cee5b31ce37e9176fed3a35e29">定时器单元：取代 Cron</h5>
+<h5 id="定时器单元-取代-cron">定时器单元：取代 Cron</h5>
 
 <hr />
 
@@ -270,7 +270,7 @@ OnUnitActiveSec=1w
 有一个 Systemd 的图形界面程序，即便它已有多年未被积极维护。
 </div>
 
-<h5 id="日志文件-向-journald-问声好:0d6c59cee5b31ce37e9176fed3a35e29">日志文件：向 journald 问声好</h5>
+<h5 id="日志文件-向-journald-问声好">日志文件：向 journald 问声好</h5>
 
 <hr />
 
@@ -338,7 +338,7 @@ DEITY 是指广义上的“神”，$前缀表示这是一个变量），为 7 �
 二进制日志并不流行，但 journal 的确有它的优点，如非常方便的信息查找及过滤。
 </div>
 
-<h5 id="没有-systemd-的生活:0d6c59cee5b31ce37e9176fed3a35e29">没有 Systemd 的生活？</h5>
+<h5 id="没有-systemd-的生活">没有 Systemd 的生活？</h5>
 
 <hr />
 

@@ -3,8 +3,12 @@
   
   <url>
     <loc>http://blog.systemctl.top/</loc>
-    <lastmod>2016-02-18T15:10:37+08:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2016-06-15T14:27:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.systemctl.top/2016/2016-06-15_docker-storage-drivers/</loc>
+    <lastmod>2016-06-15T14:27:14+08:00</lastmod>
   </url>
   
   <url>

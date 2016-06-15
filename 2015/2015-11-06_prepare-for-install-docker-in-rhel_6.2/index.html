@@ -81,7 +81,7 @@
 俗话说，步子跨得大了，容易扯到蛋。所以我们选择版本号变化不那么大的 RHEL 6.6 版本自带
 的 2.6.32-504 内核。</p>
 
-<h4 id="更新内核版本:09a2ede7ed47bf2cfa6c86dd8e573b45">更新内核版本</h4>
+<h4 id="更新内核版本">更新内核版本</h4>
 
 <p>首先系统的更新内核版本：</p>
 
@@ -96,7 +96,7 @@
 <pre><code>yum remove bfa-firmware
 </code></pre>
 
-<h4 id="更新device-mapper包:09a2ede7ed47bf2cfa6c86dd8e573b45">更新device-mapper包</h4>
+<h4 id="更新device-mapper包">更新device-mapper包</h4>
 
 <p>更新内核后，如果你直接安装运行 docker，会发现启动不了 docker 的服务。不管你有没有这个问题，
 反正我是遇到了。这时检查是哪个组件不符合要求，比如我的环境下，是 device-mapper 包版本太低，
@@ -109,7 +109,7 @@
 	http://yum.pplive.com/rhel_6.6_repo/Packages/libuuid-2.17.2-12.18.el6.x86_64.rpm
 </code></pre>
 
-<h4 id="安装docker:09a2ede7ed47bf2cfa6c86dd8e573b45">安装docker</h4>
+<h4 id="安装docker">安装docker</h4>
 
 <p>话说，标题我不是说了吗，这是准备工作。。。<br />
 接下来，就可以像 RHEL/CentOS 6.5 以上的系统一样，添加<code>epel</code>源，然后直接安装<code>docker-io</code>包了。<br />

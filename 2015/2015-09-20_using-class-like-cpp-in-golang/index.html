@@ -75,14 +75,14 @@
 就是golang这货居然只有结构体（struct），没有类（class）！！！<br />
 其实不用担心，我们大可以用struct实现类似于class的功能。。。</p>
 
-<h5 id="b-目的-b:5b88b4afc8a2f6c27657f65b3600d208"><b>目的：</b></h5>
+<h5 id="b-目的-b"><b>目的：</b></h5>
 
 <hr />
 
 <p>使struct不仅仅能存储成员变量，还能拥有其成员函数。并且控制外部函数对私有成员变量的访问。
 当然本文仅仅是为了实现上述目的而已，并不关心什么多态、继承等等一大堆乱七八糟的特性（好吧，其实是本渣并不懂那些高级特性）。</p>
 
-<h5 id="b-c-中类的使用-b:5b88b4afc8a2f6c27657f65b3600d208"><b>C++中类的使用：</b></h5>
+<h5 id="b-c-中类的使用-b"><b>C++中类的使用：</b></h5>
 
 <hr />
 
@@ -130,7 +130,7 @@ int main(int argc, char* argv[]) {
 <p>使用<code>g++ -o main main.cpp classa.cpp</code>编译上述文件，并运行<code>./main</code>，
 如果输出了一个数字4，那这个classa类就应当是以正确的姿势被调用了。</p>
 
-<h5 id="b-golang中为struct添加成员函数-b:5b88b4afc8a2f6c27657f65b3600d208"><b>golang中为struct添加成员函数</b></h5>
+<h5 id="b-golang中为struct添加成员函数-b"><b>golang中为struct添加成员函数</b></h5>
 
 <hr />
 
@@ -179,7 +179,7 @@ func main() {
 <code>sc packagea.StructClass = packagea.StructClass{}</code>替换为
 <code>sc *packagea.StructClass = &amp;packagea.StructClass{}</code>即可。</p>
 
-<h5 id="b-总结-b:5b88b4afc8a2f6c27657f65b3600d208"><b>总结</b></h5>
+<h5 id="b-总结-b"><b>总结</b></h5>
 
 <hr />
 
