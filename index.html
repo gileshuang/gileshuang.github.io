@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.20.7" />
+	<meta name="generator" content="Hugo 0.27.1" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>黄家垚的主页</title>
@@ -64,6 +64,39 @@
   
   <div class="col m4 s12">
     <div class="card-panel">
+      <h4><a href="http://blog.systemctl.top/2017/2017-09-28_set-proxy-for-git-and-ssh-with-socks5/">[整理]为 git 和 ssh 设置 socks5 协议的代理</a></h4>
+      <p>
+      
+        
+          <a href="http://blog.systemctl.top/categories/%E8%BF%90%E7%BB%B4%E5%90%91/">运维向</a>
+        
+       
+      </p>
+      <p>由于某魔法结界的存在，我们在从某全球最大同性社交网站下载项目源码或者提交代码到该罪恶的社交网站时， 经常会出现各种异常。那么，我们能不能施展魔法，让我们的 git/ssh 通过魔法上网呢？ （本文的配置并不是给浏览器用的，不适合用来给浏览器魔法上网。本文重点在 git/ssh，需要魔法上网的请绕道。）
+ 本文假设你已经有了一个 socks5 协议的代理了。
+关于怎么设立 socks5 协议的代理，这里就不赘述了，到处都有介绍，这里说多了我怕我会被魔法封印。
+本文以 Linux 环境下为准（我使用的是 ArchLinux）。 Windows 下的 git-bash 同理，但未经验证。
+ 1. 需要解决什么问题？  某全球最大同性社交网站的 git clone/pull/push 操作主要使用 ssh、https 协议。 因为某魔法结界的存在，上述网站经常各种抽风（无论啥协议都抽风）。 某些网站虽然没受结界影响，但因网站自身问题或者各种水土不服，git 操作的速度特别慢， 比如 git.kernel.org。 首先知道，git 支持这些协议：ssh、http/https、git。 你使用 ssh 直接登陆你自己的某台服务器会出现问题，但你理论上能通过你的 socks5 代理登陆你那台服务器， 只是你不知道应该如何配置 ssh。  2. 前置环境  你熟悉基础的 ssh、git 操作。 你已经通过某些不可描述的方案，在本地建立好了 socks5 的代理了，这里以 127.0.0.1:1081 为例。 你的 socks5 能够访问你的目标服务，比如能够访问魔法结界外面的同性社交网站或其它类似网站。 已经安装了 ssh、git 客户端。 安装了 ncat 命令（ArchLinux 中，该命令来自 nmap 包）。  3.</p>
+      <p>
+      28 Sep 2017
+      
+        
+          <a href="http://blog.systemctl.top/tags/linux/">#Linux</a>
+        
+          <a href="http://blog.systemctl.top/tags/socks5/">#socks5</a>
+        
+          <a href="http://blog.systemctl.top/tags/ssh/">#ssh</a>
+        
+          <a href="http://blog.systemctl.top/tags/git/">#git</a>
+        
+       
+      </p>
+    </div>
+  </div>
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
       <h4><a href="http://blog.systemctl.top/2017/2017-04-14_something-about-lsattr_-i_-e/">[转载]由lsattr -I -e 文件扩展属性引发的一系列事情</a></h4>
       <p>
       
@@ -122,6 +155,9 @@
   </div>
 
   
+</div>
+<div class="row">
+  
   <div class="col m4 s12">
     <div class="card-panel">
       <h4><a href="http://blog.systemctl.top/2016/2016-02-18_filling-a-slice-using-command-line-flags-in-go/">[转载]filling a slice using command line flags in go</a></h4>
@@ -149,9 +185,6 @@ command-line flag. I was wrong.</p>
     </div>
   </div>
 
-  
-</div>
-<div class="row">
   
   <div class="col m4 s12">
     <div class="card-panel">
@@ -210,6 +243,9 @@ systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 
   </div>
 
   
+</div>
+<div class="row">
+  
   <div class="col m4 s12">
     <div class="card-panel">
       <h4><a href="http://blog.systemctl.top/2016/2016-01-12_golang-http-request/">golang发送http请求</a></h4>
@@ -235,9 +271,6 @@ systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 
     </div>
   </div>
 
-  
-</div>
-<div class="row">
   
   <div class="col m4 s12">
     <div class="card-panel">
@@ -288,35 +321,6 @@ systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 
           <a href="http://blog.systemctl.top/tags/docker/">#docker</a>
         
           <a href="http://blog.systemctl.top/tags/kernel/">#kernel</a>
-        
-       
-      </p>
-    </div>
-  </div>
-
-  
-  <div class="col m4 s12">
-    <div class="card-panel">
-      <h4><a href="http://blog.systemctl.top/2015/2015-10-09_the-kernel-developer-sarah-sharp-quit/">内核开发者Sarah Sharp宣布退出</a></h4>
-      <p>
-      
-        
-          <a href="http://blog.systemctl.top/categories/%E6%96%B0%E9%97%BB/">新闻</a>
-        
-       
-      </p>
-      <p><p>曾经<a href="http://www.solidot.org/story?sid=35607">公开呼吁</a>Linus Torvalds文明用语的内核开发者
-Sarah Sharp<a href="http://sarah.thesharps.us/2015/10/05/closing-a-door/">宣布退出（Closing a door）</a>。
-</p></p>
-      <p>
-      9 Oct 2015
-      
-        
-          <a href="http://blog.systemctl.top/tags/news/">#news</a>
-        
-          <a href="http://blog.systemctl.top/tags/kernel/">#kernel</a>
-        
-          <a href="http://blog.systemctl.top/tags/developer/">#developer</a>
         
        
       </p>
