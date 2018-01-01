@@ -18,13 +18,12 @@
       <pubDate>Sat, 23 Dec 2017 15:04:05 +0800</pubDate>
       
       <guid>http://blog.systemctl.top/2017/2017-12-23_policy-routing-with-systemd-networkd/</guid>
-      <description>这次就记录一下某个很常见却不常用的功能：Linux 上的策略路由。
-不同于使用 RHEL、ubuntu 等发行版专用配置文件，本文介绍的主要是使用 systemd-networkd 服务来配置路由。
-本文将介绍在同一台服务器上接入两块公网网卡，使这两块网卡分别同时工作的场景。
- 免责说明：
-本文所使用 IP 地址并非我自己的实验环境的 IP，而是为了方便说明而杜撰的 IP。
-如果本文使用的 IP 实际上由某个人或者组织使用，则纯属巧合。
- 前置环境    component version     os ArchLinux 64bit   kernel 4.14.8-1-ARCH   systemd 236.0-2   iproute2 4.14.1-2   iptables disabled       device ip address netmask gateway     eth0 111.111.111.111 255.255.255.0 111.111.111.1   eth1 222.</description>
+      <description>&lt;p&gt;这次就记录一下某个很常见却不常用的功能：Linux 上的策略路由。&lt;br /&gt;
+不同于使用 RHEL、ubuntu 等发行版专用配置文件，本文介绍的主要是使用
+systemd-networkd 服务来配置路由。&lt;br /&gt;
+本文将介绍在同一台服务器上接入两块公网网卡，使这两块网卡分别同时工作的场景。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

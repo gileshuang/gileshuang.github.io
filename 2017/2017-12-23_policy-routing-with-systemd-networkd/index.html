@@ -69,12 +69,12 @@
             
           
           </p>
-          <p>
-
-<p>这次就记录一下某个很常见却不常用的功能：Linux 上的策略路由。<br />
+          <p><p>这次就记录一下某个很常见却不常用的功能：Linux 上的策略路由。<br />
 不同于使用 RHEL、ubuntu 等发行版专用配置文件，本文介绍的主要是使用
 systemd-networkd 服务来配置路由。<br />
 本文将介绍在同一台服务器上接入两块公网网卡，使这两块网卡分别同时工作的场景。</p>
+
+<p></p>
 
 <hr />
 
@@ -346,8 +346,7 @@ PS2：在使用过程中，发现似乎是由于 systemd 的 bug，在已经配�
 且 systemd-networkd 的配置文件语法简洁易懂，仅用多个 section 下的 key-value
 即可配置网络的各项参数和路由规则。</p>
 
-<p>对于<code>.network</code>的更多配置选项，可通过<code>man systemd.network</code>查看相关手册。</p>
-</p>
+<p>对于<code>.network</code>的更多配置选项，可通过<code>man systemd.network</code>查看相关手册。</p></p>
           <p>23 Dec 2017
             
               
