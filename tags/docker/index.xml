@@ -20,9 +20,7 @@
       <guid>https://blog.systemctl.top/2016/2016-06-15_docker-storage-drivers/</guid>
       <description>&lt;p&gt;本文主要介绍了Docker所使用到的几种存储驱动。&lt;/p&gt;
 
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;hr /&gt;</description>
     </item>
     
     <item>
@@ -33,8 +31,7 @@
       <guid>https://blog.systemctl.top/2015/2015-11-06_prepare-for-install-docker-in-rhel_6.2/</guid>
       <description>&lt;p&gt;最近在尝试 docker，据说很高端大气上档次，于是就在空闲的时候开始鼓捣整。&lt;br /&gt;
 壮哉我大 Arch，内核版本都已经是 4.x 了（截至写本文），完全满足 docker 对内核版本的要求
-（推荐 3.16，最低 3.10，据说红帽的 2.6.32-358 以上由于被打了补丁，也能支持 docker）。&lt;br /&gt;
-&lt;/p&gt;</description>
+（推荐 3.16，最低 3.10，据说红帽的 2.6.32-358 以上由于被打了补丁，也能支持 docker）。&lt;/p&gt;</description>
     </item>
     
   </channel>

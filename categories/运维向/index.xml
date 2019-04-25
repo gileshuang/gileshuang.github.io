@@ -21,9 +21,7 @@
       <description>&lt;p&gt;这次就记录一下某个很常见却不常用的功能：Linux 上的策略路由。&lt;br /&gt;
 不同于使用 RHEL、ubuntu 等发行版专用配置文件，本文介绍的主要是使用
 systemd-networkd 服务来配置路由。&lt;br /&gt;
-本文将介绍在同一台服务器上接入两块公网网卡，使这两块网卡分别同时工作的场景。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+本文将介绍在同一台服务器上接入两块公网网卡，使这两块网卡分别同时工作的场景。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -34,9 +32,7 @@ systemd-networkd 服务来配置路由。&lt;br /&gt;
       <guid>https://blog.systemctl.top/2017/2017-09-28_set-proxy-for-git-and-ssh-with-socks5/</guid>
       <description>&lt;p&gt;由于某魔法结界的存在，我们在从某全球最大同性社交网站下载项目源码或者提交代码到该罪恶的社交网站时，
 经常会出现各种异常。那么，我们能不能施展魔法，让我们的 git/ssh 通过魔法上网呢？&lt;br /&gt;
-（本文的配置并不是给浏览器用的，不适合用来给浏览器魔法上网。本文重点在 git/ssh，需要魔法上网的请绕道。）&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+（本文的配置并不是给浏览器用的，不适合用来给浏览器魔法上网。本文重点在 git/ssh，需要魔法上网的请绕道。）&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -51,9 +47,7 @@ systemd-networkd 服务来配置路由。&lt;br /&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;问题起因很简单，今天有学员过来问了这样一个问题：&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;问题起因很简单，今天有学员过来问了这样一个问题：&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -64,9 +58,7 @@ systemd-networkd 服务来配置路由。&lt;br /&gt;
       <guid>https://blog.systemctl.top/2016/2016-06-15_docker-storage-drivers/</guid>
       <description>&lt;p&gt;本文主要介绍了Docker所使用到的几种存储驱动。&lt;/p&gt;
 
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;hr /&gt;</description>
     </item>
     
     <item>
@@ -75,9 +67,7 @@ systemd-networkd 服务来配置路由。&lt;br /&gt;
       <pubDate>Mon, 01 Feb 2016 15:01:13 +0800</pubDate>
       
       <guid>https://blog.systemctl.top/2016/2016-02-01_remember-sed-awk-linux-admins-should/</guid>
-      <description>&lt;p&gt;&lt;font color=red&gt;我们不要让下一代 Linux 和 Unix 的管理员忘记初始化脚本和基本工具的好处&lt;/font&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;font color=red&gt;我们不要让下一代 Linux 和 Unix 的管理员忘记初始化脚本和基本工具的好处&lt;/font&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -89,9 +79,7 @@ systemd-networkd 服务来配置路由。&lt;br /&gt;
       <description>&lt;p&gt;systemd 是 Linux 下的一款系统和服务管理器，兼容 SysV 和 LSB 的启动脚本。
 systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 总线式激活服务；
 按需启动守护进程（daemon）；利用 Linux 的 cgroups 监视进程；支持快照和系统恢复；
-维护挂载点和自动挂载点；各服务间基于依赖关系进行精密控制。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+维护挂载点和自动挂载点；各服务间基于依赖关系进行精密控制。&lt;/p&gt;</description>
     </item>
     
   </channel>
