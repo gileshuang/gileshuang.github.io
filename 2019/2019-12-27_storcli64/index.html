@@ -81,20 +81,20 @@
 <h1 id="heading">示例</h1>
 <p>示例中的默认阵列卡为 /c0</p>
 <h2 id="1">1、查看物理盘信息</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/opt/MegaRAID/storcli/storcli64 /c0 /dall show all
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/opt/MegaRAID/storcli/storcli64 /c0 /dall show all
 </code></pre></div><p>下面命令的 (EID)、(SLT) 可用此命令查到。</p>
 <h2 id="2">2、掉盘重新导入</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/opt/MegaRAID/storcli/storcli64 /c0 /fall import preview
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/opt/MegaRAID/storcli/storcli64 /c0 /fall import preview
 /opt/MegaRAID/storcli/storcli64 /c0 /fall import
 </code></pre></div><h2 id="3">3、清除虚拟盘上的缓存</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/opt/MegaRAID/storcli/storcli64 /c0 show preservedcache
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/opt/MegaRAID/storcli/storcli64 /c0 show preservedcache
 /opt/MegaRAID/storcli/storcli64 /c0 /v<span style="color:#f92672">(</span>VID<span style="color:#f92672">)</span> delete preservedcache
 </code></pre></div><h2 id="4-raid0">4、使用默认参数新建单盘 RAID0</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/opt/MegaRAID/storcli/storcli64 /c0 add vd type<span style="color:#f92672">=</span>raid0 drives<span style="color:#f92672">=</span><span style="color:#f92672">(</span>EID<span style="color:#f92672">)</span>:<span style="color:#f92672">(</span>SLT<span style="color:#f92672">)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/opt/MegaRAID/storcli/storcli64 /c0 add vd type<span style="color:#f92672">=</span>raid0 drives<span style="color:#f92672">=</span><span style="color:#f92672">(</span>EID<span style="color:#f92672">)</span>:<span style="color:#f92672">(</span>SLT<span style="color:#f92672">)</span>
 </code></pre></div><h2 id="5">5、擦除和停止擦除物理盘</h2>
 <p>一般用于，磁盘上已经有了数据，没有故障，但磁盘处于 unconfigured good 状态，却又无法导入。此时可擦除磁盘后重新做阵列。<br>
 擦除完成需要较长时间，一般并不需要完全擦除。开始执行擦除几分钟后，停止擦除，即仅擦除磁盘前面一小段数据，即可正常重新做阵列。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/opt/MegaRAID/storcli/storcli64 /c0 /e<span style="color:#f92672">(</span>EID<span style="color:#f92672">)</span> /s<span style="color:#f92672">(</span>SLT<span style="color:#f92672">)</span> start erase simple
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/opt/MegaRAID/storcli/storcli64 /c0 /e<span style="color:#f92672">(</span>EID<span style="color:#f92672">)</span> /s<span style="color:#f92672">(</span>SLT<span style="color:#f92672">)</span> start erase simple
 /opt/MegaRAID/storcli/storcli64 /c0 /e<span style="color:#f92672">(</span>EID<span style="color:#f92672">)</span> /s<span style="color:#f92672">(</span>SLT<span style="color:#f92672">)</span> stop erase
 </code></pre></div></p>
           <p>27 Dec 2019
