@@ -73,66 +73,55 @@
             
           
           </p>
-          <p><p>本篇记录一下golang中发送一个http请求的基本方法。<br />
+          <p><p>本篇记录一下golang中发送一个http请求的基本方法。<br>
 在本例中，我将尝试向某个URL发送GET请求，并获取其返回的body。</p>
-
-<h5 id="b-开门见山的示例代码-b"><b>开门见山的示例代码</b></h5>
-
-<hr />
-
-<pre><code class="language-go">import (
-	&quot;os&quot;
-	&quot;fmt&quot;
-	&quot;net/http&quot;
-	&quot;io/ioutil&quot;
+<h5 id="bb"><!-- raw HTML omitted -->开门见山的示例代码<!-- raw HTML omitted --></h5>
+<hr>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;os&#34;</span>
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;net/http&#34;</span>
+	<span style="color:#e6db74">&#34;io/ioutil&#34;</span>
 )
 
-func GetHttpBody(str_api string) ([]byte) {
-	const (
-		Http_username = &quot;apiuser&quot;
-		Http_passwd = &quot;apipasswd&quot;
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetHttpBody</span>(<span style="color:#a6e22e">str_api</span> <span style="color:#66d9ef">string</span>) ([]<span style="color:#66d9ef">byte</span>) {
+	<span style="color:#66d9ef">const</span> (
+		<span style="color:#a6e22e">Http_username</span> = <span style="color:#e6db74">&#34;apiuser&#34;</span>
+		<span style="color:#a6e22e">Http_passwd</span> = <span style="color:#e6db74">&#34;apipasswd&#34;</span>
 	)
 
-	client := &amp;http.Client{}
-	req, err_req := http.NewRequest(&quot;GET&quot;, str_api, nil)
-	if err_req != nil {
-		fmt.Println(&quot;Can't add http request.&quot;, err_req)
-		os.Exit(1)
+	<span style="color:#a6e22e">client</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Client</span>{}
+	<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">err_req</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">NewRequest</span>(<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#a6e22e">str_api</span>, <span style="color:#66d9ef">nil</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err_req</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Can&#39;t add http request.&#34;</span>, <span style="color:#a6e22e">err_req</span>)
+		<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">1</span>)
 	}
-	req.Header.Add(&quot;Accept&quot;, &quot;application/json&quot;)
-	req.SetBasicAuth(Http_username, Http_passwd)
+	<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;Accept&#34;</span>, <span style="color:#e6db74">&#34;application/json&#34;</span>)
+	<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">SetBasicAuth</span>(<span style="color:#a6e22e">Http_username</span>, <span style="color:#a6e22e">Http_passwd</span>)
 
-	resp, err_resp := client.Do(req)
-	if err_req != nil {
-		fmt.Println(&quot;Can't get http response.&quot;, err_resp)
-		os.Exit(1)
+	<span style="color:#a6e22e">resp</span>, <span style="color:#a6e22e">err_resp</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">req</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err_req</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Can&#39;t get http response.&#34;</span>, <span style="color:#a6e22e">err_resp</span>)
+		<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">1</span>)
 	}
-	resp_body, _ := ioutil.ReadAll(resp.Body)
-	defer resp.Body.Close()
-	return resp_body
+	<span style="color:#a6e22e">resp_body</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadAll</span>(<span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">Body</span>)
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">resp_body</span>
 }
-</code></pre>
-
-<h5 id="b-为了防止自己不懂-尝试解释一下-b"><b>为了防止自己不懂，尝试解释一下</b></h5>
-
-<hr />
-
+</code></pre></div><h5 id="bb-1"><!-- raw HTML omitted -->为了防止自己不懂，尝试解释一下<!-- raw HTML omitted --></h5>
+<hr>
 <p><em>该实例是将go作为http客户端来用，而不是作为server。</em></p>
-
-<pre><code class="language-go">client := &amp;http.Client{}
-</code></pre>
-
-<p>首先需要创建一个http client。其实我也不知道为什么是这么创建的。创建http客户端的时候，
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">client</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Client</span>{}
+</code></pre></div><p>首先需要创建一个http client。其实我也不知道为什么是这么创建的。创建http客户端的时候，
 还可以控制它的重定向策略等等行为以及其它客户端设置。由于我自己对http协议基本不怎么了解，
-所以就不去深究它还能加哪些控制方法了。<br />
+所以就不去深究它还能加哪些控制方法了。<br>
 接着便是新建一个<code>http.Request</code>。其中<code>http.Request.Header.Add</code>给这个请求添加一条
 http头。<code>http.Request.SetBasicAuth</code>方法用来做基于http协议的、明文密码的基本身份认证。
 <code>http.Request</code>的第一个参数为http请求的方法，第二个参数为请求的URL，如果是<code>POST</code>等
 方法，则可以在第三个参数加上要POST的内容。第三个参数的类型为<code>io.Reader</code>。
 <code>client.DO</code>将上面创建好的请求发送出去，并返回一个<code>http.Response</code>，于是我们就可以通过
-<code>http.Response.Body</code>获取到服务器返回的http body。<br />
+<code>http.Response.Body</code>获取到服务器返回的http body。<br>
 <code>http.Response.Body</code>作为一个<code>io.Reader</code>，记得在读取完成后<code>Close</code>掉。</p>
-
 <p>皆大欢喜皆大欢喜。。。</p></p>
           <p>12 Jan 2016
             
@@ -167,13 +156,13 @@ http头。<code>http.Request.SetBasicAuth</code>方法用来做基于http协议�
     <div class="row">
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.systemctl.top/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/"><i class="mdi-navigation-arrow-back"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.systemctl.top/2015/2015-12-31_debian-founder-and-docker-employee-ian-murdock-has-died-at-42/"><i class="mdi-navigation-arrow-back"></i></a>
       
       </div>
       <div class="col s6 m10 center">&nbsp</div>
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.systemctl.top/2015/2015-12-31_debian-founder-and-docker-employee-ian-murdock-has-died-at-42/"><i class="mdi-navigation-arrow-forward"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.systemctl.top/2016/2016-01-20_linux-101-get-the-most-out-of-systemd/"><i class="mdi-navigation-arrow-forward"></i></a>
       
       </div>
     </div>

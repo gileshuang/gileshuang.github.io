@@ -74,110 +74,82 @@
           
           </p>
           <p><p>不过我知道写得很渣，轻喷。。。</p>
-
 <p>本文的 Markdown 源码可到<a href="https://raw.githubusercontent.com/gileshuang/hugo-build-repo/master/content/post/2015-09-17_markdown-test.md">这里</a>查看。</p>
-
 <p>独立的行中有三个以上的星号，下面应当有一条分割线</p>
-
-<hr />
-
-<h2 id="这是二级标题">这是二级标题</h2>
-
-<h4 id="这是四级标题">这是四级标题</h4>
-
+<hr>
+<h2 id="heading">这是二级标题</h2>
+<h4 id="heading-1">这是四级标题</h4>
 <blockquote>
 <p>这是一个引用,
-然而这里并没有换行。。。<br />
+然而这里并没有换行。。。<br>
 上一句行尾有两个空格，瞧，这里换行了吧～</p>
-
+</blockquote>
 <blockquote>
-<p>引用支持嵌套。然而嵌套的引用应该跟上一级的引用在不同的块，<br />
+<blockquote>
+<p>引用支持嵌套。然而嵌套的引用应该跟上一级的引用在不同的块，<br>
 即，嵌套的引用跟其它级别之间应当用空行分隔开。。。</p>
 </blockquote>
 </blockquote>
-
 <ul>
 <li>无序列表可以用星号</li>
-
-<li><p>这是第二个列表项</p></li>
-
-<li><p>也可以用加号</p></li>
-
-<li><p>然而列表并不起作用</p></li>
-
-<li><p>也可以用减号</p></li>
-
-<li><p>然而三种无序列表都没有作用。。。</p></li>
+<li>这是第二个列表项</li>
 </ul>
-
+<ul>
+<li>也可以用加号</li>
+<li>然而列表并不起作用</li>
+</ul>
+<ul>
+<li>也可以用减号</li>
+<li>然而三种无序列表都没有作用。。。</li>
+</ul>
 <ol>
 <li>数字加英文句号是有序列表</li>
 <li>然而有序列表貌似没什么卵用</li>
 </ol>
-
 <p>下面是代码段</p>
-
-<pre><code class="language-bash">#!/bin/bash
-echo &quot;hello markdown&quot;
-</code></pre>
-
-<p>行首有四个空格或者tab，也应当是一个代码段。这种方式的代码段前后应当有空行</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>echo <span style="color:#e6db74">&#34;hello markdown&#34;</span>
+</code></pre></div><p>行首有四个空格或者tab，也应当是一个代码段。这种方式的代码段前后应当有空行</p>
 <pre><code>#!/bin/bash
 echo &quot;hello world&quot;
 </code></pre>
-
 <p>由于本主题的高亮实在有问题，我从 purehugo 主题取了一个 syntax-highlighter.css 样式表过来，才勉强给代码段周围加上框框，但依旧没有解决语法高亮的问题。。。包括各种列表样式不准确等等，总之问题多多。。。</p>
-
-<p>单星号 = <em>斜体</em><br />
-单下划线 = <em>斜体</em><br />
-双星号 = <strong>加粗</strong><br />
-双下划线 = <strong>加粗</strong><br />
-<b>加粗就是不生效。。。看我来一段HTML格式的加粗</b></p>
-
-<p>这是InLine风格的<a href="https://github.com/" title="这是可选标题">链接</a><br />
-这是Reference风格的<a href="https://github.com/" title="这是可选标题">链接</a>。</p>
-
-<p>这是InLine风格的图片示例：<img src="/images/logo.jpg" alt="替代文本" title="可选标题" /><br />
-这是Reference风格的图片示例：<img src="/images/logo.jpg" alt="替代文本" title="可选标题" /></p>
-
-<p>这是HTML风格的图片示例：<img src="/images/logo.jpg" alt="替代文本" title=“可选标题” width=200 /></p>
-
-<h4 id="其它">其它</h4>
-
-<h5 id="自动链接">自动链接：</h5>
-
+<p>单星号 = <em>斜体</em><br>
+单下划线 = <em>斜体</em><br>
+双星号 = <strong>加粗</strong><br>
+双下划线 = <strong>加粗</strong><br>
+<!-- raw HTML omitted -->加粗就是不生效。。。看我来一段HTML格式的加粗<!-- raw HTML omitted --></p>
+<p>这是InLine风格的<a href="https://github.com/" title="这是可选标题">链接</a><br>
+这是Reference风格的[链接][ref]。
+[ref]: <a href="https://github.com/">https://github.com/</a> (这是可选标题)</p>
+<p>这是InLine风格的图片示例：<img src="/images/logo.jpg" alt="替代文本" title="可选标题"><br>
+这是Reference风格的图片示例：![替代文本][pic]
+[pic]: /images/logo.jpg (可选标题)
+这是HTML风格的图片示例：<!-- raw HTML omitted --></p>
+<h4 id="heading-2">其它</h4>
+<h5 id="heading-3">自动链接：</h5>
 <p>使用尖括号，可以为邮箱地址或者链接创建自动链接，比如这个：<a href="https://github.com/">https://github.com/</a></p>
-
-<h5 id="分隔线">分隔线</h5>
-
+<h5 id="heading-4">分隔线</h5>
 <p>在一行中使用三个或三个以上的*、-或_可以添加分隔线，其中可以有空白，但是不能有其他字符。</p>
-
-<h5 id="转义字符">转义字符</h5>
-
-<p>Markdown中的转义字符为\，可以转义的有：<br />
-    \\ 反斜杠<br />
-    \` 反引号<br />
-    \* 星号<br />
-    \_ 下划线<br />
-    \{\} 大括号<br />
-    \[\] 中括号<br />
-    \(\) 小括号<br />
-    \# 井号<br />
-    \+ 加号<br />
-    \- 减号<br />
-    \. 英文句号<br />
-    \! 感叹号</p>
-
-<h5 id="表格">表格</h5>
-
-<pre><code class="language-markdown">| 表格标题1 | 表格标题2 | 表格标题3 |
+<h5 id="heading-5">转义字符</h5>
+<p>Markdown中的转义字符为\，可以转义的有：<br>
+\\ 反斜杠<br>
+\` 反引号<br>
+\* 星号<br>
+\_ 下划线<br>
+\{\} 大括号<br>
+\[\] 中括号<br>
+\(\) 小括号<br>
+\# 井号<br>
+\+ 加号<br>
+\- 减号<br>
+\. 英文句号<br>
+\! 感叹号</p>
+<h5 id="heading-6">表格</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">| 表格标题1 | 表格标题2 | 表格标题3 |
 | :------ | :------: | ------: |
 | 表格内容1 | 表格内容2 | 表格内容3 |
-</code></pre>
-
-<p>预览效果：</p>
-
+</code></pre></div><p>预览效果：</p>
 <table>
 <thead>
 <tr>
@@ -186,7 +158,6 @@ echo &quot;hello world&quot;
 <th align="right">表格标题3</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">表格内容1</td>
@@ -228,13 +199,13 @@ echo &quot;hello world&quot;
     <div class="row">
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.systemctl.top/2015/2015-09-20_using-class-like-cpp-in-golang/"><i class="mdi-navigation-arrow-back"></i></a>
+        <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-back"></i></a>
       
       </div>
       <div class="col s6 m10 center">&nbsp</div>
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-forward"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.systemctl.top/2015/2015-09-20_using-class-like-cpp-in-golang/"><i class="mdi-navigation-arrow-forward"></i></a>
       
       </div>
     </div>

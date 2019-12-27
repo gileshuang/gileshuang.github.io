@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Systemd on 黄家垚的主页</title>
+    <title>systemd on 黄家垚的主页</title>
     <link>https://blog.systemctl.top/tags/systemd/</link>
-    <description>Recent content in Systemd on 黄家垚的主页</description>
+    <description>Recent content in systemd on 黄家垚的主页</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2015 Copyleft Text</copyright>

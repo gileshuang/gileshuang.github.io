@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 黄家垚的主页</title>
@@ -7,9 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2015 Copyleft Text</copyright>
+    <lastBuildDate>Fri, 27 Dec 2019 18:21:54 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.systemctl.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>运维向</title>
+      <link>https://blog.systemctl.top/categories/%E8%BF%90%E7%BB%B4%E5%90%91/</link>
+      <pubDate>Fri, 27 Dec 2019 18:21:54 +0800</pubDate>
+      
+      <guid>https://blog.systemctl.top/categories/%E8%BF%90%E7%BB%B4%E5%90%91/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>小事记</title>
@@ -17,15 +27,6 @@
       <pubDate>Mon, 04 Jun 2018 09:56:58 +0800</pubDate>
       
       <guid>https://blog.systemctl.top/categories/%E5%B0%8F%E4%BA%8B%E8%AE%B0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>新闻</title>
-      <link>https://blog.systemctl.top/categories/%E6%96%B0%E9%97%BB/</link>
-      <pubDate>Thu, 31 Dec 2015 13:14:38 +0800</pubDate>
-      
-      <guid>https://blog.systemctl.top/categories/%E6%96%B0%E9%97%BB/</guid>
       <description></description>
     </item>
     
@@ -39,11 +40,11 @@
     </item>
     
     <item>
-      <title>运维向</title>
-      <link>https://blog.systemctl.top/categories/%E8%BF%90%E7%BB%B4%E5%90%91/</link>
-      <pubDate>Sat, 23 Dec 2017 15:04:05 +0800</pubDate>
+      <title>新闻</title>
+      <link>https://blog.systemctl.top/categories/%E6%96%B0%E9%97%BB/</link>
+      <pubDate>Thu, 31 Dec 2015 13:14:38 +0800</pubDate>
       
-      <guid>https://blog.systemctl.top/categories/%E8%BF%90%E7%BB%B4%E5%90%91/</guid>
+      <guid>https://blog.systemctl.top/categories/%E6%96%B0%E9%97%BB/</guid>
       <description></description>
     </item>
     
