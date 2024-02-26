@@ -4,20 +4,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>golang中对slice切片进行append时的内存拷贝</title>
-  <link href="https://blog.systemctl.top/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <style type="text/css">
   
-    footer.page-footer{background-image: url(https://blog.systemctl.top/images/default.png);}
+    footer.page-footer{background-image: url(https://blog.systemctl.top//images/default.png);}
   
   </style>
 </head>
 <body>
   <ul id="slide-out" class="side-nav">
-    <li><a href="https://blog.systemctl.top"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
   </ul>
   <div id="index-banner" class="parallax-container">
   <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
@@ -30,29 +30,29 @@
         </div>
         <div class="row center">
         
-          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top/images/github2-dreamstale35.png"></a>
+          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top//images/github2-dreamstale35.png"></a>
         
         
-          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top/images/weibo-dreamstale55.png"></a>
+          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top//images/weibo-dreamstale55.png"></a>
         
         
-          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top/images/gitosc-dreamstale55.png"></a>
+          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top//images/gitosc-dreamstale55.png"></a>
         
         
-          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top/images/facebook-dreamstale25.png"></a>
+          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top//images/facebook-dreamstale25.png"></a>
         
         
-          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top/images/twitter-dreamstale71.png"></a>
+          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top//images/twitter-dreamstale71.png"></a>
         
         
         
-          <a href="https://blog.systemctl.top/index.xml"><img src="https://blog.systemctl.top/images/feed-dreamstale27.png"></a>
+          <a href="https://blog.systemctl.top//index.xml"><img src="https://blog.systemctl.top//images/feed-dreamstale27.png"></a>
         </div>
       </div>
     </div>
     <div class="parallax">
     
-      <img src="https://blog.systemctl.top/images/default.png">
+      <img src="https://blog.systemctl.top//images/default.png">
     
     </div>
   </div>
@@ -69,7 +69,7 @@
           <p>
           
             
-              <a href="https://blog.systemctl.top/categories/%E7%A0%81%E5%86%9C%E5%90%91/">码农向</a>
+              <a href="https://blog.systemctl.top//categories/%E7%A0%81%E5%86%9C%E5%90%91/">码农向</a>
             
           
           </p>
@@ -77,7 +77,7 @@
 之所以说它神奇，是因为它是有容量的，因此对于熟悉C语言的用户而言，
 很难在C语言中找到一个跟slice对应的数据结构。<br>
 本文不对slice的众多特性进行说明，只谈论跟其append操作相关的内容。</p>
-<h5 id="bsliceb"><!-- raw HTML omitted -->Slice的长度与容量<!-- raw HTML omitted --></h5>
+<h5 id="bslice的长度与容量b"><!-- raw HTML omitted -->Slice的长度与容量<!-- raw HTML omitted --></h5>
 <hr>
 <p>数组切片 slice 本质上还是基于数组实现的，大概可以抽象为：一个指向原生数组的指针；
 数组切片中的元素个数；数组切片已分配的存储空间。<br>
@@ -89,11 +89,11 @@
 （capacity，用<code>cap()</code>函数获取）。Slice 的长度表示该 slice 中已经存放了多少个元素，
 而容量则表示该 slice 已经分配了足以存放多少元素的空间。<br>
 我们可以用一下方法创建一个长度为 4、可容量为 8、用于存放 int 类型元素的 slice：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sliceA</span> []<span style="color:#66d9ef">int</span> = make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>)
-</code></pre></div><p>当我们不指定 make() 的第三个参数 cap 时，切片容量默认等于初始长度，如以下方法可
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sliceA</span> []<span style="color:#66d9ef">int</span> = make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>)
+</span></span></code></pre></div><p>当我们不指定 make() 的第三个参数 cap 时，切片容量默认等于初始长度，如以下方法可
 创建一个长度和容量都为 8 的 slice：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sliceB</span> []<span style="color:#66d9ef">int</span> = make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">8</span>)
-</code></pre></div><h5 id="b-append-b"><!-- raw HTML omitted -->使用 append() 方法添加元素<!-- raw HTML omitted --></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sliceB</span> []<span style="color:#66d9ef">int</span> = make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">8</span>)
+</span></span></code></pre></div><h5 id="b使用-append-方法添加元素b"><!-- raw HTML omitted -->使用 append() 方法添加元素<!-- raw HTML omitted --></h5>
 <hr>
 <p>前面说过 slice 是可变长度的，我们可以利用 append() 函数来为 slice 增加元素。<br>
 <em>前面也说过，本文只讨论 append() 方法，不讨论取子切片、copy() 等其它操作。</em><br>
@@ -112,51 +112,51 @@ append() 在为 slice 增加容量的时候，会创建新的 slice，然后把<
 拷贝过去，拷贝了过去<!-- raw HTML omitted -->，因为我掉到过这个坑，所以还是要说三遍。。。<br>
 也就是说，不管你对已存在的数据有没有进行修改，它都要拷贝一遍。如果你认为这个拷贝操作
 仅仅是多消耗了一些性能的话，那我们看看下面的例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-
-<span style="color:#f92672">import</span> (
-	<span style="color:#e6db74">&#34;fmt&#34;</span>
-	<span style="color:#e6db74">&#34;time&#34;</span>
-)
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">StructClass</span> <span style="color:#66d9ef">struct</span> {
-	<span style="color:#a6e22e">id</span> <span style="color:#66d9ef">int</span>
-}
-
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">this</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">StructClass</span>) <span style="color:#a6e22e">SetID</span>(<span style="color:#a6e22e">newid</span> <span style="color:#66d9ef">int</span>) {
-	<span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">id</span> = <span style="color:#a6e22e">newid</span>
-}
-
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">this</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">StructClass</span>) <span style="color:#a6e22e">PrintID</span>() {
-	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
-		<span style="color:#66d9ef">for</span> {
-			<span style="color:#75715e">// 每秒输出一次 id 值。
-</span><span style="color:#75715e"></span>			<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1</span>)
-			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">id</span>)
-		}
-	} ()
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-	<span style="color:#66d9ef">var</span> (
-		<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">0</span>
-		<span style="color:#a6e22e">pool</span> []<span style="color:#a6e22e">StructClass</span> = make([]<span style="color:#a6e22e">StructClass</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>)
-	)
-	<span style="color:#a6e22e">pool</span> = append(<span style="color:#a6e22e">pool</span>, <span style="color:#a6e22e">StructClass</span>{})
-	<span style="color:#75715e">// 这里将 pool[0] 的 id 设置成 1 了。
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">SetID</span>(<span style="color:#ae81ff">1</span>)
-	<span style="color:#75715e">// 启动一个 goroutine，反复输出 pool[0] 的 id。
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">PrintID</span>()
-
-	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>)
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> = <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span> = <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> {
-		<span style="color:#a6e22e">pool</span> = append(<span style="color:#a6e22e">pool</span>, <span style="color:#a6e22e">StructClass</span>{})
-	}
-	<span style="color:#75715e">// 请注意此时 pool[0] 的 id 被设置成了 2。
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">SetID</span>(<span style="color:#ae81ff">2</span>)
-	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>)
-}
-</code></pre></div><p>我们先来分析一下程序应该怎么运行。<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">StructClass</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">id</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">this</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">StructClass</span>) <span style="color:#a6e22e">SetID</span>(<span style="color:#a6e22e">newid</span> <span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">id</span> = <span style="color:#a6e22e">newid</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">this</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">StructClass</span>) <span style="color:#a6e22e">PrintID</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// 每秒输出一次 id 值。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">this</span>.<span style="color:#a6e22e">id</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	} ()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> (
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">pool</span> []<span style="color:#a6e22e">StructClass</span> = make([]<span style="color:#a6e22e">StructClass</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>	)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">pool</span> = append(<span style="color:#a6e22e">pool</span>, <span style="color:#a6e22e">StructClass</span>{})
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 这里将 pool[0] 的 id 设置成 1 了。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">SetID</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 启动一个 goroutine，反复输出 pool[0] 的 id。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">PrintID</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> = <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span> = <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">pool</span> = append(<span style="color:#a6e22e">pool</span>, <span style="color:#a6e22e">StructClass</span>{})
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 请注意此时 pool[0] 的 id 被设置成了 2。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">SetID</span>(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>我们先来分析一下程序应该怎么运行。<br>
 首先创建了一个容量为 4，长度为 0 的 slice，该 slice 的每个元素都是一个封装了
 一个 goroutine 的结构体。至于怎么制造这么一个结构体，
 请参考<a href="/2015/2015-09-20_using-class-like-cpp-in-golang/">《在golang中使用C++风格的类》</a>一文。
@@ -173,40 +173,40 @@ append() 在为 slice 增加容量的时候，会创建新的 slice，然后把<
 定义都拷贝过去了，但正在运行的 goroutine 并不属于数据，因此本例中的那个正在运行
 的 goroutine 还傻傻地去原来的地方读取 id 值（注意，此处读取 id 用的是指向结构体的指针，
 该指针还是指向原来的数据）。</p>
-<h5 id="bb"><!-- raw HTML omitted -->代码修正<!-- raw HTML omitted --></h5>
+<h5 id="b代码修正b"><!-- raw HTML omitted -->代码修正<!-- raw HTML omitted --></h5>
 <hr>
 <p>既然我们知道了引发问题的原因，那事情也就好解决了。<br>
 我们只需在创建 slice 的时候，往里面存放指向 StructClass 的指针，而不是直接
 存放 StructClass 结构体就行了。
 上述代码其它部分保持不变，将<code>main</code>函数修改为如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-	<span style="color:#66d9ef">var</span> (
-		<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">0</span>
-		<span style="color:#a6e22e">pool</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">StructClass</span> = make([]<span style="color:#f92672">*</span><span style="color:#a6e22e">StructClass</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>)	<span style="color:#75715e">// 改了这行
-</span><span style="color:#75715e"></span>	)
-	<span style="color:#a6e22e">pool</span> = append(<span style="color:#a6e22e">pool</span>, new(<span style="color:#a6e22e">StructClass</span>))	<span style="color:#75715e">// 还有这行
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// 这里将 pool[0] 的 id 设置成 1 了。
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">SetID</span>(<span style="color:#ae81ff">1</span>)
-	<span style="color:#75715e">// 启动一个 goroutine，反复输出 pool[0] 的 id。
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">PrintID</span>()
-
-	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>)
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> = <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span> = <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> {
-		<span style="color:#a6e22e">pool</span> = append(<span style="color:#a6e22e">pool</span>, new(<span style="color:#a6e22e">StructClass</span>))	<span style="color:#75715e">// 还有这行
-</span><span style="color:#75715e"></span>	}
-	<span style="color:#75715e">// 请注意此时 pool[0] 的 id 被设置成了 2。
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">SetID</span>(<span style="color:#ae81ff">2</span>)
-	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>)
-}
-</code></pre></div><p>因为我懒，所以上述代码的运行结果我都懒得贴了。感兴趣的可以自己测试一下，修改后
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> (
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">pool</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">StructClass</span> = make([]<span style="color:#f92672">*</span><span style="color:#a6e22e">StructClass</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>)	<span style="color:#75715e">// 改了这行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">pool</span> = append(<span style="color:#a6e22e">pool</span>, new(<span style="color:#a6e22e">StructClass</span>))	<span style="color:#75715e">// 还有这行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// 这里将 pool[0] 的 id 设置成 1 了。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">SetID</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 启动一个 goroutine，反复输出 pool[0] 的 id。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">PrintID</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> = <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span> = <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">pool</span> = append(<span style="color:#a6e22e">pool</span>, new(<span style="color:#a6e22e">StructClass</span>))	<span style="color:#75715e">// 还有这行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 请注意此时 pool[0] 的 id 被设置成了 2。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pool</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">SetID</span>(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>因为我懒，所以上述代码的运行结果我都懒得贴了。感兴趣的可以自己测试一下，修改后
 的代码正如我们期望的那样，先输出1，五秒后输出2。<br>
 若 slice 存放的是指针，那在 append() 进行拷贝操作的时候，只是将指针的指向的地址拷贝过去，
 <code>pool[0].SetID(2)</code>语句修改的 id 和<code>pool[0].PrintID()</code>取的 id 引用的地址始终是不变的。</p>
-<h4 id="t-t">所以说，谁说带垃圾回收的语言不用考虑指针T_T</h4></p>
+<h4 id="所以说谁说带垃圾回收的语言不用考虑指针t_t">所以说，谁说带垃圾回收的语言不用考虑指针T_T</h4></p>
           <p>25 Sep 2015
             
               
-                <a href="https://blog.systemctl.top/tags/golang/">#golang</a>
+                <a href="https://blog.systemctl.top//tags/golang/">#golang</a>
               
             
           </p>
@@ -259,10 +259,10 @@ append() 在为 slice 增加容量的时候，会创建新的 slice，然后把<
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://blog.systemctl.top/js/canvas-nest.min.1.0.1.js"></script>
-  <script src="https://blog.systemctl.top/js/init.js"></script>
-  <script src="https://blog.systemctl.top/js/highlight.pack.js"></script>
-  <script src="https://blog.systemctl.top/js/materialize.min.js"></script>
+  <script src="https://blog.systemctl.top//js/canvas-nest.min.1.0.1.js"></script>
+  <script src="https://blog.systemctl.top//js/init.js"></script>
+  <script src="https://blog.systemctl.top//js/highlight.pack.js"></script>
+  <script src="https://blog.systemctl.top//js/materialize.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 

@@ -4,20 +4,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>[转载]由lsattr -I -e 文件扩展属性引发的一系列事情</title>
-  <link href="https://blog.systemctl.top/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <style type="text/css">
   
-    footer.page-footer{background-image: url(https://blog.systemctl.top/images/default.png);}
+    footer.page-footer{background-image: url(https://blog.systemctl.top//images/default.png);}
   
   </style>
 </head>
 <body>
   <ul id="slide-out" class="side-nav">
-    <li><a href="https://blog.systemctl.top"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
   </ul>
   <div id="index-banner" class="parallax-container">
   <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
@@ -30,29 +30,29 @@
         </div>
         <div class="row center">
         
-          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top/images/github2-dreamstale35.png"></a>
+          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top//images/github2-dreamstale35.png"></a>
         
         
-          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top/images/weibo-dreamstale55.png"></a>
+          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top//images/weibo-dreamstale55.png"></a>
         
         
-          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top/images/gitosc-dreamstale55.png"></a>
+          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top//images/gitosc-dreamstale55.png"></a>
         
         
-          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top/images/facebook-dreamstale25.png"></a>
+          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top//images/facebook-dreamstale25.png"></a>
         
         
-          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top/images/twitter-dreamstale71.png"></a>
+          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top//images/twitter-dreamstale71.png"></a>
         
         
         
-          <a href="https://blog.systemctl.top/index.xml"><img src="https://blog.systemctl.top/images/feed-dreamstale27.png"></a>
+          <a href="https://blog.systemctl.top//index.xml"><img src="https://blog.systemctl.top//images/feed-dreamstale27.png"></a>
         </div>
       </div>
     </div>
     <div class="parallax">
     
-      <img src="https://blog.systemctl.top/images/default.png">
+      <img src="https://blog.systemctl.top//images/default.png">
     
     </div>
   </div>
@@ -69,7 +69,7 @@
           <p>
           
             
-              <a href="https://blog.systemctl.top/categories/%E8%BF%90%E7%BB%B4%E5%90%91/">运维向</a>
+              <a href="https://blog.systemctl.top//categories/%E8%BF%90%E7%BB%B4%E5%90%91/">运维向</a>
             
           
           </p>
@@ -79,53 +79,53 @@
 <hr>
 <p>问题起因很简单，今天有学员过来问了这样一个问题：</p>
 <p><img src="/images/something-about-lsattr_-I_-e/01.jpg" alt="lsattr /usr/"></p>
-<h3 id="1-ei">1. 如图<code>e</code>是什么?<code>I</code>又代表什么?</h3>
+<h3 id="1-如图e是什么i又代表什么">1. 如图<code>e</code>是什么?<code>I</code>又代表什么?</h3>
 <p>这个问题我觉得不是个难问题，简单man下就出来了，可问题来了，更多的系列问题更是随之而来…</p>
 <blockquote>
 <p>man lsattr</p>
 </blockquote>
 <p>返回的全文如下：</p>
-<pre><code class="language-man" data-lang="man">LSATTR(1)                  General Commands Manual                 LSATTR(1)
-
-NAME
-       lsattr - list file attributes on a Linux second extended file system
-
-SYNOPSIS
-       lsattr [ -RVadv ] [ files...  ]
-
-DESCRIPTION
-       lsattr  lists  the  file attributes on a second extended file system.
-       See chattr(1) for a description of the attributes and what they mean.
-
-OPTIONS
-       -R     Recursively list attributes of directories and their contents.
-
-       -V     Display the program version.
-
-       -a     List all files in directories, including files that start with
-              `.'.
-
-       -d     List  directories  like other files, rather than listing their
-              contents.
-
-       -v     List the file's version/generation number.
-
-AUTHOR
-       lsattr was written by Remy Card .   It  is  cur‐
-       rently being maintained by Theodore Ts'o .
-
-BUGS
-       There are none :-).
-
-AVAILABILITY
-       lsattr  is  part  of  the  e2fsprogs  package  and  is available from
-       http://e2fsprogs.sourceforge.net.
-
-SEE ALSO
-       chattr(1)
-
-E2fsprogs version 1.42.9        December 2013                      LSATTR(1)
-</code></pre><p>没有任何关于<code>-I -e</code>属性的介绍，好在</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-man" data-lang="man"><span style="display:flex;"><span>LSATTR(1)                  General Commands Manual                 LSATTR(1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME
+</span></span><span style="display:flex;"><span>       lsattr - list file attributes on a Linux second extended file system
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SYNOPSIS
+</span></span><span style="display:flex;"><span>       lsattr [ -RVadv ] [ files...  ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DESCRIPTION
+</span></span><span style="display:flex;"><span>       lsattr  lists  the  file attributes on a second extended file system.
+</span></span><span style="display:flex;"><span>       See chattr(1) for a description of the attributes and what they mean.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>OPTIONS
+</span></span><span style="display:flex;"><span>       -R     Recursively list attributes of directories and their contents.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       -V     Display the program version.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       -a     List all files in directories, including files that start with
+</span></span><span style="display:flex;"><span>              `.&#39;.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       -d     List  directories  like other files, rather than listing their
+</span></span><span style="display:flex;"><span>              contents.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       -v     List the file&#39;s version/generation number.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AUTHOR
+</span></span><span style="display:flex;"><span>       lsattr was written by Remy Card .   It  is  cur‐
+</span></span><span style="display:flex;"><span>       rently being maintained by Theodore Ts&#39;o .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>BUGS
+</span></span><span style="display:flex;"><span>       There are none :-).
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AVAILABILITY
+</span></span><span style="display:flex;"><span>       lsattr  is  part  of  the  e2fsprogs  package  and  is available from
+</span></span><span style="display:flex;"><span>       http://e2fsprogs.sourceforge.net.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SEE ALSO
+</span></span><span style="display:flex;"><span>       chattr(1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>E2fsprogs version 1.42.9        December 2013                      LSATTR(1)
+</span></span></code></pre></div><p>没有任何关于<code>-I -e</code>属性的介绍，好在</p>
 <blockquote>
 <p>lsattr  lists  the  file  attributes  on  a second extended file system.  See
 chattr(1) for a description of the attributes and what they mean.</p>
@@ -153,7 +153,7 @@ chattr(1) for a description of the attributes and what they mean.</p>
 <p><img src="/images/something-about-lsattr_-I_-e/02.jpg" alt="chattr"></p>
 <p>如上图是从<a href="">wiki百科</a>抓出来的，man文档中介绍的并没有如此详细，期间有一段曲折过程去理解，试验和找文档如何正确这些英文。
 问题来了，</p>
-<pre><code>&gt; -e 的解释是`The e attribute indicates that the file is using extents for mapping the blocks on disk.`
+<pre tabindex="0"><code>&gt; -e 的解释是`The e attribute indicates that the file is using extents for mapping the blocks on disk.`
 &gt; -I 的解释是`The I attribute is used by the htree program code to indicate that a directory is being indexed using hashed trees.`
 </code></pre><p>不知道各位有看懂的嘛，我是没看懂，字面意思相信都不难理解，4级不过懂英文的都不成问题，
 关键的问题这里的专业术语太多，涉及的其它知识点太多，请雅思6级的帮忙也是捉瞎。
@@ -168,17 +168,17 @@ using hashed trees被引用？</p>
 <p>关于这些问题，第一思路还是google，但随着工作时间的积累，从中文网站能获取的知识是越来越少了，
 这次也再次验证了这样的问题。不谈创新，国内文档的依然只有一个字：<em>抄</em>~~，
 几番折腾下来除了浪费时间没有其它再大收获。如下是国内文档获取的lsattr和chattr的相关信息：</p>
-<h4 id="11-1">1.1 有用的文档1</h4>
-<h5 id="chattrlsattr">关于chattr和lsattr的解释说明</h5>
+<h4 id="11-有用的文档1">1.1 有用的文档1</h4>
+<h5 id="关于chattr和lsattr的解释说明">关于chattr和lsattr的解释说明</h5>
 <p>lsattr：查看特殊权限
 chattr：在EXT2文件系统上改变文件属性</p>
-<h5 id="heading">用法</h5>
-<pre><code>chattr  [+-=]  [ASacdistu]  [文件或目录名称]
+<h5 id="用法">用法</h5>
+<pre tabindex="0"><code>chattr  [+-=]  [ASacdistu]  [文件或目录名称]
 </code></pre><p>chattr 改变EXT2文件系统上的一个文件的属性
 参数符号格式是 <code>+-=[acdeijstuADST]</code>
 操作符  <code>'+'</code>  表示将选中的属性增加到指定的文件上; <code>'-'</code> 则表示删除该属性;<code>'='</code> 表示文件仅仅设置指定的属性</p>
-<h5 id="heading-1">参数说明：</h5>
-<pre><code>    +-=：分别是”+”(增加)、”-“(减少)、”=”(设定)属性
+<h5 id="参数说明">参数说明：</h5>
+<pre tabindex="0"><code>    +-=：分别是”+”(增加)、”-“(减少)、”=”(设定)属性
     A：当设定了属性A，这个文件（或目录）的存取时间atime(access)将不可被修改，可避免诸如手提电脑容易产生磁盘I/* O错误的情况；
     S：这个功能有点类似sync，是将数据同步写入磁盘中，可以有效避免数据流失；
     a：设定a后，这个文件将只能增加数据而不能删除，只有root才能设定这个属性；
@@ -193,10 +193,10 @@ chattr：在EXT2文件系统上改变文件属性</p>
     索引目录(I),
     压缩的原始访问?(X),
     和压缩的零碎文件(Z).
-</code></pre><h4 id="12-2">1.2 有用的文档2</h4>
+</code></pre><h4 id="12-有用的文档2">1.2 有用的文档2</h4>
 <p><a href="http://serverfault.com/questions/400026/linux-ext4-extents-attribute">http://serverfault.com/questions/400026/linux-ext4-extents-attribute</a>
 serverfault上部分关于这个问题的解答算是较为详细清晰的解释，但离真相还是差的太远</p>
-<h5 id="heading-2">问题描述</h5>
+<h5 id="问题描述">问题描述</h5>
 <blockquote>
 <p>I noticed the <code>e</code> attribute on several files/directories on Linux machines installed on ext4 filesystems.</p>
 <pre><code>[kelly@p2820887.pubip.serverbeach.com ~]$ lsattr -d /bin
@@ -214,16 +214,16 @@ my behavior based on the knowledge that this file “is using extents for
 mapping the blocks on disk”? Presumably this is something I need to know,
 otherwise it wouldn’t be made so obvious, right?</p>
 </blockquote>
-<h5 id="heading-3">回复如下</h5>
+<h5 id="回复如下">回复如下</h5>
 <blockquote>
 <p>I think the extent flag is exposed as an attribute mainly so that you can <em>set</em>
 it with <code>chattr</code>, which will cause the ext4 driver to reallocate the file using
-extents instead of block lists. If you've converted an existing ext3 filesystem
-to ext4 (by using <code>tune2fs</code> to enable the new feature flags), you'll probably
+extents instead of block lists. If you&rsquo;ve converted an existing ext3 filesystem
+to ext4 (by using <code>tune2fs</code> to enable the new feature flags), you&rsquo;ll probably
 want to convert the existing files to use extents, and this is the way to do it.</p>
 <p>Newly-created files on an ext4 filesystem always use extents (as far as I know),
 so if your filesystem was created as ext4 (as opposed to converted from ext3),
-everything should have the extent attribute already so you don't need to worry
+everything should have the extent attribute already so you don&rsquo;t need to worry
 about it.</p>
 <p>See <a href="http://www.debian-administration.org/articles/643">this article</a> for
 more information.</p>
@@ -242,11 +242,11 @@ mapping the blocks on disk.  It may not be removed using <code>chattr</code>.<br
 我不停的看到关于文件系统的关键字样，也幸亏当时没有放弃忽略这样的关键字。
 顺着<code>linux filesystem</code>同时扩展到<code>ext2 ext3 ntfs xfs jfs</code>等关键字搜索，
 终于离真相一步上近了。先来看下如下几段文字 ：</p>
-<h3 id="2-">2. 柳暗花明</h3>
-<h4 id="21-systems-support-extentsextents">2.1 systems support extents（文件系统对extents的支持度）</h4>
-<pre><code>ASM - Automatic Storage Management - Oracle's database-oriented filesystem.
+<h3 id="2-柳暗花明">2. 柳暗花明</h3>
+<h4 id="21-systems-support-extents文件系统对extents的支持度">2.1 systems support extents（文件系统对extents的支持度）</h4>
+<pre tabindex="0"><code>ASM - Automatic Storage Management - Oracle&#39;s database-oriented filesystem.
 BFS - BeOS, Zeta and Haiku operating systems.
-Btrfs - GPL'd extent based file storage (16PiB/264 max file size).
+Btrfs - GPL&#39;d extent based file storage (16PiB/264 max file size).
 Ext4 - Linux filesystem (when the configuration enables extents — the default in Linux since version 2.6.23).
 Files-11 - Digital Equipment Corporation (subsequently Hewlett-Packard) OpenVMS filesystem.
 HFS and HFS Plus - Hierarchical File System - Apple Macintosh filesystems.
@@ -254,13 +254,13 @@ HPFS - High Performance File Syzstem - OS/2 and eComStation.
 JFS - Journaled File System - Used by AIX, OS/2/eComStation and Linux operating systems.
 Microsoft SQL Server - Versions 2000-2008 supports extents of up to 64KB [1].
 Multi-Programming Executive - Filesystem by Hewlett-Packard.
-NTFS - Microsoft's latest-generation file system [1]
-Reiser4 - Linux filesystem (in &quot;extents&quot; mode).
+NTFS - Microsoft&#39;s latest-generation file system [1]
+Reiser4 - Linux filesystem (in &#34;extents&#34; mode).
 SINTRAN III - File system used by early computer company Norsk Data.
 UDF - Universal Disk Format - Standard for optical media.
 VERITAS File System - Enabled via the pre-allocation API and CLI.
-XFS - SGI's second generation file system.[2]
-</code></pre><h4 id="22-">2.2 顺藤摸瓜再搜索文件系统的相关信息</h4>
+XFS - SGI&#39;s second generation file system.[2]
+</code></pre><h4 id="22-顺藤摸瓜再搜索文件系统的相关信息">2.2 顺藤摸瓜再搜索文件系统的相关信息</h4>
 <p>除ext2外其它常见的文件系统，如ext3 ext4 NTFS 等都是日志型文件系统，
 所谓日志型文件系统即所有有行为会记录在磁盘，系统默认会预留一些空间来记录的操作行为，
 当系统不正常关机再开机时，不需要全盘扫描来恢复至系统正常状态。</p>
@@ -356,13 +356,13 @@ IBM AIX服务器在很多金融机构上使用，所以稳定性是沒话說的�
 而它最重要的特色是在处理文件I/O的时候是所有文件系统里面最不佔CPU资源的，也就是CPU使用率最低。
 而且在这樣节省使用CPU的情況下，它的效率表现还有中上以上的程度。</li>
 </ul>
-<h4 id="23-ext3ext3">2.3 ext3的性能这么低为什么当时绝大多数系统默认使用ext3</h4>
+<h4 id="23-ext3的性能这么低为什么当时绝大多数系统默认使用ext3">2.3 ext3的性能这么低为什么当时绝大多数系统默认使用ext3</h4>
 <p>虽然Ext3性能不好(在日誌型文件系统中效率上算是最糟糕的) ，那为何还有那麼多人使用？
 那是因为当时Ext3可以直接从Ext2升级，而不需要先备份数据，然后格式化后再把文件复制回去，
 所以使用人数最多。但这也不能全然怪它，因为它为了和Ext2兼容，所以背负了很多的历史包袱。
 若是以性能为考虑，则可以选择ReiserFS或XFS。若是系统资源不多，要使用最低的CPU使用率，
 那麼可以选择JFS，因为它有著最好的性能资源比。</p>
-<h4 id="24-">2.4 各类文件系统性能大比拼</h4>
+<h4 id="24-各类文件系统性能大比拼">2.4 各类文件系统性能大比拼</h4>
 <ul>
 <li>
 <p>SQL2005：
@@ -386,7 +386,7 @@ IBM AIX服务器在很多金融机构上使用，所以稳定性是沒话說的�
 延迟分配</p>
 </li>
 </ul>
-<h5 id="heading-4">问题所在：</h5>
+<h5 id="问题所在">问题所在：</h5>
 <p>如果SQL Server运行在EXT4文件系统就有问题了，由于是延迟分配，
 数据库不知道文件系统是否还有足够的磁盘空间装载写入的数据。<br>
 一旦等到刷盘的时候才一次性分配，那么有可能造成数据丢失，数据库不能保存写入的数据，
@@ -458,12 +458,12 @@ Debian Installer 默认就有 fsck.jfs  功能</p>
 </ul>
 <p>截止到这里，终于看到找到什么是Extends了，这对上面4个问题的处理跨越了很大一步。</p>
 <p>截止到目前为止，我们对于上面遗留的4个问题也有了大概的了解和想法，再回头来看下上面的问题。</p>
-<h3 id="3-1-the-file-is-using-extents--lsattr-e">3. 问题1： the file is using extents …， 但为什么lsattr中目录为什么也有<code>-e</code>选项？</h3>
+<h3 id="3-问题1-the-file-is-using-extents--但为什么lsattr中目录为什么也有-e选项">3. 问题1： the file is using extents …， 但为什么lsattr中目录为什么也有<code>-e</code>选项？</h3>
 <p>为什么目录也会显示-e -I问题，这个问题我觉得是man文档的准确性问题，
 众所周知：Linux下一切皆文件。这里其想表述的是文件，即所有的文件都支持，
 但为什么链接文件不支持，这里我们有留意到图中的软链是链接的目录，
 我们再来看下是软链的文件是否能正常显示</p>
-<pre><code># lsattr /etc/system-release
+<pre tabindex="0"><code># lsattr /etc/system-release
 lsattr: Operation not supported While reading flags on /etc/system-release
 </code></pre><p>发现软链的文件也是不行的，man文档及wiki也没有其任何介绍，有了解的朋友可以交流。<br>
 （转载者注：个人理解，目录和文件均属于这里所说的file指的是文件系统上的文件，lsattr和chattr
@@ -473,7 +473,7 @@ lsattr: Operation not supported While reading flags on /etc/system-release
 （转载者再注：经过实验，不仅仅软链接，设备文件、命名管道文件、unix socket文件等等类型文件都
 不支持lsattr/chattr，而不是像上一段原作者说的“即所有的文件都支持”，实际上仅仅只有
 regular file和dir两种类型的文件支持而已。）</p>
-<h3 id="4-2extents">4. 问题2：什么是extents，扩展在这里是不好理解的？</h3>
+<h3 id="4-问题2什么是extents扩展在这里是不好理解的">4. 问题2：什么是extents，扩展在这里是不好理解的？</h3>
 <p><code>lsattr</code>中<code>-e</code> 是指<code>extents</code>，是指ext（2，3，4）系列文件系统中支持的<code>Extents</code>属性，
 经常（转载者注：应该是“经过”）大量的搜索查找后，发现该属性有专门的介绍</p>
 <blockquote>
@@ -486,7 +486,7 @@ regular file和dir两种类型的文件支持而已。）</p>
 </blockquote>
 <p>所以<code>-e</code>是指文件系统中的文件或目录是否支持该特性，
 该特性在现代操作系统中起到非常重要的作用。（转载者注：这个表述不是很准确，文末我另行总结）</p>
-<h3 id="5-3the-i-attribute-is-used-by-the-htree-program-code-htree">5. 问题3：The I attribute is used by the htree program code, <code>htree</code>是什么？</h3>
+<h3 id="5-问题3the-i-attribute-is-used-by-the-htree-program-code-htree是什么">5. 问题3：The I attribute is used by the htree program code, <code>htree</code>是什么？</h3>
 <p>因为man文档是介绍的是htree programe（转载者吐槽：人家说的是“htree program code”好不好，
 能不能随便就把 “program code”短语拆开。。。），所以起初的我理所应当的理解为系统命令，
 但经过验证后发现不是一个系统命令。</p>
@@ -495,7 +495,7 @@ regular file和dir两种类型的文件支持而已。）</p>
 </blockquote>
 <p>问题到这里为止，我觉得该单词不够成我对该句的理解，所以当时对其也没有放太多心思，
 不过后来发现这个想法是错误的！！</p>
-<pre><code>Btrfs: B-tree file system
+<pre tabindex="0"><code>Btrfs: B-tree file system
 </code></pre><p>其实是一个文件系统，大家可以在<a href="https://btrfs.wiki.kernel.org/index.php/Main_Page">btrfs文件系统wiki</a>，
 还有这里的<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-btrfs/index.html">这里还有介绍</a>.</p>
 <p>（转载者注：此处的两个链接在我转载的时候已经丢失。真正的带链接的原文似乎是在微信公众号上的，
@@ -507,7 +507,7 @@ regular file和dir两种类型的文件支持而已。）</p>
 <code>B-tree</code>和<code>htree</code>一样，只是一种数据结构，而btrfs中广泛应用了B-tree。
 所以可以由btrfs联想到B-tree，但反过来由B-tree联想到btrfs从而引申出“htree其实是一个文件系统”
 是行不通的。）</p>
-<h3 id="6-4indicate-that-a-directory-is-being-indexed-using-hashed-treesindexed-using-hashed-trees">6. 问题4：indicate that a directory is being indexed using hashed trees。<code>indexed using hashed trees</code>被引用？</h3>
+<h3 id="6-问题4indicate-that-a-directory-is-being-indexed-using-hashed-treesindexed-using-hashed-trees被引用">6. 问题4：indicate that a directory is being indexed using hashed trees。<code>indexed using hashed trees</code>被引用？</h3>
 <p><img src="/images/something-about-lsattr_-I_-e/03.jpg" alt="lsattr /usr/; ll /usr/"></p>
 <p>最初的理解是被软链索引过的目录会有<code>-I</code>的选项，我们来验证下，
 从上面的这幅图执行<code>ll</code>命令返回结果的第二列数字看，所有目录都有被链接，
@@ -526,26 +526,26 @@ regular file和dir两种类型的文件支持而已。）</p>
 <p>这些常见的lib库及经常会被调用的系统文件会被添加<code>I</code>属性。</p>
 </li>
 </ol>
-<pre><code>----------I--e- /lib64
+<pre tabindex="0"><code>----------I--e- /lib64
 ----------I--e- /etc
 -------------e- /home
 -------------e- /lib
 ----------I--e- /lib64
 ----------I--e- /sbin
-</code></pre><h3 id="7-">7. 附录</h3>
-<h4 id="heading-5">什么是第二代扩展文件系统</h4>
+</code></pre><h3 id="7-附录">7. 附录</h3>
+<h4 id="什么是第二代扩展文件系统">什么是第二代扩展文件系统</h4>
 <p>第二代扩展文件系统（英语：second extended filesystem，缩写为ext2）</p>
-<h4 id="71-fuse">7.1 FUSE文件系统是什么</h4>
+<h4 id="71-fuse文件系统是什么">7.1 FUSE文件系统是什么</h4>
 <p>FUSE文件系统：用户空间文件系统（Filesystem in Userspace，简称FUSE）是操作系统中的概念，
 指完全在用户态实现的文件系统。目前Linux通过内核模块对此进行支持。一些文件系统如ZFS，
 glusterfs和lustre使用FUSE实现。windows下的NTFS也是（转载者注：指的是NTFS在Linux下的
 ntfs-3g实现）。</p>
-<h4 id="72-fuse-">7.2 fuse文件 工作原理</h4>
+<h4 id="72-fuse文件-工作原理">7.2 fuse文件 工作原理</h4>
 <p><img src="/images/something-about-lsattr_-I_-e/04.jpg" alt="fuse文件系统工作时需要调用到的模块">
 fuse文件系统工作时需要调用到的模块</p>
 <p>因为是用户层发起的请求，所以kernel层面 需要为用户提供api接口，
 所以在整个过程会有大量的kernel态到user态的上下文切换，整个过程可想而知，整体效率也可想面知。</p>
-<pre><code>struct fuse_operations {
+<pre tabindex="0"><code>struct fuse_operations {
     int (*getattr) (const char *, struct stat *);
     int (*readlink) (const char *, char *, size_t);
     int (*getdir) (const char *, fuse_dirh_t, fuse_dirfil_t);
@@ -572,7 +572,7 @@ fuse文件系统工作时需要调用到的模块</p>
     int (*listxattr) (const char *, char *, size_t);
     int (*removexattr) (const char *, const char *);
 };
-</code></pre><h3 id="8-">8. 扩展阅读</h3>
+</code></pre><h3 id="8-扩展阅读">8. 扩展阅读</h3>
 <p><a href="https://en.wikipedia.org/wiki/Chattr#lsattr_description">https://en.wikipedia.org/wiki/Chattr#lsattr_description</a><br>
 <a href="https://zh.wikipedia.org/wiki/FUSE">https://zh.wikipedia.org/wiki/FUSE</a><br>
 <a href="https://en.wikipedia.org/wiki/B-tree#cite_note-1">https://en.wikipedia.org/wiki/B-tree#cite_note-1</a><br>
@@ -581,7 +581,7 @@ fuse文件系统工作时需要调用到的模块</p>
 EXT4介绍：<a href="http://baike.baidu.com/view/2220807.htm">http://baike.baidu.com/view/2220807.htm</a><br>
 XFS介绍：<a href="http://baike.baidu.com/view/1222157.htm">http://baike.baidu.com/view/1222157.htm</a><br>
 JFS介绍：<a href="http://baike.baidu.com/view/1494218.htm">http://baike.baidu.com/view/1494218.htm</a></p>
-<h3 id="9-">9. 结束语</h3>
+<h3 id="9-结束语">9. 结束语</h3>
 <p>到这里，遇到的问题在我看来算已经解决了，精力和工作方向性原因，个人无法再投入过多精力在该问题上，
 如有错误或其它见解的朋友请一定留言联系我，在问题解决的过程中有那么一点点的想法，简单分享一二：</p>
 <ol>
@@ -638,9 +638,9 @@ HTree index 也会被启用。</li>
           <p>14 Apr 2017
             
               
-                <a href="https://blog.systemctl.top/tags/linux/">#Linux</a>
+                <a href="https://blog.systemctl.top//tags/linux/">#Linux</a>
               
-                <a href="https://blog.systemctl.top/tags/lsattr/">#lsattr</a>
+                <a href="https://blog.systemctl.top//tags/lsattr/">#lsattr</a>
               
             
           </p>
@@ -693,10 +693,10 @@ HTree index 也会被启用。</li>
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://blog.systemctl.top/js/canvas-nest.min.1.0.1.js"></script>
-  <script src="https://blog.systemctl.top/js/init.js"></script>
-  <script src="https://blog.systemctl.top/js/highlight.pack.js"></script>
-  <script src="https://blog.systemctl.top/js/materialize.min.js"></script>
+  <script src="https://blog.systemctl.top//js/canvas-nest.min.1.0.1.js"></script>
+  <script src="https://blog.systemctl.top//js/init.js"></script>
+  <script src="https://blog.systemctl.top//js/highlight.pack.js"></script>
+  <script src="https://blog.systemctl.top//js/materialize.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 

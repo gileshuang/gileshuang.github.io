@@ -4,20 +4,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>[转载]最简明扼要的 Systemd 教程，只需十分钟</title>
-  <link href="https://blog.systemctl.top/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <style type="text/css">
   
-    footer.page-footer{background-image: url(https://blog.systemctl.top/images/default.png);}
+    footer.page-footer{background-image: url(https://blog.systemctl.top//images/default.png);}
   
   </style>
 </head>
 <body>
   <ul id="slide-out" class="side-nav">
-    <li><a href="https://blog.systemctl.top"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
   </ul>
   <div id="index-banner" class="parallax-container">
   <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
@@ -30,29 +30,29 @@
         </div>
         <div class="row center">
         
-          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top/images/github2-dreamstale35.png"></a>
+          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top//images/github2-dreamstale35.png"></a>
         
         
-          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top/images/weibo-dreamstale55.png"></a>
+          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top//images/weibo-dreamstale55.png"></a>
         
         
-          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top/images/gitosc-dreamstale55.png"></a>
+          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top//images/gitosc-dreamstale55.png"></a>
         
         
-          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top/images/facebook-dreamstale25.png"></a>
+          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top//images/facebook-dreamstale25.png"></a>
         
         
-          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top/images/twitter-dreamstale71.png"></a>
+          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top//images/twitter-dreamstale71.png"></a>
         
         
         
-          <a href="https://blog.systemctl.top/index.xml"><img src="https://blog.systemctl.top/images/feed-dreamstale27.png"></a>
+          <a href="https://blog.systemctl.top//index.xml"><img src="https://blog.systemctl.top//images/feed-dreamstale27.png"></a>
         </div>
       </div>
     </div>
     <div class="parallax">
     
-      <img src="https://blog.systemctl.top/images/default.png">
+      <img src="https://blog.systemctl.top//images/default.png">
     
     </div>
   </div>
@@ -69,7 +69,7 @@
           <p>
           
             
-              <a href="https://blog.systemctl.top/categories/%E8%BF%90%E7%BB%B4%E5%90%91/">运维向</a>
+              <a href="https://blog.systemctl.top//categories/%E8%BF%90%E7%BB%B4%E5%90%91/">运维向</a>
             
           
           </p>
@@ -77,7 +77,7 @@
 systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 总线式激活服务；
 按需启动守护进程（daemon）；利用 Linux 的 cgroups 监视进程；支持快照和系统恢复；
 维护挂载点和自动挂载点；各服务间基于依赖关系进行精密控制。</p>
-<h5 id="heading">前言</h5>
+<h5 id="前言">前言</h5>
 <hr>
 <p>干嘛要这么做？</p>
 <blockquote>
@@ -101,7 +101,7 @@ systemd 的特性有：支持并行化任务；同时采用 socket 式与 D-Bus 
 <p>因此在这篇教程中，我们将探索 Systemd 的特性，并向您展示如何最有效地利用这些特性。
 即便您此刻并不是这款软件的粉丝，读完本文后您至少可以更加了解和适应它。</p>
 <!-- raw HTML omitted -->
-<h5 id="heading-1">启动及服务</h5>
+<h5 id="启动及服务">启动及服务</h5>
 <hr>
 <p>大多数主流发行版要么已经采用 Systemd，要么即将在下个发布中采用（如 Debian 和
 Ubuntu）。在本教程中，我们使用 Fedora 21（该发行版已经是 Systemd
@@ -120,18 +120,18 @@ Systemd 的其中一个目标就是简化这些事物之间的相互作用，
 Systemd 可以让这一切正常运作起来变得相当容易。（在没有 Systemd 的日子里，
 要使用脚本来把这些事情调配好，那可是相当丑陋的。）要列出您 Linux 系统上的所有单元，
 输入以下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl list-unit-files
-</code></pre></div><p>现在，<code>systemctl</code>是与 Systemd 交互的主要工具，它有不少选项。在单元列表中，
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl list-unit-files
+</span></span></code></pre></div><p>现在，<code>systemctl</code>是与 Systemd 交互的主要工具，它有不少选项。在单元列表中，
 您会注意到这儿有一些格式化：被启用(enabled)的单元显示为绿色，被禁用(disabled)的显示为红色。
 标记为“static”的单元不能直接启用，它们是其他单元所依赖的对象。若要限制输出列表只包含服务，
 使用以下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl list-unit-files --type<span style="color:#f92672">=</span>service
-</code></pre></div><p><em>转载者注：disabled 指的是这个单元不会在开机的时候自动执行，并不影响使用<code>systemctl</code>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl list-unit-files --type<span style="color:#f92672">=</span>service
+</span></span></code></pre></div><p><em>转载者注：disabled 指的是这个单元不会在开机的时候自动执行，并不影响使用<code>systemctl</code>
 方式来启动它。同理。enabled 指的是这个单元在开机的时候会被自动执行。</em></p>
 <p>注意，一个单元显示为“enabled”，并不等于对应的服务正在运行，而只能说明它可以被开启。
 要获得某个特定服务的信息，以 GDM (Gnome Display Manager) 为例，输入以下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl status gdm.service
-</code></pre></div><p>这条命令提供了许多有用的信息：一段给人看的服务描述、单元配置文件的位置、启动的时间、
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl status gdm.service
+</span></span></code></pre></div><p>这条命令提供了许多有用的信息：一段给人看的服务描述、单元配置文件的位置、启动的时间、
 进程号，以及它所从属的 CGroups（用以限制各组进程的资源开销）。</p>
 <p>如果您去查看位于<code>/usr/lib/systemd/system/gdm.service</code>的单元配置文件，
 您可以看到各种选项，包括要被运行的二进制文件（“ExecStart”那一行），
@@ -139,12 +139,12 @@ Systemd 可以让这一切正常运作起来变得相当容易。（在没有 Sy
 （“After”那一行）。一些单元有附加的依赖选项，例如“Requires”（必要的依赖）和“Wants”
 （可选的依赖）。</p>
 <p>此处另一个有趣的选项是：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Alias<span style="color:#f92672">=</span>display-manager.service
-</code></pre></div><p>当您启动<strong>gdm.service</strong>后，您将可以通过<code>systemctl status display-manager.service</code>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Alias<span style="color:#f92672">=</span>display-manager.service
+</span></span></code></pre></div><p>当您启动<strong>gdm.service</strong>后，您将可以通过<code>systemctl status display-manager.service</code>
 来查看它的状态。当您知道有显示管理程序(display manager)在运行并想对它做点什么，
 但您不关心那究竟是 GDM，KDM，XDM 还是什么别的显示管理程序时，这个选项会非常有用。</p>
 <!-- raw HTML omitted -->
-<h5 id="target-">“目标”(target) 锁定</h5>
+<h5 id="目标target-锁定">“目标”(target) 锁定</h5>
 <hr>
 <p>如果您在<code>/usr/lib/systemd/system</code>目录中输入<code>ls</code>命令，您将看到各种以<code>.target</code>结尾的文件。
 启动目标(target)是一种将多个单元聚合在一起以致于将它们同时启动的方式。例如，对大多数类 Unix
@@ -157,29 +157,29 @@ Systemd 可以让这一切正常运作起来变得相当容易。（在没有 Sy
 选项让自己成为启动目标的依赖。因此如果您去打开<strong>avahi-daemon.service</strong>,
 <strong>NetworkManager.service</strong>及其他**.service**文件看看，
 您将在 Install 段看到这一行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">WantedBy</span><span style="color:#f92672">=</span><span style="color:#e6db74">multi-user.target</span>
-</code></pre></div><p>因此，切换到多用户启动目标会启用(enable)那些包含上述语句的单元。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">WantedBy</span><span style="color:#f92672">=</span><span style="color:#e6db74">multi-user.target</span>
+</span></span></code></pre></div><p>因此，切换到多用户启动目标会启用(enable)那些包含上述语句的单元。
 还有其他一些启动目标可用（例如<strong>emergency.target</strong>提供一个紧急情况使用的 shell，
 以及<strong>halt.target</strong>用于机器关机），您可以用以下方式轻松地在它们之间切换：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl isolate emergency.target
-</code></pre></div><p>在许多方面，这些都很像 SysVinit 中的运行级(runlevel)，如文本模式的
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl isolate emergency.target
+</span></span></code></pre></div><p>在许多方面，这些都很像 SysVinit 中的运行级(runlevel)，如文本模式的
 <strong>multi-user.target</strong>类似于第3运行级，<strong>graphical.target</strong>类似于第5运行级，
 <strong>reboot.target</strong>类似于第6运行级，诸如此类。</p>
 <!-- raw HTML omitted -->
-<h5 id="heading-2">开启与停止</h5>
+<h5 id="开启与停止">开启与停止</h5>
 <hr>
 <p>现在您也许陷入了沉思：我们已经看了这么多，但仍没看到如何停止和开启服务！
 这其实是有原因的。从外部看，Systemd 也许很复杂，像野兽一般难以驾驭。因此在您开始摆弄它之前，
 有必要从宏观的角度看看它是如何工作的。实际用来管理服务的命令非常简单：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl stop cups.service
-systemctl start cups.service
-</code></pre></div><p>（若某个单元被禁用了，您可以先通过<code>systemctl enable</code>加上该单元名的方式将其启用。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl stop cups.service
+</span></span><span style="display:flex;"><span>systemctl start cups.service
+</span></span></code></pre></div><p>（若某个单元被禁用了，您可以先通过<code>systemctl enable</code>加上该单元名的方式将其启用。
 这种做法会为该单元创建一个符号链接，并将其放置在当前启动目标的<code>.wants</code>目录下，这些<code>.wants</code>
 目录在<code>/etc/systemd/system</code>文件夹中。）</p>
 <p>还有两个有用的命令是<code>systemctl restart</code>和<code>systemctl reload</code>，后面接单元名。
 后者用于让单元重新加载它的配置文件。Systemd 的绝大部分都有良好的文档，
 因此您可以查看手册 (<code>man systemctl</code>) 了解每条命令的细节。</p>
-<h5 id="-cron">定时器单元：取代 Cron</h5>
+<h5 id="定时器单元取代-cron">定时器单元：取代 Cron</h5>
 <hr>
 <p>除了系统初始化和服务管理，Systemd 还染指了其他方面。在很大程度上，它能够完成<strong>cron</strong>的工作，
 而且可以说是以更灵活的方式（并带有更易读的语法）。<strong>cron</strong>
@@ -187,19 +187,19 @@ systemctl start cups.service
 <p>如果您再次进入<code>/usr/lib/systemd/system</code>目录，您会看到那儿有多个<code>.timer</code>文件。
 用<code>less</code>来查看这些文件，您会发现它们与<code>.service</code>和<code>.target</code>文件有着相似的结构，
 而区别在于<code>[Timer]</code>段。举个例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[Timer]</span>
-<span style="color:#a6e22e">OnBootSec</span><span style="color:#f92672">=</span><span style="color:#e6db74">1h</span>
-<span style="color:#a6e22e">OnUnitActiveSec</span><span style="color:#f92672">=</span><span style="color:#e6db74">1w</span>
-</code></pre></div><p><strong>OnBootSec</strong>选项告诉 Systemd 在系统启动一小时后启动这个单元。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[Timer]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">OnBootSec</span><span style="color:#f92672">=</span><span style="color:#e6db74">1h</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">OnUnitActiveSec</span><span style="color:#f92672">=</span><span style="color:#e6db74">1w</span>
+</span></span></code></pre></div><p><strong>OnBootSec</strong>选项告诉 Systemd 在系统启动一小时后启动这个单元。
 第二个选项的意思是：自那以后每周启动这个单元一次。关于定时器有大量选项您可以设置，
 输入<code>man systemd.time</code>查看完整列表。</p>
 <p>Systemd 的时间精度默认为一分钟。也就是说，它会在设定时刻的一分钟内运行单元，
 但不一定精确到那一秒。这么做是基于电源管理方面的原因，
 但如果您需要一个没有任何延时且精确到毫秒的定时器，您可以添加以下一行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">AccuracySec</span><span style="color:#f92672">=</span><span style="color:#e6db74">1us</span>
-</code></pre></div><p>另外，<strong>WakeSystem</strong>选项（可以被设置为 true 或 false）决定了定时器是否可以唤醒处于休眠状态的机器。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">AccuracySec</span><span style="color:#f92672">=</span><span style="color:#e6db74">1us</span>
+</span></span></code></pre></div><p>另外，<strong>WakeSystem</strong>选项（可以被设置为 true 或 false）决定了定时器是否可以唤醒处于休眠状态的机器。</p>
 <!-- raw HTML omitted -->
-<h5 id="-journald-">日志文件：向 journald 问声好</h5>
+<h5 id="日志文件向-journald-问声好">日志文件：向 journald 问声好</h5>
 <hr>
 <p>Systemd 的第二个主要部分是 journal 。这是个日志系统，类似于<code>syslog</code>但也有些显著区别。
 如果您是个 Unix 日志管理模式的粉丝，准备好出离愤怒吧：这是个二进制日志，
@@ -207,35 +207,35 @@ systemctl start cups.service
 但它的确有些优点。例如，日志可以被更系统地组织，带有更多的元数据，
 因此可以更容易地根据可执行文件名和进程号等过滤出信息。</p>
 <p>要查看整个 journal，输入以下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">journalctl
-</code></pre></div><p>像许多其他的 Systemd 命令一样，该命令将输出通过管道的方式引向<code>less</code>程序，
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>journalctl
+</span></span></code></pre></div><p>像许多其他的 Systemd 命令一样，该命令将输出通过管道的方式引向<code>less</code>程序，
 因此您可以使用空格键向下滚动，键入<code>/</code>（斜杠）查找，以及其他熟悉的快捷键。
 您也能在此看到少许颜色，像红色的警告及错误信息。</p>
 <p>以上命令会输出很多信息。为了限制其只输出本次启动的消息，使用如下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">journalctl -b
-</code></pre></div><p>这就是 Systemd 大放异彩的地方！您想查看自上次启动以来的全部消息吗？
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>journalctl -b
+</span></span></code></pre></div><p>这就是 Systemd 大放异彩的地方！您想查看自上次启动以来的全部消息吗？
 试试<code>journalctl -b -1</code>吧。再上一次的？用<code>-2</code>替换<code>-1</code>吧。那自某个具体时间，
 例如2014年10月24日16:38以来的呢？</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">journalctl -b --since<span style="color:#f92672">=</span>”2014-10-24 16:38”
-</code></pre></div><p>即便您对二进制日志感到遗憾，那依然是个有用的特性，并且对许多系统管理员来说，
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>journalctl -b --since<span style="color:#f92672">=</span>”2014-10-24 16:38”
+</span></span></code></pre></div><p>即便您对二进制日志感到遗憾，那依然是个有用的特性，并且对许多系统管理员来说，
 构建类似的过滤器比起写正则表达式而言容易多了。</p>
 <p>我们已经可以根据特定的时间来准确查找日志了，那可以根据特定程序吗？对单元而言，试试这个：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">journalctl -u gdm.service
-</code></pre></div><p>（注意：这是个查看 X server 产生的日志的好办法。）那根据特定的进程号？</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">journalctl _PID<span style="color:#f92672">=</span><span style="color:#ae81ff">890</span>
-</code></pre></div><p>您甚至可以请求只看某个可执行文件产生的消息：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">journalctl /usr/bin/pulseaudio
-</code></pre></div><p>若您想将输出的消息限制在某个优先级，可以使用<code>-p</code>选项。该选项参数为 0 的话只会显示紧急消息
-（也就是说，是时候向<strong>$DEITY</strong>祈求保佑了）（LCTT 译注： $DEITY 是一个计算机方面的幽默，
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>journalctl -u gdm.service
+</span></span></code></pre></div><p>（注意：这是个查看 X server 产生的日志的好办法。）那根据特定的进程号？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>journalctl _PID<span style="color:#f92672">=</span><span style="color:#ae81ff">890</span>
+</span></span></code></pre></div><p>您甚至可以请求只看某个可执行文件产生的消息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>journalctl /usr/bin/pulseaudio
+</span></span></code></pre></div><p>若您想将输出的消息限制在某个优先级，可以使用<code>-p</code>选项。该选项参数为 0 的话只会显示紧急消息
+（也就是说，是时候向**$DEITY**祈求保佑了）（LCTT 译注： $DEITY 是一个计算机方面的幽默，
 DEITY 是指广义上的“神”，$前缀表示这是一个变量），为 7 的话会显示所有消息，包括调试消息。
 请查看手册 (<code>man journalctl</code>) 获取更多关于优先级的信息。</p>
 <p>值得指出的是，您也可以将多个选项结合在一起，
 若想查看在当前启动中由 GDM 服务输出的优先级数小于等于 3 的消息，请使用下述命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">journalctl -u gdm.service -p <span style="color:#ae81ff">3</span> -b
-</code></pre></div><p>最后，如果您仅仅想打开一个随 journal 持续更新的终端窗口，
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>journalctl -u gdm.service -p <span style="color:#ae81ff">3</span> -b
+</span></span></code></pre></div><p>最后，如果您仅仅想打开一个随 journal 持续更新的终端窗口，
 就像在没有 Systemd 时使用<code>tail</code>命令实现的那样，输入<code>journalctl -f</code>就好了。</p>
 <!-- raw HTML omitted -->
-<h5 id="-systemd-">没有 Systemd 的生活？</h5>
+<h5 id="没有-systemd-的生活">没有 Systemd 的生活？</h5>
 <hr>
 <p>如果您就是完全不能接受 Systemd，您仍然有一些主流发行版中的选择。
 尤其是 Slackware，作为历史最为悠久的发行版，目前还没有做出改变，
@@ -259,9 +259,9 @@ DEITY 是指广义上的“神”，$前缀表示这是一个变量），为 7 �
           <p>20 Jan 2016
             
               
-                <a href="https://blog.systemctl.top/tags/linux/">#linux</a>
+                <a href="https://blog.systemctl.top//tags/linux/">#linux</a>
               
-                <a href="https://blog.systemctl.top/tags/systemd/">#systemd</a>
+                <a href="https://blog.systemctl.top//tags/systemd/">#systemd</a>
               
             
           </p>
@@ -314,10 +314,10 @@ DEITY 是指广义上的“神”，$前缀表示这是一个变量），为 7 �
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://blog.systemctl.top/js/canvas-nest.min.1.0.1.js"></script>
-  <script src="https://blog.systemctl.top/js/init.js"></script>
-  <script src="https://blog.systemctl.top/js/highlight.pack.js"></script>
-  <script src="https://blog.systemctl.top/js/materialize.min.js"></script>
+  <script src="https://blog.systemctl.top//js/canvas-nest.min.1.0.1.js"></script>
+  <script src="https://blog.systemctl.top//js/init.js"></script>
+  <script src="https://blog.systemctl.top//js/highlight.pack.js"></script>
+  <script src="https://blog.systemctl.top//js/materialize.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 

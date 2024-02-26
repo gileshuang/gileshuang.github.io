@@ -4,20 +4,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>[转载]深入Docker存储驱动</title>
-  <link href="https://blog.systemctl.top/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <style type="text/css">
   
-    footer.page-footer{background-image: url(https://blog.systemctl.top/images/default.png);}
+    footer.page-footer{background-image: url(https://blog.systemctl.top//images/default.png);}
   
   </style>
 </head>
 <body>
   <ul id="slide-out" class="side-nav">
-    <li><a href="https://blog.systemctl.top"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
   </ul>
   <div id="index-banner" class="parallax-container">
   <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
@@ -30,29 +30,29 @@
         </div>
         <div class="row center">
         
-          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top/images/github2-dreamstale35.png"></a>
+          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top//images/github2-dreamstale35.png"></a>
         
         
-          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top/images/weibo-dreamstale55.png"></a>
+          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top//images/weibo-dreamstale55.png"></a>
         
         
-          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top/images/gitosc-dreamstale55.png"></a>
+          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top//images/gitosc-dreamstale55.png"></a>
         
         
-          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top/images/facebook-dreamstale25.png"></a>
+          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top//images/facebook-dreamstale25.png"></a>
         
         
-          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top/images/twitter-dreamstale71.png"></a>
+          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top//images/twitter-dreamstale71.png"></a>
         
         
         
-          <a href="https://blog.systemctl.top/index.xml"><img src="https://blog.systemctl.top/images/feed-dreamstale27.png"></a>
+          <a href="https://blog.systemctl.top//index.xml"><img src="https://blog.systemctl.top//images/feed-dreamstale27.png"></a>
         </div>
       </div>
     </div>
     <div class="parallax">
     
-      <img src="https://blog.systemctl.top/images/default.png">
+      <img src="https://blog.systemctl.top//images/default.png">
     
     </div>
   </div>
@@ -69,7 +69,7 @@
           <p>
           
             
-              <a href="https://blog.systemctl.top/categories/%E8%BF%90%E7%BB%B4%E5%90%91/">运维向</a>
+              <a href="https://blog.systemctl.top//categories/%E8%BF%90%E7%BB%B4%E5%90%91/">运维向</a>
             
           
           </p>
@@ -78,13 +78,13 @@
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<h4 id="docker-">Docker 存储驱动</h4>
+<h4 id="docker-存储驱动">Docker 存储驱动</h4>
 <h5 id="heading">*</h5>
-<h5 id="jrme-petazzoni---jpetazzo">Jérôme Petazzoni - @jpetazzo</h5>
+<h5 id="jérôme-petazzoni---jpetazzo">Jérôme Petazzoni - @jpetazzo</h5>
 <h5 id="docker---docker">Docker - @docker</h5>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="heading-1">我是谁</h4>
+<h4 id="我是谁">我是谁</h4>
 <!-- raw HTML omitted -->
 <ul>
 <li>
@@ -106,7 +106,7 @@
 </li>
 </ul>
 <hr>
-<h4 id="heading-2">大纲</h4>
+<h4 id="大纲">大纲</h4>
 <ul>
 <li>
 <p>Docker速览</p>
@@ -127,7 +127,7 @@
 <hr>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="docker">Docker是什么?</h4>
+<h4 id="docker是什么">Docker是什么?</h4>
 <ul>
 <li>
 <p>一个由 <em>Docker Engine</em> 和 <em>Docker Hub</em> 组成的平台</p>
@@ -149,9 +149,9 @@
 </li>
 </ul>
 <hr>
-<h4 id="docker--">如果你在实际工作中从未使用过Docker 以下内容可能会帮到你 &hellip;</h4>
+<h4 id="如果你在实际工作中从未使用过docker-以下内容可能会帮到你-">如果你在实际工作中从未使用过Docker 以下内容可能会帮到你 &hellip;</h4>
 <p>This will help!</p>
-<pre><code>jpetazzo@tarrasque:~$ docker run -ti python bash
+<pre tabindex="0"><code>jpetazzo@tarrasque:~$ docker run -ti python bash
 root@75d4bf28c8a5:/# pip install IPython
 Downloading/unpacking IPython
   Downloading ipython-2.3.1-py3-none-any.whl (2.8MB): 2.8MB downloaded
@@ -160,17 +160,17 @@ Successfully installed IPython
 Cleaning up...
 root@75d4bf28c8a5:/# ipython
 Python 3.4.2 (default, Jan 22 2015, 07:33:45) 
-Type &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+Type &#34;copyright&#34;, &#34;credits&#34; or &#34;license&#34; for more information.
 
 IPython 2.3.1 -- An enhanced Interactive Python.
-?         -&gt; Introduction and overview of IPython's features.
+?         -&gt; Introduction and overview of IPython&#39;s features.
 %quickref -&gt; Quick reference.
-help      -&gt; Python's own help system.
-object?   -&gt; Details about 'object', use 'object??' for extra details.
+help      -&gt; Python&#39;s own help system.
+object?   -&gt; Details about &#39;object&#39;, use &#39;object??&#39; for extra details.
 
 In [1]:
 </code></pre><hr>
-<h4 id="-">这个过程中 发生了什么?</h4>
+<h4 id="这个过程中-发生了什么">这个过程中 发生了什么?</h4>
 <ul>
 <li>
 <p>我们创建了一个 容器 (~相当于一个轻量级的虚拟机),
@@ -190,7 +190,7 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="span-classunderlinespan-">在这个过程中哪些<!-- raw HTML omitted -->没有<!-- raw HTML omitted -->发生 ?</h4>
+<h4 id="在这个过程中哪些span-classunderline没有span发生-">在这个过程中哪些<!-- raw HTML omitted -->没有<!-- raw HTML omitted -->发生 ?</h4>
 <ul>
 <li>我们并没有完全地拷贝 <code>python</code> 镜像</li>
 </ul>
@@ -205,14 +205,14 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="heading-3">为什么这个问题很重要?</h4>
+<h4 id="为什么这个问题很重要">为什么这个问题很重要?</h4>
 <ul>
 <li>
 <p>我们使用的是 <em>copy-on-write</em> 机制
 <!-- raw HTML omitted --> (Docker 帮助我们进行处理)</p>
 </li>
 <li>
-<p>我们并没有对'python'镜像进行完整地拷贝，我们仅仅是跟踪容器相对于镜像所发生的变化</p>
+<p>我们并没有对&rsquo;python&rsquo;镜像进行完整地拷贝，我们仅仅是跟踪容器相对于镜像所发生的变化</p>
 </li>
 <li>
 <p>这个过程节省了大量的硬盘空间 (1 个容器 = 小于 1 MB 的存储空间)</p>
@@ -224,7 +224,7 @@ In [1]:
 <hr>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="heading-4">历史背景</h4>
+<h4 id="历史背景">历史背景</h4>
 <p>注意: 我并非是一个历史学家.</p>
 <p>下面这些零散信息介绍的并不全面.</p>
 <hr>
@@ -259,7 +259,7 @@ In [1]:
 </ul>
 <p>粒度: 1 次一个页面 (通常大小为 4 KB)</p>
 <hr>
-<h4 id="copy-on-write--ram-1">Copy-on-write 在内存服务中的应用 (RAM)</h4>
+<h4 id="copy-on-write-在内存服务中的应用-ram">Copy-on-write 在内存服务中的应用 (RAM)</h4>
 <!-- raw HTML omitted -->
 <p>它是如何工作的?</p>
 <ul>
@@ -282,7 +282,7 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="page-faults">页错误（Page faults）</h4>
+<h4 id="页错误page-faults">页错误（Page faults）</h4>
 <p>当页错误发生的时候,  MMU 就会通知 OS.</p>
 <p>之后会发生什么?</p>
 <ul>
@@ -307,7 +307,7 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="copy-on-write--disk">Copy-on-write 在存储服务中的应用 (disk)</h4>
+<h4 id="copy-on-write-在存储服务中的应用-disk">Copy-on-write 在存储服务中的应用 (disk)</h4>
 <ul>
 <li>
 <p>最初的应用(个人看法)可能是 镜像服务</p>
@@ -324,7 +324,7 @@ In [1]:
 <!-- raw HTML omitted -->疯狂的 云计算 出现了!</li>
 </ul>
 <hr>
-<h4 id="span-classred-ispan">简要地介绍一下虚拟机<!-- raw HTML omitted -->¹<!-- raw HTML omitted --></h4>
+<h4 id="简要地介绍一下虚拟机span-classred-ispan">简要地介绍一下虚拟机<!-- raw HTML omitted -->¹<!-- raw HTML omitted --></h4>
 <!-- raw HTML omitted -->
 <ul>
 <li>
@@ -341,7 +341,7 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="copy-on-write">可以用在笔记本电脑上的现代copy-on-write技术</h4>
+<h4 id="可以用在笔记本电脑上的现代copy-on-write技术">可以用在笔记本电脑上的现代copy-on-write技术</h4>
 <p>(下面地排列并没有按照特定的顺序;列出的内容也并非详尽)</p>
 <ul>
 <li>
@@ -361,7 +361,7 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="copy-on-write--docker--">Copy-on-write 和 Docker 的结合: 一个美丽的爱情故事</h4>
+<h4 id="copy-on-write-和-docker-的结合-一个美丽的爱情故事">Copy-on-write 和 Docker 的结合: 一个美丽的爱情故事</h4>
 <ul>
 <li>
 <p>如果没有 copy-on-write&hellip;</p>
@@ -393,7 +393,7 @@ In [1]:
 <hr>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="-aufs">最初源于 AUFS</h4>
+<h4 id="最初源于-aufs">最初源于 AUFS</h4>
 <ul>
 <li>
 <p>Docker公司的前身是dotCloud
@@ -409,7 +409,7 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="aufs-">AUFS 并不完美</h4>
+<h4 id="aufs-并不完美">AUFS 并不完美</h4>
 <ul>
 <li>
 <p>并没有被包括在Linux的主线内核中</p>
@@ -425,7 +425,7 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="aufs">一些使用者一直信任AUFS!</h4>
+<h4 id="一些使用者一直信任aufs">一些使用者一直信任AUFS!</h4>
 <ul>
 <li>
 <p>特别是dotCloud</p>
@@ -444,7 +444,7 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="--docker">之后 一些人开始信赖 Docker</h4>
+<h4 id="之后-一些人开始信赖-docker">之后 一些人开始信赖 Docker</h4>
 <!-- raw HTML omitted -->
 <ul>
 <li>
@@ -472,13 +472,13 @@ In [1]:
 <!-- raw HTML omitted -->
 <hr>
 <!-- raw HTML omitted -->
-<h4 id="heading-5">每一种存储驱动</h4>
-<h4 id="heading-6">是如何发挥作用的</h4>
+<h4 id="每一种存储驱动">每一种存储驱动</h4>
+<h4 id="是如何发挥作用的">是如何发挥作用的</h4>
 <!-- raw HTML omitted -->
 <hr>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="heading-7">原理</h4>
+<h4 id="原理">原理</h4>
 <ul>
 <li>
 <p>按照特定的顺序将多个分支结合在一起</p>
@@ -500,7 +500,7 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="-when-opening-a-file">当打开一个文件的时候 When opening a file&hellip;</h4>
+<h4 id="当打开一个文件的时候-when-opening-a-file">当打开一个文件的时候 When opening a file&hellip;</h4>
 <ul>
 <li>
 <p>通过 <code>O_RDONLY</code> - 只读的方式来进行访问:</p>
@@ -529,12 +529,12 @@ In [1]:
 </li>
 </ul>
 <hr>
-<h4 id="heading-8">当删除一个文件的时候&hellip;</h4>
+<h4 id="当删除一个文件的时候">当删除一个文件的时候&hellip;</h4>
 <ul>
 <li>此时会创建一个 <em>whiteout</em> 文件
 <!-- raw HTML omitted -->(这个与 &ldquo;tombstones&quot;的概念很类似)</li>
 </ul>
-<pre><code>#### docker run ubuntu rm /etc/shadow
+<pre tabindex="0"><code>#### docker run ubuntu rm /etc/shadow
 
 #### ls -la /var/lib/docker/aufs/diff/$(docker ps --no-trunc -lq)/etc
 total 8
@@ -542,7 +542,7 @@ drwxr-xr-x 2 root root 4096 Jan 27 15:36 .
 drwxr-xr-x 5 root root 4096 Jan 27 15:36 ..
 -r--r--r-- 2 root root    0 Jan 27 15:36 .wh.shadow
 </code></pre><hr>
-<h4 id="heading-9">在实际操作中</h4>
+<h4 id="在实际操作中">在实际操作中</h4>
 <ul>
 <li>
 <p>容器中AUFS的挂载点是
@@ -559,11 +559,11 @@ drwxr-xr-x 5 root root 4096 Jan 27 15:36 ..
 <p>所有写入的内容都存在 <code>/var/lib/docker</code>目录下</p>
 </li>
 </ul>
-<pre><code>dockerhost# df -h /var/lib/docker
+<pre tabindex="0"><code>dockerhost# df -h /var/lib/docker
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/xvdb        15G  4.8G  9.5G  34% /mnt
 </code></pre><hr>
-<h4 id="under-the-hood">高级选项(Under the hood)</h4>
+<h4 id="高级选项under-the-hood">高级选项(Under the hood)</h4>
 <ul>
 <li>
 <p>查看 AUFS 挂载的相关细节:</p>
@@ -582,8 +582,8 @@ Filesystem      Size  Used Avail Use% Mounted on
 </li>
 </ul>
 <hr>
-<h4 id="--">实际例子(可以看到 除了最上面的两个分支之外 其他的分支都以镜像的形式体现出来)</h4>
-<pre><code>dockerhost# grep c7af /proc/mounts
+<h4 id="实际例子可以看到-除了最上面的两个分支之外-其他的分支都以镜像的形式体现出来">实际例子(可以看到 除了最上面的两个分支之外 其他的分支都以镜像的形式体现出来)</h4>
+<pre tabindex="0"><code>dockerhost# grep c7af /proc/mounts
 none /mnt/.../c7af...a63d aufs rw,relatime,si=2344a8ac4c6c6e55 0 0
 
 dockerhost# grep . /sys/fs/aufs/si_2344a8ac4c6c6e55/br[0-9]*
@@ -605,7 +605,7 @@ b39b81afc8ca
 53f858aaaf03
 511136ea3c5a
 </code></pre><hr>
-<h4 id="performance-tuning">性能以及调优(Performance, tuning)</h4>
+<h4 id="性能以及调优performance-tuning">性能以及调优(Performance, tuning)</h4>
 <ul>
 <li>
 <p>AUFS <code>mount()</code> 速度很快 因此创建容器的过程也很快</p>
@@ -633,7 +633,7 @@ b39b81afc8ca
 <hr>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="heading-10">序</h4>
+<h4 id="序">序</h4>
 <ul>
 <li>
 <p>Device Mapper 是一个复杂的子系统; 它可以完成以下工作:</p>
@@ -654,12 +654,12 @@ b39b81afc8ca
 </li>
 <li>
 <p>在Docker的环境下, &ldquo;Device Mapper&rdquo; 指的是
-<!-- raw HTML omitted -->&quot;the Device Mapper system + its thin provisioning 存储&rdquo;
+<!-- raw HTML omitted -->&ldquo;the Device Mapper system + its thin provisioning 存储&rdquo;
 <!-- raw HTML omitted -->(有些时候标记为 &ldquo;thinp&rdquo;)</p>
 </li>
 </ul>
 <hr>
-<h4 id="heading-11">原理</h4>
+<h4 id="原理-1">原理</h4>
 <ul>
 <li>
 <p>Copy-on-write 机制发生在存储块级别
@@ -683,7 +683,7 @@ b39b81afc8ca
 <p>如果块设备一直没有被写入:</p>
 <ul>
 <li>
-<p>就认为对应的空间没有内容(it's assumed to be all zeros)</p>
+<p>就认为对应的空间没有内容(it&rsquo;s assumed to be all zeros)</p>
 </li>
 <li>
 <p>不会在硬盘上被分配空间
@@ -693,7 +693,7 @@ b39b81afc8ca
 </li>
 </ul>
 <hr>
-<h4 id="heading-12">在实际操作中</h4>
+<h4 id="在实际操作中-1">在实际操作中</h4>
 <ul>
 <li>
 <p>容器挂载点的目录是在
@@ -711,7 +711,7 @@ b39b81afc8ca
 </li>
 </ul>
 <hr>
-<h4 id="under-the-hood-1">高级选项(Under the hood)</h4>
+<h4 id="高级选项under-the-hood-1">高级选项(Under the hood)</h4>
 <ul>
 <li>
 <p><code>docker info</code> 命令会告诉你当前资源池的状态
@@ -737,7 +737,7 @@ b39b81afc8ca
 </ul>
 <hr>
 <!-- raw HTML omitted -->
-<h4 id="heading-13">额外的细节</h4>
+<h4 id="额外的细节">额外的细节</h4>
 <ul>
 <li>
 <p>需要两个存储区:
@@ -759,7 +759,7 @@ b39b81afc8ca
 </li>
 </ul>
 <hr>
-<h4 id="performance">性能Performance</h4>
+<h4 id="性能performance">性能Performance</h4>
 <ul>
 <li>
 <p>默认情况下 Docker将数据和元信息都存储在一个由稀疏文件(sparse file)做支撑的loop device上</p>
@@ -780,7 +780,7 @@ b39b81afc8ca
 </li>
 </ul>
 <hr>
-<h4 id="tuning">优化Tuning</h4>
+<h4 id="优化tuning">优化Tuning</h4>
 <ul>
 <li>
 <p>帮自己一个忙：如果你想使用 Device Mapper
@@ -801,9 +801,9 @@ b39b81afc8ca
 </ul>
 </li>
 </ul>
-<pre><code>docker -d --storage-opt dm.datadev=/dev/sdb1 --storage-opt dm.metadatadev=/dev/sdc1
+<pre tabindex="0"><code>docker -d --storage-opt dm.datadev=/dev/sdb1 --storage-opt dm.metadatadev=/dev/sdc1
 </code></pre><hr>
-<h4 id="more-tuning">进一步优化More tuning</h4>
+<h4 id="进一步优化more-tuning">进一步优化More tuning</h4>
 <ul>
 <li>
 <p>让每一个容器都有它自己的块存储设备</p>
@@ -831,7 +831,7 @@ b39b81afc8ca
 </li>
 </ul>
 <hr>
-<h4 id="heading-14">可以参考以下资料</h4>
+<h4 id="可以参考以下资料">可以参考以下资料</h4>
 <!-- raw HTML omitted -->
 <ul>
 <li>
@@ -851,7 +851,7 @@ b39b81afc8ca
 <hr>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="heading-15">原理</h4>
+<h4 id="原理-2">原理</h4>
 <!-- raw HTML omitted -->
 <ul>
 <li>
@@ -868,7 +868,7 @@ b39b81afc8ca
 </li>
 </ul>
 <hr>
-<h4 id="heading-16">在实际操作中</h4>
+<h4 id="在实际操作中-2">在实际操作中</h4>
 <!-- raw HTML omitted -->
 <ul>
 <li>
@@ -887,7 +887,7 @@ b39b81afc8ca
 </li>
 </ul>
 <hr>
-<h4 id="under-the-hood-2">高级选项(Under the hood)</h4>
+<h4 id="高级选项under-the-hood-2">高级选项(Under the hood)</h4>
 <ul>
 <li>
 <p>BTRFS 通过把存储设备分成不同的数据块(chunks)来发挥作用</p>
@@ -904,10 +904,10 @@ b39b81afc8ca
 <p>快速修复:</p>
 </li>
 </ul>
-<pre><code>#### btrfs filesys balance start -dusage=1 /var/lib/docker
+<pre tabindex="0"><code>#### btrfs filesys balance start -dusage=1 /var/lib/docker
 </code></pre><hr>
 <!-- raw HTML omitted -->
-<h4 id="heading-17">性能以及调优</h4>
+<h4 id="性能以及调优">性能以及调优</h4>
 <ul>
 <li>
 <p>没有太多可以优化的地方</p>
@@ -917,19 +917,19 @@ b39b81afc8ca
 </li>
 </ul>
 <p>表明文件系统正在正常运行:</p>
-<pre><code>#### btrfs filesys show
+<pre tabindex="0"><code>#### btrfs filesys show
 Label: none  uuid: 80b37641-4f4a-4694-968b-39b85c67b934
         Total devices 1 FS bytes used 4.20GiB
         devid    1 size 15.25GiB used 6.04GiB path /dev/xvdc
 </code></pre><p>下面这种情况是文件块全部占满的情况(没有空闲的文件块) 即使上面没有太多的数据信息：</p>
-<pre><code>#### btrfs filesys show
+<pre tabindex="0"><code>#### btrfs filesys show
 Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
         Total devices 1 FS bytes used 2.51GiB
         devid    1 size 87.50GiB used 87.50GiB path /dev/xvdc
 </code></pre><hr>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="heading-18">序</h4>
+<h4 id="序-1">序</h4>
 <p>为何将<!-- raw HTML omitted -->fs<!-- raw HTML omitted -->标记为灰色?</p>
 <ul>
 <li>
@@ -940,7 +940,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 </li>
 </ul>
 <hr>
-<h4 id="heading-19">原理</h4>
+<h4 id="原理-3">原理</h4>
 <ul>
 <li>
 <p>这个文件系统与AUFS很类似，只有很少的地方有差别:</p>
@@ -955,7 +955,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 </li>
 </ul>
 <hr>
-<h4 id="heading-20">在实际操作中</h4>
+<h4 id="在实际操作中-3">在实际操作中</h4>
 <!-- raw HTML omitted -->
 <ul>
 <li>
@@ -980,14 +980,14 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 </li>
 </ul>
 <hr>
-<h4 id="under-the-hood-3">高级选项(Under the hood)</h4>
+<h4 id="高级选项under-the-hood-3">高级选项(Under the hood)</h4>
 <ul>
 <li>
 <p>镜像以及容器在以下目录下被具体化
 <!-- raw HTML omitted --><code>/var/lib/docker/overlay/$ID_OF_CONTAINER_OR_IMAGE</code></p>
 </li>
 <li>
-<p>镜像只有一个'root'子目录
+<p>镜像只有一个&rsquo;root&rsquo;子目录
 <!-- raw HTML omitted -->(包含了root FS)</p>
 </li>
 <li>
@@ -1010,7 +1010,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 </ul>
 <hr>
 <!-- raw HTML omitted -->
-<h4 id="performance-tuning-1">性能以及调优Performance, tuning</h4>
+<h4 id="性能以及调优performance-tuning-1">性能以及调优Performance, tuning</h4>
 <ul>
 <li>
 <p>目前阶段没有什么需要调优的地方</p>
@@ -1035,7 +1035,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 <hr>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="heading-21">原理</h4>
+<h4 id="原理-4">原理</h4>
 <ul>
 <li>
 <p>没有 copy on write 机制 Docker每次都要进行全部的拷贝!</p>
@@ -1052,7 +1052,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 </li>
 </ul>
 <hr>
-<h4 id="heading-22">在实际操作中</h4>
+<h4 id="在实际操作中-4">在实际操作中</h4>
 <ul>
 <li>
 <p>在产品安装的时候可能比较有用</p>
@@ -1064,7 +1064,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 <hr>
 <!-- raw HTML omitted -->
 <hr>
-<h4 id="what-do-what-do">哪种情况应该选择哪种文件系统？(What do, what do?)</h4>
+<h4 id="哪种情况应该选择哪种文件系统what-do-what-do">哪种情况应该选择哪种文件系统？(What do, what do?)</h4>
 <ul>
 <li>
 <p>如果你做的是PaaS或使用其他的密集环境(high-density environment):</p>
@@ -1097,7 +1097,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 <ul>
 <li>
 <p>发送给SSD硬盘的内容 告诉SSD硬盘Command sent to a SSD disk, to tell it:
-<!-- raw HTML omitted -->&quot;这个存储块已经不在被使用了&rdquo;</p>
+<!-- raw HTML omitted -->&ldquo;这个存储块已经不在被使用了&rdquo;</p>
 </li>
 <li>
 <p>这个功能很有用 因为对于SSD来说 <em>erase</em>的代价非常高 (速度很慢)</p>
@@ -1116,7 +1116,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 <ul>
 <li>
 <p>文件系统选择的含义:
-<!-- raw HTML omitted -->*&ldquo;can I has <code>TRIM</code> on this pls&rdquo;*</p>
+<!-- raw HTML omitted --><em>&ldquo;can I has <code>TRIM</code> on this pls&rdquo;</em></p>
 </li>
 <li>
 <p>Can be enabled/disabled at any time</p>
@@ -1127,7 +1127,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
 </li>
 </ul>
 <hr>
-<h4 id="discard-"><code>discard</code> 的困惑</h4>
+<h4 id="discard-的困惑"><code>discard</code> 的困惑</h4>
 <ul>
 <li>
 <p><code>discard</code> 在 Device Mapper + loopback devices 上工作</p>
@@ -1177,7 +1177,7 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
           <p>15 Jun 2016
             
               
-                <a href="https://blog.systemctl.top/tags/docker/">#docker</a>
+                <a href="https://blog.systemctl.top//tags/docker/">#docker</a>
               
             
           </p>
@@ -1230,10 +1230,10 @@ Label: none  uuid: de060d4c-99b6-4da0-90fa-fb47166db38b
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://blog.systemctl.top/js/canvas-nest.min.1.0.1.js"></script>
-  <script src="https://blog.systemctl.top/js/init.js"></script>
-  <script src="https://blog.systemctl.top/js/highlight.pack.js"></script>
-  <script src="https://blog.systemctl.top/js/materialize.min.js"></script>
+  <script src="https://blog.systemctl.top//js/canvas-nest.min.1.0.1.js"></script>
+  <script src="https://blog.systemctl.top//js/init.js"></script>
+  <script src="https://blog.systemctl.top//js/highlight.pack.js"></script>
+  <script src="https://blog.systemctl.top//js/materialize.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 

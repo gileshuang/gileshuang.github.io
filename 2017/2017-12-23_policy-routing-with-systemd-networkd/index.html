@@ -4,20 +4,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>Linux 上使用 systemd-networkd 服务配置策略路由</title>
-  <link href="https://blog.systemctl.top/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <style type="text/css">
   
-    footer.page-footer{background-image: url(https://blog.systemctl.top/images/default.png);}
+    footer.page-footer{background-image: url(https://blog.systemctl.top//images/default.png);}
   
   </style>
 </head>
 <body>
   <ul id="slide-out" class="side-nav">
-    <li><a href="https://blog.systemctl.top"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
   </ul>
   <div id="index-banner" class="parallax-container">
   <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
@@ -30,29 +30,29 @@
         </div>
         <div class="row center">
         
-          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top/images/github2-dreamstale35.png"></a>
+          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top//images/github2-dreamstale35.png"></a>
         
         
-          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top/images/weibo-dreamstale55.png"></a>
+          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top//images/weibo-dreamstale55.png"></a>
         
         
-          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top/images/gitosc-dreamstale55.png"></a>
+          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top//images/gitosc-dreamstale55.png"></a>
         
         
-          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top/images/facebook-dreamstale25.png"></a>
+          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top//images/facebook-dreamstale25.png"></a>
         
         
-          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top/images/twitter-dreamstale71.png"></a>
+          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top//images/twitter-dreamstale71.png"></a>
         
         
         
-          <a href="https://blog.systemctl.top/index.xml"><img src="https://blog.systemctl.top/images/feed-dreamstale27.png"></a>
+          <a href="https://blog.systemctl.top//index.xml"><img src="https://blog.systemctl.top//images/feed-dreamstale27.png"></a>
         </div>
       </div>
     </div>
     <div class="parallax">
     
-      <img src="https://blog.systemctl.top/images/default.png">
+      <img src="https://blog.systemctl.top//images/default.png">
     
     </div>
   </div>
@@ -69,7 +69,7 @@
           <p>
           
             
-              <a href="https://blog.systemctl.top/categories/%E8%BF%90%E7%BB%B4%E5%90%91/">运维向</a>
+              <a href="https://blog.systemctl.top//categories/%E8%BF%90%E7%BB%B4%E5%90%91/">运维向</a>
             
           
           </p>
@@ -83,58 +83,58 @@ systemd-networkd 服务来配置路由。<br>
 本文所使用 IP 地址并非我自己的实验环境的 IP，而是为了方便说明而杜撰的 IP。<br>
 如果本文使用的 IP 实际上由某个人或者组织使用，则纯属巧合。</p>
 </blockquote>
-<h3 id="heading">前置环境</h3>
+<h3 id="前置环境">前置环境</h3>
 <table>
 <thead>
 <tr>
-<th align="left">component</th>
-<th align="left">version</th>
+<th style="text-align:left">component</th>
+<th style="text-align:left">version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">os</td>
-<td align="left">ArchLinux 64bit</td>
+<td style="text-align:left">os</td>
+<td style="text-align:left">ArchLinux 64bit</td>
 </tr>
 <tr>
-<td align="left">kernel</td>
-<td align="left">4.14.8-1-ARCH</td>
+<td style="text-align:left">kernel</td>
+<td style="text-align:left">4.14.8-1-ARCH</td>
 </tr>
 <tr>
-<td align="left">systemd</td>
-<td align="left">236.0-2</td>
+<td style="text-align:left">systemd</td>
+<td style="text-align:left">236.0-2</td>
 </tr>
 <tr>
-<td align="left">iproute2</td>
-<td align="left">4.14.1-2</td>
+<td style="text-align:left">iproute2</td>
+<td style="text-align:left">4.14.1-2</td>
 </tr>
 <tr>
-<td align="left">iptables</td>
-<td align="left">disabled</td>
+<td style="text-align:left">iptables</td>
+<td style="text-align:left">disabled</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th align="left">device</th>
-<th align="left">ip address</th>
-<th align="left">netmask</th>
-<th align="left">gateway</th>
+<th style="text-align:left">device</th>
+<th style="text-align:left">ip address</th>
+<th style="text-align:left">netmask</th>
+<th style="text-align:left">gateway</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">eth0</td>
-<td align="left">111.111.111.111</td>
-<td align="left">255.255.255.0</td>
-<td align="left">111.111.111.1</td>
+<td style="text-align:left">eth0</td>
+<td style="text-align:left">111.111.111.111</td>
+<td style="text-align:left">255.255.255.0</td>
+<td style="text-align:left">111.111.111.1</td>
 </tr>
 <tr>
-<td align="left">eth1</td>
-<td align="left">222.222.222.222</td>
-<td align="left">255.255.255.0</td>
-<td align="left">222.222.222.1</td>
+<td style="text-align:left">eth1</td>
+<td style="text-align:left">222.222.222.222</td>
+<td style="text-align:left">255.255.255.0</td>
+<td style="text-align:left">222.222.222.1</td>
 </tr>
 </tbody>
 </table>
@@ -143,164 +143,164 @@ systemd-networkd 服务来配置路由。<br>
 eth0 的网关作为全局默认网关。<br>
 策略路由的配置教程到处都有，本文的特别之处就在于使用了国内较少使用的网络管理器：
 <code>systemd-networkd</code>。</p>
-<h3 id="heading-1">不启用策略路由情况下的配置</h3>
+<h3 id="不启用策略路由情况下的配置">不启用策略路由情况下的配置</h3>
 <p>首先，我们来了解一下单网卡情况下的 systemd-networkd 配置文件语法。<br>
 现在先只配置 eth0，创建配置文件<code>/etc/systemd/network/10-eth0.network</code>：<br>
 （配置文件名可自行指定，文件后缀需为 <code>.network</code>）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Match 字段匹配网卡设备名。</span>
-<span style="color:#f92672">[</span>Match<span style="color:#f92672">]</span>
-Name<span style="color:#f92672">=</span>eth0
-
-<span style="color:#75715e"># Network 字段指定网络全局基本参数。</span>
-<span style="color:#f92672">[</span>Network<span style="color:#f92672">]</span>
-<span style="color:#75715e"># DHCP 值可设置为 yes、no、ipv4、ipv6。默认值为 no。</span>
-DHCP<span style="color:#f92672">=</span>no
-<span style="color:#75715e"># 下面几个字段。。。不用解释了吧。。。</span>
-<span style="color:#75715e"># Address 和 DNS 字段可多次指定，且同时支持 ipv4 和 ipv6。</span>
-<span style="color:#75715e"># 如需 ipv6，和 ipv4 一样，直接写上 ipv6 地址即可，无需特殊格式。</span>
-Address<span style="color:#f92672">=</span>111.111.111.111/24
-Gateway<span style="color:#f92672">=</span>111.111.111.1
-DNS<span style="color:#f92672">=</span>114.114.114.114
-DNS<span style="color:#f92672">=</span>8.8.8.8
-</code></pre></div><p>同理创建 eth1 的配置文件<code>/etc/systemd/network/10-eth1.network</code>，但是 eth1 上不指定 Gateway，否则两个默认网关会发生冲突：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>Match<span style="color:#f92672">]</span>
-Name<span style="color:#f92672">=</span>eth1
-
-<span style="color:#f92672">[</span>Network<span style="color:#f92672">]</span>
-DHCP<span style="color:#f92672">=</span>no
-Address<span style="color:#f92672">=</span>222.222.222.222/24
-DNS<span style="color:#f92672">=</span>114.114.114.114
-DNS<span style="color:#f92672">=</span>8.8.8.8
-</code></pre></div><p>使用命令<code>systemctl restart systemd-networkd.service</code>重启 systemd 网络管理器。<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#75715e"># Match 字段匹配网卡设备名。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Match]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Name</span><span style="color:#f92672">=</span><span style="color:#e6db74">eth0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Network 字段指定网络全局基本参数。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Network]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DHCP 值可设置为 yes、no、ipv4、ipv6。默认值为 no。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DHCP</span><span style="color:#f92672">=</span><span style="color:#e6db74">no</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 下面几个字段。。。不用解释了吧。。。</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Address 和 DNS 字段可多次指定，且同时支持 ipv4 和 ipv6。</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如需 ipv6，和 ipv4 一样，直接写上 ipv6 地址即可，无需特殊格式。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Address</span><span style="color:#f92672">=</span><span style="color:#e6db74">111.111.111.111/24</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Gateway</span><span style="color:#f92672">=</span><span style="color:#e6db74">111.111.111.1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DNS</span><span style="color:#f92672">=</span><span style="color:#e6db74">114.114.114.114</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DNS</span><span style="color:#f92672">=</span><span style="color:#e6db74">8.8.8.8</span>
+</span></span></code></pre></div><p>同理创建 eth1 的配置文件<code>/etc/systemd/network/10-eth1.network</code>，但是 eth1 上不指定 Gateway，否则两个默认网关会发生冲突：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[Match]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Name</span><span style="color:#f92672">=</span><span style="color:#e6db74">eth1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Network]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DHCP</span><span style="color:#f92672">=</span><span style="color:#e6db74">no</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Address</span><span style="color:#f92672">=</span><span style="color:#e6db74">222.222.222.222/24</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DNS</span><span style="color:#f92672">=</span><span style="color:#e6db74">114.114.114.114</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DNS</span><span style="color:#f92672">=</span><span style="color:#e6db74">8.8.8.8</span>
+</span></span></code></pre></div><p>使用命令<code>systemctl restart systemd-networkd.service</code>重启 systemd 网络管理器。<br>
 重启完成后，我们可以发现 eth0、eth1 已经如期配置上 IP 地址了。<br>
 此时我们可以查看路由表：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
-<span style="color:#75715e"># ip route show</span>
-default via 111.111.111.1 dev eth0 proto static 
-111.111.111.0/24 dev eth0 proto kernel scope link src 111.111.111.111 
-222.222.222.0/24 dev eth1 proto kernel scope link src 222.222.222.222
-</code></pre></div><p>于是我们已经成功为该服务器配置两个独立 IP 了。是这样吗？<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip route show</span>
+</span></span><span style="display:flex;"><span>default via 111.111.111.1 dev eth0 proto static 
+</span></span><span style="display:flex;"><span>111.111.111.0/24 dev eth0 proto kernel scope link src 111.111.111.111 
+</span></span><span style="display:flex;"><span>222.222.222.0/24 dev eth1 proto kernel scope link src 222.222.222.222
+</span></span></code></pre></div><p>于是我们已经成功为该服务器配置两个独立 IP 了。是这样吗？<br>
 通过很简单的<code>ping</code>测试，你会发现只有 eth0 上的 IP 可以访问，eth1 上的 IP 总是 ping 不通。<br>
 这就很尴尬了。。。</p>
-<h3 id="heading-2">几句话概括现状</h3>
+<h3 id="几句话概括现状">几句话概括现状</h3>
 <p>当你使用 111.111.111.111 访问服务器的时候，发送包的目标 IP 和接受包的源 IP 一致。<br>
 当你使用 222.222.222.222 访问服务器时，发送包的目标 IP 是 222.222.222.222，
 而由于服务器的默认路由是指向 111.111.111.1，且无其它路由可以对从 eth1 过来的包再从 eth1 进行答复，
 所以此时进行答复的包的源 IP 变为 111.111.111.111。发生包的目标 IP 和接受包的源 IP 不一致。<br>
 为了让两个接口上的两个 IP 都你相当独立地工作，我们需要让它从 eth0 进来的包由 eth0
 进行答复，从 eth1 进来的包由 eth1 进行答复。为达成此目的，我们就需要配置策略路由。</p>
-<h3 id="-systemd-networkd">配置 systemd-networkd</h3>
+<h3 id="配置-systemd-networkd">配置 systemd-networkd</h3>
 <p>前面说过了，本文重点不在于“怎么配置”策略路由，而在于“怎么用 systemd-networkd”配置策略路由。<br>
 有关 Linux 上策略路由的介绍和传统式配置方法可以参考
 <a href="https://segmentfault.com/a/1190000004165066">使用 rt_tables 巧妙配置 Linux 多网卡多路由实现策略路由</a>。
 这文章写得不错，挺简单易懂的。</p>
 <p>我们这里就直接通过改好的 systemd-networkd 配置文件讲起。</p>
 <p>首先将 eth0 的配置文件<code>/etc/systemd/network/10-eth0.network</code>修改如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>Match<span style="color:#f92672">]</span>
-Name<span style="color:#f92672">=</span>eth0
-
-<span style="color:#f92672">[</span>Network<span style="color:#f92672">]</span>
-DHCP<span style="color:#f92672">=</span>no
-Address<span style="color:#f92672">=</span>111.111.111.111/24
-Gateway<span style="color:#f92672">=</span>111.111.111.1
-DNS<span style="color:#f92672">=</span>114.114.114.114
-DNS<span style="color:#f92672">=</span>8.8.8.8
-
-<span style="color:#75715e"># 从这往上的配置和刚才的一样，只是去掉了注释。</span>
-<span style="color:#75715e"># 下面多加了几个配置。</span>
-
-<span style="color:#75715e"># 配置子路由表的默认网关，该小节等同于：</span>
-<span style="color:#75715e"># ip route add default via 111.111.111.1 dev eth0 table 111</span>
-<span style="color:#75715e"># Table 字段表示该子路由表的数字 ID。</span>
-<span style="color:#f92672">[</span>Route<span style="color:#f92672">]</span>
-Table<span style="color:#f92672">=</span><span style="color:#ae81ff">111</span>
-Gateway<span style="color:#f92672">=</span>111.111.111.1
-
-<span style="color:#75715e"># 配置子路由表的本网段路由，该小节等同于：</span>
-<span style="color:#75715e"># ip route add 111.111.111.0/24 dev eth0 src 111.111.111.111 table 111</span>
-<span style="color:#f92672">[</span>Route<span style="color:#f92672">]</span>
-Table<span style="color:#f92672">=</span><span style="color:#ae81ff">111</span>
-Destination<span style="color:#f92672">=</span>111.111.111.0/24
-Source<span style="color:#f92672">=</span>111.111.111.111
-
-<span style="color:#75715e"># 配置到该子路由表的策略，该小节等同于下面两个步骤：</span>
-<span style="color:#75715e"># echo &#34;100 111&#34; &gt;&gt; /etc/iproute2/rt_tables &amp;&amp; \</span>
-<span style="color:#75715e"># ip rule add from 111.111.111.111 table 111</span>
-<span style="color:#f92672">[</span>RoutingPolicyRule<span style="color:#f92672">]</span>
-Table<span style="color:#f92672">=</span><span style="color:#ae81ff">111</span>
-Priority<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>
-From<span style="color:#f92672">=</span>111.111.111.111
-</code></pre></div><p>将 eth1 的配置文件<code>/etc/systemd/network/10-eth1.network</code>修改如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>Match<span style="color:#f92672">]</span>
-Name<span style="color:#f92672">=</span>eth1
-
-<span style="color:#f92672">[</span>Network<span style="color:#f92672">]</span>
-DHCP<span style="color:#f92672">=</span>no
-Address<span style="color:#f92672">=</span>222.222.222.222/24
-DNS<span style="color:#f92672">=</span>114.114.114.114
-DNS<span style="color:#f92672">=</span>8.8.8.8
-
-<span style="color:#75715e"># 依然是在原 eth1 的配置下面多加了几个配置。</span>
-
-<span style="color:#75715e"># 配置子路由表的默认网关，该小节等同于：</span>
-<span style="color:#75715e"># ip route add default via 222.222.222.1 dev eth0 table 222</span>
-<span style="color:#75715e"># Table 字段表示该子路由表的数字 ID。</span>
-<span style="color:#f92672">[</span>Route<span style="color:#f92672">]</span>
-Table<span style="color:#f92672">=</span><span style="color:#ae81ff">222</span>
-Gateway<span style="color:#f92672">=</span>222.222.222.1
-
-<span style="color:#75715e"># 配置子路由表的本网段路由，该小节等同于：</span>
-<span style="color:#75715e"># ip route add 222.222.222.0/24 dev eth0 src 222.222.222.222 table 222</span>
-<span style="color:#f92672">[</span>Route<span style="color:#f92672">]</span>
-Table<span style="color:#f92672">=</span><span style="color:#ae81ff">222</span>
-Destination<span style="color:#f92672">=</span>222.222.222.0/24
-Source<span style="color:#f92672">=</span>222.222.222.222
-
-<span style="color:#75715e"># 配置到该子路由表的策略，该小节等同于：</span>
-<span style="color:#75715e"># echo &#34;200 222&#34; &gt;&gt; /etc/iproute2/rt_tables &amp;&amp; \</span>
-<span style="color:#75715e"># ip rule add from 222.222.222.222 table 222</span>
-<span style="color:#f92672">[</span>RoutingPolicyRule<span style="color:#f92672">]</span>
-Table<span style="color:#f92672">=</span><span style="color:#ae81ff">222</span>
-Priority<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>
-From<span style="color:#f92672">=</span>222.222.222.222
-</code></pre></div><p>修改完这两个配置之后，执行<code>systemctl restart systemd-networkd.service</code>重启网络管理器。<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[Match]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Name</span><span style="color:#f92672">=</span><span style="color:#e6db74">eth0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Network]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DHCP</span><span style="color:#f92672">=</span><span style="color:#e6db74">no</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Address</span><span style="color:#f92672">=</span><span style="color:#e6db74">111.111.111.111/24</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Gateway</span><span style="color:#f92672">=</span><span style="color:#e6db74">111.111.111.1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DNS</span><span style="color:#f92672">=</span><span style="color:#e6db74">114.114.114.114</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DNS</span><span style="color:#f92672">=</span><span style="color:#e6db74">8.8.8.8</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 从这往上的配置和刚才的一样，只是去掉了注释。</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 下面多加了几个配置。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置子路由表的默认网关，该小节等同于：</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip route add default via 111.111.111.1 dev eth0 table 111</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Table 字段表示该子路由表的数字 ID。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Route]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Table</span><span style="color:#f92672">=</span><span style="color:#e6db74">111</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Gateway</span><span style="color:#f92672">=</span><span style="color:#e6db74">111.111.111.1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置子路由表的本网段路由，该小节等同于：</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip route add 111.111.111.0/24 dev eth0 src 111.111.111.111 table 111</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Route]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Table</span><span style="color:#f92672">=</span><span style="color:#e6db74">111</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Destination</span><span style="color:#f92672">=</span><span style="color:#e6db74">111.111.111.0/24</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Source</span><span style="color:#f92672">=</span><span style="color:#e6db74">111.111.111.111</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置到该子路由表的策略，该小节等同于下面两个步骤：</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo &#34;100 111&#34; &gt;&gt; /etc/iproute2/rt_tables &amp;&amp; \</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip rule add from 111.111.111.111 table 111</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[RoutingPolicyRule]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Table</span><span style="color:#f92672">=</span><span style="color:#e6db74">111</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Priority</span><span style="color:#f92672">=</span><span style="color:#e6db74">100</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">From</span><span style="color:#f92672">=</span><span style="color:#e6db74">111.111.111.111</span>
+</span></span></code></pre></div><p>将 eth1 的配置文件<code>/etc/systemd/network/10-eth1.network</code>修改如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[Match]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Name</span><span style="color:#f92672">=</span><span style="color:#e6db74">eth1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Network]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DHCP</span><span style="color:#f92672">=</span><span style="color:#e6db74">no</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Address</span><span style="color:#f92672">=</span><span style="color:#e6db74">222.222.222.222/24</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DNS</span><span style="color:#f92672">=</span><span style="color:#e6db74">114.114.114.114</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DNS</span><span style="color:#f92672">=</span><span style="color:#e6db74">8.8.8.8</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 依然是在原 eth1 的配置下面多加了几个配置。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置子路由表的默认网关，该小节等同于：</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip route add default via 222.222.222.1 dev eth1 table 222</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Table 字段表示该子路由表的数字 ID。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Route]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Table</span><span style="color:#f92672">=</span><span style="color:#e6db74">222</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Gateway</span><span style="color:#f92672">=</span><span style="color:#e6db74">222.222.222.1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置子路由表的本网段路由，该小节等同于：</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip route add 222.222.222.0/24 dev eth1 src 222.222.222.222 table 222</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Route]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Table</span><span style="color:#f92672">=</span><span style="color:#e6db74">222</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Destination</span><span style="color:#f92672">=</span><span style="color:#e6db74">222.222.222.0/24</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Source</span><span style="color:#f92672">=</span><span style="color:#e6db74">222.222.222.222</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置到该子路由表的策略，该小节等同于：</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo &#34;200 222&#34; &gt;&gt; /etc/iproute2/rt_tables &amp;&amp; \</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip rule add from 222.222.222.222 table 222</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[RoutingPolicyRule]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Table</span><span style="color:#f92672">=</span><span style="color:#e6db74">222</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Priority</span><span style="color:#f92672">=</span><span style="color:#e6db74">200</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">From</span><span style="color:#f92672">=</span><span style="color:#e6db74">222.222.222.222</span>
+</span></span></code></pre></div><p>修改完这两个配置之后，执行<code>systemctl restart systemd-networkd.service</code>重启网络管理器。<br>
 至此，应当能够分别通过两个 IP 访问该服务器了。<br>
 由于全局 Gateway 配置为 111.111.111.1，所以由服务器主动发起的请求则会默认通过 eth0 发送出去。</p>
 <p>此时，我们可以查看路由表和策略路由：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
-<span style="color:#75715e"># ip route show</span>
-default via 111.111.111.1 dev eth0 proto static 
-111.111.111.0/24 dev eth0 proto kernel scope link src 111.111.111.111 
-222.222.222.0/24 dev eth1 proto kernel scope link src 222.222.222.222
-<span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
-<span style="color:#75715e"># ip route show table 111</span>
-default via 111.111.111.1 dev eth0 proto static
-111.111.111.0/24 dev eth0 proto static
-<span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
-<span style="color:#75715e"># ip route show table 222</span>
-default via 222.222.222.1 dev eth1 proto static
-222.222.222.0/24 dev eth1 proto static
-<span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
-<span style="color:#75715e"># ip rule show</span>
-0:	from all lookup local
-100:	from 111.111.111.111 lookup <span style="color:#ae81ff">111</span>
-200:	from 222.222.222.222 lookup <span style="color:#ae81ff">222</span>
-32766:	from all lookup main
-32767:	from all lookup default
-<span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
-<span style="color:#75715e"># ip rule show table 111</span>
-0:	from 111.111.111.111 lookup <span style="color:#ae81ff">111</span>
-<span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
-<span style="color:#75715e"># ip rule show table 222</span>
-0:	from 222.222.222.222 lookup <span style="color:#ae81ff">222</span>
-</code></pre></div><p>PS1：传统的策略路由配置方法中，需要修改<code>/etc/iproute2/rt_tables</code>以添加子路由表。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip route show</span>
+</span></span><span style="display:flex;"><span>default via 111.111.111.1 dev eth0 proto static 
+</span></span><span style="display:flex;"><span>111.111.111.0/24 dev eth0 proto kernel scope link src 111.111.111.111 
+</span></span><span style="display:flex;"><span>222.222.222.0/24 dev eth1 proto kernel scope link src 222.222.222.222
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip route show table 111</span>
+</span></span><span style="display:flex;"><span>default via 111.111.111.1 dev eth0 proto static
+</span></span><span style="display:flex;"><span>111.111.111.0/24 dev eth0 proto static
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip route show table 222</span>
+</span></span><span style="display:flex;"><span>default via 222.222.222.1 dev eth1 proto static
+</span></span><span style="display:flex;"><span>222.222.222.0/24 dev eth1 proto static
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip rule show</span>
+</span></span><span style="display:flex;"><span>0:  from all lookup local
+</span></span><span style="display:flex;"><span>100:    from 111.111.111.111 lookup <span style="color:#ae81ff">111</span>
+</span></span><span style="display:flex;"><span>200:    from 222.222.222.222 lookup <span style="color:#ae81ff">222</span>
+</span></span><span style="display:flex;"><span>32766:  from all lookup main
+</span></span><span style="display:flex;"><span>32767:  from all lookup default
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip rule show table 111</span>
+</span></span><span style="display:flex;"><span>0:  from 111.111.111.111 lookup <span style="color:#ae81ff">111</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@archlinux-conoha ~<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ip rule show table 222</span>
+</span></span><span style="display:flex;"><span>0:  from 222.222.222.222 lookup <span style="color:#ae81ff">222</span>
+</span></span></code></pre></div><p>PS1：传统的策略路由配置方法中，需要修改<code>/etc/iproute2/rt_tables</code>以添加子路由表。
 但使用 systemd-networkd 的过程中，我发现似乎不需要修改该文件也能工作。
 不过作为替代，需要将路由表的优先级写到 [RoutingPolicyRule] 的
 <code>Priority=</code> 字段。<br>
 PS2：在使用过程中，发现似乎是由于 systemd 的 bug，在已经配置好 ip rule 的情况下，
 <code>systemctl restart systemd-networkd.service</code>会出现服务重启失败。需要手动删掉对应的 ip rule，
 然后再重启该服务。</p>
-<h3 id="heading-3">小节</h3>
+<h3 id="小结">小结</h3>
 <p>本文使用新式的 systemd-networkd 配置了传统的双网卡策略路由，
 全程只需修改<code>/etc/systemd/network</code>目录下的<code>.network</code>配置文件即可。
 且 systemd-networkd 的配置文件语法简洁易懂，仅用多个 section 下的 key-value
@@ -309,11 +309,11 @@ PS2：在使用过程中，发现似乎是由于 systemd 的 bug，在已经配�
           <p>23 Dec 2017
             
               
-                <a href="https://blog.systemctl.top/tags/linux/">#Linux</a>
+                <a href="https://blog.systemctl.top//tags/linux/">#Linux</a>
               
-                <a href="https://blog.systemctl.top/tags/route/">#route</a>
+                <a href="https://blog.systemctl.top//tags/route/">#route</a>
               
-                <a href="https://blog.systemctl.top/tags/policy/">#policy</a>
+                <a href="https://blog.systemctl.top//tags/policy/">#policy</a>
               
             
           </p>
@@ -366,10 +366,10 @@ PS2：在使用过程中，发现似乎是由于 systemd 的 bug，在已经配�
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://blog.systemctl.top/js/canvas-nest.min.1.0.1.js"></script>
-  <script src="https://blog.systemctl.top/js/init.js"></script>
-  <script src="https://blog.systemctl.top/js/highlight.pack.js"></script>
-  <script src="https://blog.systemctl.top/js/materialize.min.js"></script>
+  <script src="https://blog.systemctl.top//js/canvas-nest.min.1.0.1.js"></script>
+  <script src="https://blog.systemctl.top//js/init.js"></script>
+  <script src="https://blog.systemctl.top//js/highlight.pack.js"></script>
+  <script src="https://blog.systemctl.top//js/materialize.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 

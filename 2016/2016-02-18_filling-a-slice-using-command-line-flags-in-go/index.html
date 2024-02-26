@@ -4,20 +4,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>[转载]filling a slice using command line flags in go</title>
-  <link href="https://blog.systemctl.top/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://blog.systemctl.top/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/syntax-highlighter.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://blog.systemctl.top//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <style type="text/css">
   
-    footer.page-footer{background-image: url(https://blog.systemctl.top/images/default.png);}
+    footer.page-footer{background-image: url(https://blog.systemctl.top//images/default.png);}
   
   </style>
 </head>
 <body>
   <ul id="slide-out" class="side-nav">
-    <li><a href="https://blog.systemctl.top"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://blog.systemctl.top/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.systemctl.top//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
   </ul>
   <div id="index-banner" class="parallax-container">
   <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
@@ -30,29 +30,29 @@
         </div>
         <div class="row center">
         
-          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top/images/github2-dreamstale35.png"></a>
+          <a href="https://github.com/gileshuang"><img src="https://blog.systemctl.top//images/github2-dreamstale35.png"></a>
         
         
-          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top/images/weibo-dreamstale55.png"></a>
+          <a href="http://weibo.com/jiayaohuang1992"><img src="https://blog.systemctl.top//images/weibo-dreamstale55.png"></a>
         
         
-          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top/images/gitosc-dreamstale55.png"></a>
+          <a href="https://git.oschina.net/aliendata"><img src="https://blog.systemctl.top//images/gitosc-dreamstale55.png"></a>
         
         
-          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top/images/facebook-dreamstale25.png"></a>
+          <a href="https://www.facebook.com/huangjiayao"><img src="https://blog.systemctl.top//images/facebook-dreamstale25.png"></a>
         
         
-          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top/images/twitter-dreamstale71.png"></a>
+          <a href="https://twitter.com/giles_huang"><img src="https://blog.systemctl.top//images/twitter-dreamstale71.png"></a>
         
         
         
-          <a href="https://blog.systemctl.top/index.xml"><img src="https://blog.systemctl.top/images/feed-dreamstale27.png"></a>
+          <a href="https://blog.systemctl.top//index.xml"><img src="https://blog.systemctl.top//images/feed-dreamstale27.png"></a>
         </div>
       </div>
     </div>
     <div class="parallax">
     
-      <img src="https://blog.systemctl.top/images/default.png">
+      <img src="https://blog.systemctl.top//images/default.png">
     
     </div>
   </div>
@@ -69,7 +69,7 @@
           <p>
           
             
-              <a href="https://blog.systemctl.top/categories/%E7%A0%81%E5%86%9C%E5%90%91/">码农向</a>
+              <a href="https://blog.systemctl.top//categories/%E7%A0%81%E5%86%9C%E5%90%91/">码农向</a>
             
           
           </p>
@@ -94,127 +94,127 @@ I want to be able to specify -i multiple times on the command-line.
 The program should populate a slice of integers while adhering
 to the above command-line syntax.</p>
 <p>Here’s my code … flagstuff.go :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Copyright 2013 - by Jim Lawless
-</span><span style="color:#75715e"></span><span style="color:#75715e">// License: MIT / X11
-</span><span style="color:#75715e"></span><span style="color:#75715e">// See: http://www.mailsend-online.com/license2013.php
-</span><span style="color:#75715e"></span><span style="color:#75715e">//
-</span><span style="color:#75715e"></span><span style="color:#75715e">// Bear with me ... I&#39;m a Go noob.
-</span><span style="color:#75715e"></span> 
-<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
- 
-<span style="color:#f92672">import</span> (
-    <span style="color:#e6db74">&#34;flag&#34;</span>
-    <span style="color:#e6db74">&#34;fmt&#34;</span>
-    <span style="color:#e6db74">&#34;strconv&#34;</span>
-)
- 
-<span style="color:#75715e">// Define a type named &#34;intslice&#34; as a slice of ints
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">intslice</span> []<span style="color:#66d9ef">int</span>
- 
-<span style="color:#75715e">// Now, for our new type, implement the two methods of
-</span><span style="color:#75715e"></span><span style="color:#75715e">// the flag.Value interface...
-</span><span style="color:#75715e"></span><span style="color:#75715e">// The first method is String() string
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">intslice</span>) <span style="color:#a6e22e">String</span>() <span style="color:#66d9ef">string</span> {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>)
-}
- 
-<span style="color:#75715e">// The second method is Set(value string) error
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">intslice</span>) <span style="color:#a6e22e">Set</span>(<span style="color:#a6e22e">value</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span> {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s\n&#34;</span>, <span style="color:#a6e22e">value</span>)
-    <span style="color:#a6e22e">tmp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">Atoi</span>(<span style="color:#a6e22e">value</span>)
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-        <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span> = append(<span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-    } <span style="color:#66d9ef">else</span> {
-        <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span> = append(<span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">tmp</span>)
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
-}
- 
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">myints</span> <span style="color:#a6e22e">intslice</span>
- 
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Var</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">myints</span>, <span style="color:#e6db74">&#34;i&#34;</span>, <span style="color:#e6db74">&#34;List of integers&#34;</span>)
-    <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">NFlag</span>() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
-        <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">PrintDefaults</span>()
-    } <span style="color:#66d9ef">else</span> {
-        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Here are the values in &#39;myints&#39;&#34;</span>)
-        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">myints</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#a6e22e">myints</span>[<span style="color:#a6e22e">i</span>])
-        }
-    }
-}
-</code></pre></div><p>Let’s dissect the code one section at a time … not necessarily in the order
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Copyright 2013 - by Jim Lawless
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// License: MIT / X11
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// See: http://www.mailsend-online.com/license2013.php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Bear with me ... I&#39;m a Go noob.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;flag&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;strconv&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Define a type named &#34;intslice&#34; as a slice of ints
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">intslice</span> []<span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Now, for our new type, implement the two methods of
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// the flag.Value interface...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The first method is String() string
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">intslice</span>) <span style="color:#a6e22e">String</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// The second method is Set(value string) error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">intslice</span>) <span style="color:#a6e22e">Set</span>(<span style="color:#a6e22e">value</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s\n&#34;</span>, <span style="color:#a6e22e">value</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tmp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">Atoi</span>(<span style="color:#a6e22e">value</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span> = append(<span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span> = append(<span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">tmp</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">myints</span> <span style="color:#a6e22e">intslice</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Var</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">myints</span>, <span style="color:#e6db74">&#34;i&#34;</span>, <span style="color:#e6db74">&#34;List of integers&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">NFlag</span>() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">PrintDefaults</span>()
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Here are the values in &#39;myints&#39;&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">myints</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#a6e22e">myints</span>[<span style="color:#a6e22e">i</span>])
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Let’s dissect the code one section at a time … not necessarily in the order
 presented in the source code above.</p>
 <p>First, I define a type called intslice that refers to a slice of ints:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">intslice</span> []<span style="color:#66d9ef">int</span>
-</code></pre></div><p>Later, I define a variable named myints of type intslice.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">myints</span> <span style="color:#a6e22e">intslice</span>
-</code></pre></div><p>Later in the code, I’m going to be calling flag.Var() passing in &amp;myints as
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">intslice</span> []<span style="color:#66d9ef">int</span>
+</span></span></code></pre></div><p>Later, I define a variable named myints of type intslice.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">myints</span> <span style="color:#a6e22e">intslice</span>
+</span></span></code></pre></div><p>Later in the code, I’m going to be calling flag.Var() passing in &amp;myints as
 the first argument.  The type of the first value to flag.Var() must conform
 to the flag.Value interface which is defined as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Value</span> <span style="color:#66d9ef">interface</span> {
-    <span style="color:#a6e22e">String</span>() <span style="color:#66d9ef">string</span>
-    <span style="color:#a6e22e">Set</span>(<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span>
-}
-</code></pre></div><p>I must now define a String() method and a Set() method for my intslice type:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">intslice</span>) <span style="color:#a6e22e">String</span>() <span style="color:#66d9ef">string</span> {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>)
-}
- 
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">intslice</span>) <span style="color:#a6e22e">Set</span>(<span style="color:#a6e22e">value</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span> {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s\n&#34;</span>, <span style="color:#a6e22e">value</span>)
-    <span style="color:#a6e22e">tmp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">Atoi</span>(<span style="color:#a6e22e">value</span>)
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-        <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span> = append(<span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-    } <span style="color:#66d9ef">else</span> {
-        <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span> = append(<span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">tmp</span>)
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
-}
-</code></pre></div><p>The above methods will be called by the parsing engine in the flag package
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Value</span> <span style="color:#66d9ef">interface</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">String</span>() <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Set</span>(<span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>I must now define a String() method and a Set() method for my intslice type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">intslice</span>) <span style="color:#a6e22e">String</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">intslice</span>) <span style="color:#a6e22e">Set</span>(<span style="color:#a6e22e">value</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s\n&#34;</span>, <span style="color:#a6e22e">value</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tmp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">Atoi</span>(<span style="color:#a6e22e">value</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span> = append(<span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">*</span><span style="color:#a6e22e">i</span> = append(<span style="color:#f92672">*</span><span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">tmp</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The above methods will be called by the parsing engine in the flag package
 when I invoke flag.Parse(). In the String() method, I need to return
 a string-representation of the argument. In the Set() method,
 I then need to append the string value to the specified intslice variable
 by first converting value to an int variable named tmp. If an error occurs
 during conversion, I append an int value of -1 to the intslice variable.</p>
 <p>The main body looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Var</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">myints</span>, <span style="color:#e6db74">&#34;i&#34;</span>, <span style="color:#e6db74">&#34;List of integers&#34;</span>)
-    <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
-    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">NFlag</span>() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
-        <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">PrintDefaults</span>()
-    } <span style="color:#66d9ef">else</span> {
-        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Here are the values in &#39;myints&#39;&#34;</span>)
-        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">myints</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#a6e22e">myints</span>[<span style="color:#a6e22e">i</span>])
-        }
-    }
-}
-</code></pre></div><p>Here are a few sample command-line invocations and the output that they produce
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Var</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">myints</span>, <span style="color:#e6db74">&#34;i&#34;</span>, <span style="color:#e6db74">&#34;List of integers&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">NFlag</span>() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">PrintDefaults</span>()
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Here are the values in &#39;myints&#39;&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; len(<span style="color:#a6e22e">myints</span>); <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#a6e22e">myints</span>[<span style="color:#a6e22e">i</span>])
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here are a few sample command-line invocations and the output that they produce
 ( I’ve added a blank line between each command and the counterpart
 response lines for clarity):</p>
 <p>No parameters. I’ve added a check to make sure that more than
 zero flags are specified.</p>
-<pre><code>flagstuff
+<pre tabindex="0"><code>flagstuff
  
   -i=[]: List of integers
 </code></pre><p>Let’s specify an invalid flag (-x):</p>
-<pre><code>flagstuff -x
+<pre tabindex="0"><code>flagstuff -x
  
 flag provided but not defined: -x
 Usage of flagstuff:
   -i=[]: List of integers
 </code></pre><p>Let’s specify -i without an argument:</p>
-<pre><code>flagstuff -i
+<pre tabindex="0"><code>flagstuff -i
  
 Usage of flagstuff:
   -i=[]: List of integers
 </code></pre><p>Now, let’s specify a single -i parameter with an integer value:</p>
-<pre><code>flagstuff -i 5
+<pre tabindex="0"><code>flagstuff -i 5
  
 5
-Here are the values in 'myints'
+Here are the values in &#39;myints&#39;
 5
 </code></pre><p>At each invocation of the intslice.Set() method, I display the string that
 has been passed in so that I could observe the mechanics of the parsing process.
@@ -222,22 +222,22 @@ In each example that provide arguments for -i, we’ll first see those values,
 then we’ll see what the slice contains via the for loop that occurs just
 a little later in the code.</p>
 <p>Let’s specify a string instead of an int as an argument:</p>
-<pre><code>flagstuff -i twelve
+<pre tabindex="0"><code>flagstuff -i twelve
  
 twelve
-Here are the values in 'myints'
+Here are the values in &#39;myints&#39;
 -1
 </code></pre><p>Note that this causes the error condition in the call to strconv.Atoi().
 I have chosen to add the value -1 to the slice when the argument
 doesn’t cleanly parse as an integer.
 You may choose to handle the error differently.</p>
 <p>Here is an example with three valid integers:</p>
-<pre><code>flagstuff -i 5 -i 6 -i 7
+<pre tabindex="0"><code>flagstuff -i 5 -i 6 -i 7
  
 5
 6
 7
-Here are the values in 'myints'
+Here are the values in &#39;myints&#39;
 5
 6
 7
@@ -256,7 +256,7 @@ processing features of the flag package in the near future.</p>
           <p>18 Feb 2016
             
               
-                <a href="https://blog.systemctl.top/tags/golang/">#golang</a>
+                <a href="https://blog.systemctl.top//tags/golang/">#golang</a>
               
             
           </p>
@@ -309,10 +309,10 @@ processing features of the flag package in the near future.</p>
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://blog.systemctl.top/js/canvas-nest.min.1.0.1.js"></script>
-  <script src="https://blog.systemctl.top/js/init.js"></script>
-  <script src="https://blog.systemctl.top/js/highlight.pack.js"></script>
-  <script src="https://blog.systemctl.top/js/materialize.min.js"></script>
+  <script src="https://blog.systemctl.top//js/canvas-nest.min.1.0.1.js"></script>
+  <script src="https://blog.systemctl.top//js/init.js"></script>
+  <script src="https://blog.systemctl.top//js/highlight.pack.js"></script>
+  <script src="https://blog.systemctl.top//js/materialize.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 
